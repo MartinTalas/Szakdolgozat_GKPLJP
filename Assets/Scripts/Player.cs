@@ -41,5 +41,4 @@ public class Player
     public int Games_played { get { return this.games_played; } set { this.games_played = value; } }
     public List<int> Achievements { get { return this.achievements; } set { this.achievements = value; } }
 
-    //funcs
 }
