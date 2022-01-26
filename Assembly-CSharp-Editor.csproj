@@ -77,6 +77,10 @@
     <Compile Include="Assets\GoogleVR\Editor\GvrEditorSettings.cs" />
     <Compile Include="Assets\GoogleVR\Editor\GvrHeadsetEditor.cs" />
     <Compile Include="Assets\GoogleVR\Editor\InstantPreviewEditor.cs" />
+    <None Include="Assets\Firebase\Editor\FirebaseAnalytics_version-8.7.0_manifest.txt" />
+    <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.168_manifest.txt" />
+    <None Include="Assets\Firebase\Editor\AppDependencies.xml" />
+    <None Include="Assets\Firebase\Editor\AnalyticsDependencies.xml" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -319,6 +323,45 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.App">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Analytics">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Platform">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.IOSResolver">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/ExternalDependencyManager/Editor/1.2.168/Google.IOSResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MiniJson">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Editor">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Editor/Firebase.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/ExternalDependencyManager/Editor/1.2.168/Google.VersionHandlerImpl.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/ExternalDependencyManager/Editor/1.2.168/Google.JarResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.TaskExtension">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.TaskExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.PackageManagerResolver">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/ExternalDependencyManager/Editor/1.2.168/Google.PackageManagerResolver.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.8f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

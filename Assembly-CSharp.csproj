@@ -192,11 +192,13 @@
     <Compile Include="Assets\Scripts\DataBaseManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <None Include="Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
+    <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-app-unity\maven-metadata.xml" />
     <None Include="Assets\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrController.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
     <None Include="Assets\GoogleVR\Beta\Shaders\GvrSeeThroughUI.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlayColor.shader" />
+    <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-analytics-unity\maven-metadata.xml" />
     <None Include="Assets\GoogleVR\Plugins\Android\AndroidManifest-6DOF.xml" />
     <None Include="Assets\GoogleVR\Shaders\Video\VideoUnlitShader.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTextureOverlay.shader" />
@@ -416,6 +418,27 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.App">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Analytics">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Platform">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MiniJson">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.TaskExtension">
+      <HintPath>C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.TaskExtension.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.8f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
