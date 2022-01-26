@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
   sceneClasses:
     Assets/Scenes/RoomScene.unity:
     - Class: 1
@@ -31,6 +32,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
@@ -39,6 +42,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9452}
     - Class: 114
       Script: {instanceID: 9584}
     - Class: 114
@@ -586,6 +591,12 @@ ScriptsOnlyBuild:
     className: GvrKeyboard
   - hash:
       serializedVersion: 2
+      Hash: 024734a43517f9fa919924b748ab94ee
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DataBaseManager
+  - hash:
+      serializedVersion: 2
       Hash: 303ad70ce203ad874efe2965d0fbcff9
     assemblyName: Unity.Analytics.Tracker.dll
     namespaceName: UnityEngine.Analytics
@@ -962,7 +973,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Firebase.Platform.dll
+    namespaceName: Firebase.Platform
+    className: FirebaseMonoBehaviour
   platform: 13
   scenePathNames:
   - Assets/Scenes/RoomScene.unity
-  playerPath: C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Builds/test_alpha_0_2.apk
+  playerPath: C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Builds/test_alpha_0_3.apk
