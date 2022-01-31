@@ -1,0 +1,4 @@
+#Mon Jan 31 17:02:10 CET 2022
+base.0=C\:\\Users\\marti\\OneDrive\\Dokumentumok\\Szakdolgozat\\UnityProject\\Szakdolgozat_GKPLJP\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex
