@@ -8,7 +8,7 @@ using Firebase.Extensions;
 public class DataBaseManager : MonoBehaviour
 {
     public UnityEvent on_firebase_initialized = new UnityEvent();
-    Color _color = Color.blue;
+    Color debug_color = Color.blue;
 
     void Start()
     {
@@ -17,12 +17,12 @@ public class DataBaseManager : MonoBehaviour
             if(task.Exception != null)
             {
                 Debug.LogError("Failed initialize firebase with " + task.Exception.Message);
-                _color = Color.red;
+                debug_color = Color.red;
                 return;
             }
             else
             {
-                _color = Color.green;
+                debug_color = Color.green;
             }
 
             on_firebase_initialized.Invoke();
@@ -37,6 +37,6 @@ public class DataBaseManager : MonoBehaviour
 
     public void getColor()
     {
-        GetComponent<Renderer>().material.color = _color;
+        GetComponent<Renderer>().material.color = debug_color;
     }
 }
