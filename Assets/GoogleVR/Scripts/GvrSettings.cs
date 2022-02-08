@@ -123,7 +123,7 @@ public static class GvrSettings
     /// <summary>Sets a value indicating whether sustained performance mode is enabled.</summary>
     /// <remarks><para>
     /// The developer is expected to remember whether sustained performance mode is set at runtime,
-    /// via the checkbox in Player Settings.
+    /// via the checkbox in User Settings.
     /// </para><para>
     /// This state may be recorded here in a future release.
     /// </para></remarks>

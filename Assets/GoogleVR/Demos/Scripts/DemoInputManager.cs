@@ -91,10 +91,10 @@ namespace GoogleVR.Demos
             + "'Build Settings > Android | iOS > Switch Platform'\n";
 
         private const string VR_SUPPORT_NOT_CHECKED =
-        "Please make sure 'Player Settings > Virtual Reality Supported' is checked\n";
+        "Please make sure 'User Settings > Virtual Reality Supported' is checked\n";
 
         private const string EMPTY_VR_SDK_WARNING_MESSAGE =
-        "Please add 'Daydream' or 'Cardboard' under 'Player Settings > Virtual Reality SDKs'\n";
+        "Please add 'Daydream' or 'Cardboard' under 'User Settings > Virtual Reality SDKs'\n";
 
         // Java class, method, and field constants.
         private const int ANDROID_MIN_DAYDREAM_API = 24;
@@ -124,9 +124,9 @@ namespace GoogleVR.Demos
         private bool isDaydream = false;
         private int activeControllerPointer = 0;
 
-        /// <summary>Whether Daydream is enabled in this Unity project's Player Settings.</summary>
+        /// <summary>Whether Daydream is enabled in this Unity project's User Settings.</summary>
         /// <returns>
-        /// Returns `true` if Daydream is enabled in Unity Player Settings.  Otherwise, returns
+        /// Returns `true` if Daydream is enabled in Unity User Settings.  Otherwise, returns
         /// `false`.
         /// </returns>
         public static bool playerSettingsHasDaydream()
@@ -136,9 +136,9 @@ namespace GoogleVR.Demos
                 element => element.Equals(GvrSettings.VR_SDK_DAYDREAM));
         }
 
-        /// <summary>Whether Cardboard is enabled in this Unity project's Player Settings.</summary>
+        /// <summary>Whether Cardboard is enabled in this Unity project's User Settings.</summary>
         /// <returns>
-        /// Returns `true` if Cardboard is enabled in Unity Player Settings.  Otherwise, returns
+        /// Returns `true` if Cardboard is enabled in Unity User Settings.  Otherwise, returns
         /// `false`.
         /// </returns>
         public static bool playerSettingsHasCardboard()
@@ -318,7 +318,7 @@ namespace GoogleVR.Demos
                 return;
             }
 
-            // Player Settings > VR SDK list may have changed at runtime. The emulated platform
+            // User Settings > VR SDK list may have changed at runtime. The emulated platform
             // may not have been manually updated if that's the case.
             if (gvrEmulatedPlatformType == EmulatedPlatformType.Daydream &&
                 !playerSettingsHasDaydream())

@@ -102,14 +102,14 @@ public class GvrVideoPlayerTexture : MonoBehaviour
     private List<Action<string, string>> onExceptionCallbacks;
 
     /// <summary>A delegate to be triggered by event callbacks.</summary>
-    /// <param name="cbdata">An integer pointer to the Video Player.</param>
+    /// <param name="cbdata">An integer pointer to the Video User.</param>
     /// <param name="eventId">The ID of the triggering event.</param>
     internal delegate void OnVideoEventCallback(IntPtr cbdata, int eventId);
 
     /// <summary>A delegate to be triggered by exception callbacks.</summary>
     /// <param name="type">The type of exception.</param>
     /// <param name="msg">The message associated with the exception.</param>
-    /// <param name="cbdata">An integer pointer to the Video Player.</param>
+    /// <param name="cbdata">An integer pointer to the Video User.</param>
     internal delegate void OnExceptionCallback(string type, string msg, IntPtr cbdata);
 
     /// <summary>Video type.</summary>
@@ -406,9 +406,9 @@ public class GvrVideoPlayerTexture : MonoBehaviour
     public static extern void DestroyVideoPlayer(IntPtr videoPlayerPtr);
 #else
     /// @cond
-    /// <summary>Creates the Video Player.</summary>
+    /// <summary>Creates the Video User.</summary>
     /// <remarks>Make this public so we can test the loading of the DLL.</remarks>
-    /// <returns>An integer pointer to the Video Player.</returns>
+    /// <returns>An integer pointer to the Video User.</returns>
     public static IntPtr CreateVideoPlayer()
     {
         Debug.Log(NOT_IMPLEMENTED_MSG);
@@ -417,7 +417,7 @@ public class GvrVideoPlayerTexture : MonoBehaviour
 
     /// @endcond
     /// @cond
-    /// <summary>Destroys the Video Player.</summary>
+    /// <summary>Destroys the Video User.</summary>
     /// <remarks>Make this public so we can test the loading of the DLL.</remarks>
     /// <param name="videoPlayerPtr">A pointer to the video player.</param>
     public static void DestroyVideoPlayer(IntPtr videoPlayerPtr)
