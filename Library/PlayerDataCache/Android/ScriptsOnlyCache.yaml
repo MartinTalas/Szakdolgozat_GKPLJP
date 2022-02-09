@@ -1,11 +1,14 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - GvrEditorEmulator
+    - GvrPointerInputModule
+    - GvrPointerPhysicsRaycaster
+    - GvrReticlePointer
     - testBTNscript
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
@@ -43,21 +46,33 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9606}
+      Script: {instanceID: 9504}
     - Class: 114
-      Script: {instanceID: 9608}
+      Script: {instanceID: 9506}
     - Class: 114
-      Script: {instanceID: 9614}
+      Script: {instanceID: 9512}
     - Class: 114
-      Script: {instanceID: 9620}
+      Script: {instanceID: 9514}
     - Class: 114
-      Script: {instanceID: 9628}
+      Script: {instanceID: 9518}
     - Class: 114
-      Script: {instanceID: 9664}
+      Script: {instanceID: 9526}
     - Class: 114
-      Script: {instanceID: 9666}
+      Script: {instanceID: 9562}
     - Class: 114
-      Script: {instanceID: 15860}
+      Script: {instanceID: 9564}
+    - Class: 114
+      Script: {instanceID: 9646}
+    - Class: 114
+      Script: {instanceID: 9806}
+    - Class: 114
+      Script: {instanceID: 10246}
+    - Class: 114
+      Script: {instanceID: 10586}
+    - Class: 114
+      Script: {instanceID: 10676}
+    - Class: 114
+      Script: {instanceID: 11042}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -337,6 +352,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: CallbackExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Editor
+    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -693,6 +720,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: testBTNscript
+  - hash:
+      serializedVersion: 2
       Hash: f694021fab526c14fbd3efebc16d5eba
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -997,12 +1030,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: testBTNscript
   platform: 13
   scenePathNames:
   - Assets/Scenes/UIScene.unity
