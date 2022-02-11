@@ -188,10 +188,11 @@
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\Internal\GvrCursorHelper.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\Internal\SuppressMemoryAllocationErrorAttribute.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
+    <Compile Include="Assets\OSK\Assets\Scripts\KeyboardDragHandler.cs" />
+    <Compile Include="Assets\OSK\Assets\Scripts\KeyboardScript.cs" />
     <Compile Include="Assets\Scripts\Achievement.cs" />
     <Compile Include="Assets\Scripts\DataBaseManager.cs" />
     <Compile Include="Assets\Scripts\FirebaseInit.cs" />
-    <Compile Include="Assets\Scripts\testBTNscript.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
     <Compile Include="Assets\Scripts\User.cs" />
     <None Include="Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
