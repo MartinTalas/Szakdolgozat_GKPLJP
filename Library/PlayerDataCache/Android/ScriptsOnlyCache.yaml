@@ -8,6 +8,7 @@ ScriptsOnlyBuild:
     - KeyboardDragHandler
     - KeyboardScript
     - UIController
+    - VRInputField
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
@@ -18,7 +19,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/UIScene.unity:
@@ -51,39 +51,39 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9504}
-    - Class: 114
-      Script: {instanceID: 9506}
-    - Class: 114
-      Script: {instanceID: 9512}
-    - Class: 114
-      Script: {instanceID: 9514}
-    - Class: 114
-      Script: {instanceID: 9518}
-    - Class: 114
       Script: {instanceID: 9526}
     - Class: 114
       Script: {instanceID: 9528}
     - Class: 114
-      Script: {instanceID: 9562}
+      Script: {instanceID: 9534}
     - Class: 114
-      Script: {instanceID: 9564}
+      Script: {instanceID: 9536}
     - Class: 114
-      Script: {instanceID: 9646}
+      Script: {instanceID: 9540}
     - Class: 114
-      Script: {instanceID: 9806}
+      Script: {instanceID: 9548}
     - Class: 114
-      Script: {instanceID: 9866}
+      Script: {instanceID: 9584}
     - Class: 114
-      Script: {instanceID: 10588}
+      Script: {instanceID: 9586}
     - Class: 114
-      Script: {instanceID: 10678}
+      Script: {instanceID: 9668}
     - Class: 114
-      Script: {instanceID: 11044}
+      Script: {instanceID: 9828}
     - Class: 114
-      Script: {instanceID: 23744}
+      Script: {instanceID: 9888}
     - Class: 114
-      Script: {instanceID: 23750}
+      Script: {instanceID: 10330}
+    - Class: 114
+      Script: {instanceID: 10348}
+    - Class: 114
+      Script: {instanceID: 10612}
+    - Class: 114
+      Script: {instanceID: 10664}
+    - Class: 114
+      Script: {instanceID: 10704}
+    - Class: 114
+      Script: {instanceID: 11070}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -743,6 +743,18 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
+      Hash: 12e64d607873da15ad3f833620350d51
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VRInputField
+  - hash:
+      serializedVersion: 2
+      Hash: e764dafb118961dc525039dd12d58831
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: KeyboardScript
+  - hash:
+      serializedVersion: 2
       Hash: 53ce9a4d3b026469b394261470c07be7
     assemblyName: Assembly-CSharp.dll
     namespaceName: Gvr.Internal
@@ -861,6 +873,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InstantPreviewHelper
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: KeyboardDragHandler
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1029,19 +1047,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: e764dafb118961dc525039dd12d58831
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: KeyboardScript
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: KeyboardDragHandler
   platform: 13
   scenePathNames:
   - Assets/Scenes/UIScene.unity
-  playerPath: C:/Users/marti/OneDrive/Dokumentumok/Szakdolgozat/UnityProject/Szakdolgozat_GKPLJP/Builds/test_alpha_0_6.apk
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_7.apk

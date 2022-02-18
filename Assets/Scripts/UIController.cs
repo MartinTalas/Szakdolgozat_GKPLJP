@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------[ VARIABLESS ]------------------------------------------------------------------------
+
     public Canvas SwitchCanvas;
     public Canvas SignUpCanvas;
     public Canvas LoginCanvas;
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +24,11 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------[ LOADERS AND OTHERS ]--------------------------------------------------------------------
 
     private void gameObjectLoader() 
     {
@@ -57,6 +66,9 @@ public class UIController : MonoBehaviour
         }
     }
 
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------[ CLICK EVENTS ]-----------------------------------------------------------------------
+    
     //klikkevent a regisztráció canvasára
     public void signUpClickEvent()
     {
@@ -79,9 +91,25 @@ public class UIController : MonoBehaviour
         if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
     }
 
+    //klikkevent a játékba belépéshez
+    public void loginToGameButtonEvent()
+    {
+        //check
+    }
+
+    //klikkevent a játékba regisztráláshoz
+    public void signUpToGameButtonEvent()
+    {
+        //check+reg
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------[ PRIVATE CHECK FUNCTIONS AND MISCELLANEOUS FUNCTIONS ]----------------------------------------------------
+
     //akármilyen objektumra null ellenőrzés
     private bool isNull<T>(T obj)
     {
        return obj == null ? true : false;
     }
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
