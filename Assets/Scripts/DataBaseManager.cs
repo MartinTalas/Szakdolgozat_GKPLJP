@@ -9,13 +9,19 @@ using System.Threading.Tasks;
 
 public sealed class DataBaseManager
 {
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------[ VARIABLESS ]------------------------------------------------------------------------
+
     //https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/
+
     private FirebaseDatabase database;
     private DatabaseReference db_reference;
     
     private Player local_user;
 
-    //SINGLETON
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------[ SINGLETON PATTERN ]--------------------------------------------------------------------
+
     private static readonly Lazy<DataBaseManager> lazy =  new Lazy<DataBaseManager>(() => new DataBaseManager());
 
     public static DataBaseManager Instance { get { return lazy.Value; } }
@@ -24,7 +30,10 @@ public sealed class DataBaseManager
     {
         initializeDatabase();
     }
-    //-----------------------------
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------[ CONNECTION FUNCTIONS ]-------------------------------------------------------------------
+
     public void initializeDatabase()
     {
         database = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -36,6 +45,9 @@ public sealed class DataBaseManager
     {
         return db_reference != null ? true : false;
     }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------[ LOGIN / SIGN UP FUNCTIONS ]-----------------------------------------------------------------
 
     public void signinUser()
     {
@@ -50,24 +62,24 @@ public sealed class DataBaseManager
         if (db_reference == null) { Debug.Log("db_reference is null!"); } else { Debug.Log("DBref: " + db_reference.ToString()); }
         //EOF DEBUG
 
-        Debug.Log("GETDATA: " + this.db_reference.Child("player").Child(username).Child(password).GetValueAsync().ToString());
-            this.db_reference.Child("player")
-                         .Child(username)
-                         .Child(password)
-                         .GetValueAsync()
-                         .ContinueWithOnMainThread(task => {
-                             Debug.Log("Benn van.");
-                             if (task.IsCompleted)
-                             {
-                                 Debug.Log("task.IsCompleted: Succeeded");
-                                 DataSnapshot data_snapshot = task.Result;
-                                 Debug.Log(task.Result.ToString());
-                             }
-                             else
-                             {
-                                 Debug.LogError("task.IsCompleted: Failed");
-                             }
-                         });
+        db_reference.Child("player")
+                    .Child(username)
+                    .Child(password)
+                    .GetValueAsync()
+                    .ContinueWith( task => {
+            if (task.IsCompleted)
+            {
+                Debug.Log("task.IsCompleted: Succeeded");
+                DataSnapshot data_snapshot = task.Result;
+                Debug.Log(task.Result.ToString());
+            }
+            else
+            {
+                Debug.LogError("task.IsCompleted: Failed");
+            }
+        });
 
     }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
