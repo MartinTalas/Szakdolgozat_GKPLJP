@@ -50,17 +50,17 @@ internal class GvrBuildProcessor : IPreprocessBuild, IPostprocessBuild
 #endif
 {
     private const string VR_SETTINGS_NOT_ENABLED_ERROR_MESSAGE_FORMAT =
-        "To use the Google VR SDK on {0}, 'User Settings > Virtual Reality Supported' setting " +
+        "To use the Google VR SDK on {0}, 'Player Settings > Virtual Reality Supported' setting " +
         "must be checked.\n" +
         "Please fix this setting and rebuild your app.";
 
     private const string IOS_MISSING_GVR_SDK_ERROR_MESSAGE =
-        "To use the Google VR SDK on iOS, 'User Settings > Virtual Reality SDKs' must include " +
+        "To use the Google VR SDK on iOS, 'Player Settings > Virtual Reality SDKs' must include " +
         "'Cardboard'.\n" +
         "Please fix this setting and rebuild your app.";
 
     private const string ANDROID_MISSING_GVR_SDK_ERROR_MESSAGE =
-        "To use the Google VR SDK on Android, 'User Settings > Virtual Reality SDKs' must " +
+        "To use the Google VR SDK on Android, 'Player Settings > Virtual Reality SDKs' must " +
         "include 'Daydream' or 'Cardboard'.\n" +
         "Please fix this setting and rebuild your app.";
 
@@ -107,7 +107,7 @@ internal class GvrBuildProcessor : IPreprocessBuild, IPostprocessBuild
             return;
         }
 
-        // 'User Settings > Virtual Reality Supported' must be enabled.
+        // 'Player Settings > Virtual Reality Supported' must be enabled.
         if (!IsVRSupportEnabled())
         {
             Debug.LogWarningFormat(VR_SETTINGS_NOT_ENABLED_ERROR_MESSAGE_FORMAT, target);
@@ -183,17 +183,17 @@ internal class GvrBuildProcessor : IPreprocessBuild, IPostprocessBuild
 
     /// @endcond
     /// <summary>
-    /// Gets whether 'User Settings > Virtual Reality Supported' is enabled.
+    /// Gets whether 'Player Settings > Virtual Reality Supported' is enabled.
     /// </summary>
     /// <returns>
-    /// True if 'User Settings > Virtual Reality Supported' is enabled.  False otherwise.
+    /// True if 'Player Settings > Virtual Reality Supported' is enabled.  False otherwise.
     /// </returns>
     private bool IsVRSupportEnabled()
     {
         return PlayerSettings.virtualRealitySupported;
     }
 
-    // 'User Settings > Virtual Reality SDKs' includes any VR SDK other than 'None'?
+    // 'Player Settings > Virtual Reality SDKs' includes any VR SDK other than 'None'?
     private bool IsSDKOtherThanNoneIncluded()
     {
         bool containsNone = XRSettings.supportedDevices.Contains(GvrSettings.VR_SDK_NONE);

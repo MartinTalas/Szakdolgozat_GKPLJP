@@ -22,7 +22,7 @@ namespace GoogleVR.VideoDemo
     using UnityEngine;
     using UnityEngine.UI;
 
-    /// <summary>Controls for the Video User.</summary>
+    /// <summary>Controls for the Video Player.</summary>
     public class VideoControlsManager : MonoBehaviour
     {
         private GameObject pauseSprite;

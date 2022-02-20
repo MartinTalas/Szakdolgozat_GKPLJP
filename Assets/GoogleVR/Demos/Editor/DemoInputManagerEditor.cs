@@ -50,7 +50,7 @@ namespace GoogleVR.Demos
                 DemoInputManager.playerSettingsHasDaydream())
             {
                 // Show the platform emulation dropdown only if both or neither VR SDK selected in
-                // User Settings > Virtual Reality supported,
+                // Player Settings > Virtual Reality supported,
                 EditorGUILayout.PropertyField(emulatedPlatformTypeProp);
             }
 

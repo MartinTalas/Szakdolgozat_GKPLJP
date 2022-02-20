@@ -12,6 +12,20 @@ public class UIController : MonoBehaviour
     public Canvas SignUpCanvas;
     public Canvas LoginCanvas;
 
+    //[SerializeField] VRInputField login_username;
+    //[SerializeField] VRInputField login_password;
+    //[SerializeField] VRInputField sign_up_username;
+    //[SerializeField] VRInputField sign_up_password;
+    //[SerializeField] VRInputField sign_up_aga_password;
+
+    public VRInputField login_username;
+    public VRInputField login_password;
+    public VRInputField sign_up_username;
+    public VRInputField sign_up_password;
+    public VRInputField sign_up_aga_password;
+
+    private DataBaseManager dataBaseManager; 
+
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
 
@@ -19,6 +33,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         this.gameObjectLoader();
+        dataBaseManager = DataBaseManager.Instance;   
     }
 
     // Update is called once per frame
@@ -32,38 +47,62 @@ public class UIController : MonoBehaviour
 
     private void gameObjectLoader() 
     {
-        GameObject temp1 = GameObject.Find("SignSwitchCanvas");
-        if (temp1 != null)
+        GameObject temp = GameObject.Find("SignSwitchCanvas");
+        if (temp != null)
         {
-            SwitchCanvas = temp1.GetComponent<Canvas>();
+            SwitchCanvas = temp.GetComponent<Canvas>();
             if (SwitchCanvas == null)
             {
-                Debug.LogError("Could not locate Canvas component on " + temp1.name);
+                Debug.LogError("Could not locate Canvas component on " + temp.name);
             }
         }
+        temp = null;
 
-        GameObject temp2 = GameObject.Find("SignUpCanvas");
-        if (temp2 != null)
+        temp = GameObject.Find("SignUpCanvas");
+        if (temp != null)
         {
-            SignUpCanvas = temp2.GetComponent<Canvas>();
+            SignUpCanvas = temp.GetComponent<Canvas>();
             if (SignUpCanvas == null)
             {
-                Debug.LogError("Could not locate Canvas component on " + temp2.name);
+                Debug.LogError("Could not locate Canvas component on " + temp.name);
             }
             SignUpCanvas.enabled = false;
         }
+        temp = null;
 
-
-        GameObject temp3 = GameObject.Find("LoginCanvas");
-        if (temp3 != null)
+        temp = GameObject.Find("LoginCanvas");
+        if (temp != null)
         {
-            LoginCanvas = temp3.GetComponent<Canvas>();
+            LoginCanvas = temp.GetComponent<Canvas>();
             if (LoginCanvas == null)
             {
-                Debug.LogError("Could not locate Canvas component on " + temp3.name);
+                Debug.LogError("Could not locate Canvas component on " + temp.name);
             }
             LoginCanvas.enabled = false;
         }
+        temp = null;
+
+        temp = GameObject.Find("UsernameInput");
+        if (temp != null)
+        {
+            login_username = temp.GetComponent<VRInputField>();
+            if (login_username == null)
+            {
+                Debug.LogError("Could not locate Canvas component on " + temp.name);
+            }
+        }
+        temp = null;
+
+        temp = GameObject.Find("PasswordInput");
+        if (temp != null)
+        {
+            login_password = temp.GetComponent<VRInputField>();
+            if (login_password == null)
+            {
+                Debug.LogError("Could not locate Canvas component on " + temp.name);
+            }
+        }
+        temp = null;
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -95,6 +134,7 @@ public class UIController : MonoBehaviour
     public void loginToGameButtonEvent()
     {
         //check
+        dataBaseManager.loginUser(login_username.text.ToString(), login_password.text.ToString());
     }
 
     //klikkevent a játékba regisztráláshoz

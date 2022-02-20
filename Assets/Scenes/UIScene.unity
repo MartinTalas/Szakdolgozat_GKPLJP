@@ -2957,6 +2957,11 @@ MonoBehaviour:
   SwitchCanvas: {fileID: 507654875}
   SignUpCanvas: {fileID: 1915425896}
   LoginCanvas: {fileID: 414504148}
+  login_username: {fileID: 1412487121}
+  login_password: {fileID: 348851409}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_aga_password: {fileID: 0}
 --- !u!114 &324399516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7852,6 +7857,11 @@ MonoBehaviour:
   SwitchCanvas: {fileID: 507654875}
   SignUpCanvas: {fileID: 1915425896}
   LoginCanvas: {fileID: 414504148}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_aga_password: {fileID: 0}
 --- !u!114 &941448598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10942,6 +10952,11 @@ MonoBehaviour:
   SwitchCanvas: {fileID: 507654875}
   SignUpCanvas: {fileID: 1915425896}
   LoginCanvas: {fileID: 414504148}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_aga_password: {fileID: 0}
 --- !u!1 &1285841178
 GameObject:
   m_ObjectHideFlags: 0
@@ -11439,6 +11454,11 @@ MonoBehaviour:
   SwitchCanvas: {fileID: 507654875}
   SignUpCanvas: {fileID: 1915425896}
   LoginCanvas: {fileID: 414504148}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_aga_password: {fileID: 0}
 --- !u!1 &1311417918
 GameObject:
   m_ObjectHideFlags: 0
@@ -12294,6 +12314,11 @@ MonoBehaviour:
   SwitchCanvas: {fileID: 507654875}
   SignUpCanvas: {fileID: 1915425896}
   LoginCanvas: {fileID: 414504148}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_aga_password: {fileID: 0}
 --- !u!114 &1385493425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12685,6 +12710,11 @@ MonoBehaviour:
   SwitchCanvas: {fileID: 507654875}
   SignUpCanvas: {fileID: 1915425896}
   LoginCanvas: {fileID: 414504148}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_aga_password: {fileID: 0}
 --- !u!114 &1461210533
 MonoBehaviour:
   m_ObjectHideFlags: 0

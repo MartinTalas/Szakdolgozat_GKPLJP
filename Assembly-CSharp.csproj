@@ -183,9 +183,8 @@
      <Compile Include="Assets\OSK\Assets\Scripts\KeyboardScript.cs" />
      <Compile Include="Assets\Scripts\Achievement.cs" />
      <Compile Include="Assets\Scripts\DataBaseManager.cs" />
-     <Compile Include="Assets\Scripts\FirebaseInit.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
-     <Compile Include="Assets\Scripts\User.cs" />
      <Compile Include="Assets\Scripts\VRInputField.cs" />
      <None Include="Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-app-unity\maven-metadata.xml" />

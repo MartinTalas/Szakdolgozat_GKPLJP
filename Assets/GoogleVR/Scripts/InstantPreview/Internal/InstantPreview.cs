@@ -312,7 +312,7 @@ namespace Gvr.Internal
             internal UnityGvrRecenterEventData gvr_recenter_event_data;
         }
 
-        /// <summary>GVR User Preferences.</summary>
+        /// <summary>GVR Player Preferences.</summary>
         /// <remarks>
         /// Associated with options set by the user in the Daydream app.</remarks>
         [System.Serializable]
@@ -328,10 +328,10 @@ namespace Gvr.Internal
         public bool overrideDeviceUserPrefs = false;
 
         [HideInInspector]
-        /// <summary>The User Preferences to use if `overrideDeviceUserPrefs` is `true`.</summary>
+        /// <summary>The Player Preferences to use if `overrideDeviceUserPrefs` is `true`.</summary>
         public UnityGvrUserPreferences editorUserPrefs;
 
-        /// <summary>The User Preferences to use if `overrideDeviceUserPrefs` is `false`.</summary>
+        /// <summary>The Player Preferences to use if `overrideDeviceUserPrefs` is `false`.</summary>
         public UnityGvrUserPreferences deviceUserPrefs { get; private set; }
 
 #if UNITY_EDITOR

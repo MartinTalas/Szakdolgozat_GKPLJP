@@ -1,71 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
+using System;
+using System.Threading.Tasks;
 
-public class DataBaseManager : MonoBehaviour
+public sealed class DataBaseManager
 {
-    
-    //private FirebaseDatabase database;
+    //https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/
+    private FirebaseDatabase database;
     private DatabaseReference db_reference;
     
-    private User local_user;
+    private Player local_user;
 
-    [SerializeField] InputField username;
-    [SerializeField] InputField password;
-    [SerializeField] InputField nickname;
-    
-    // Start is called before the first frame update
-    void Start()
+    //SINGLETON
+    private static readonly Lazy<DataBaseManager> lazy =  new Lazy<DataBaseManager>(() => new DataBaseManager());
+
+    public static DataBaseManager Instance { get { return lazy.Value; } }
+
+    private DataBaseManager()
     {
-        //database = FirebaseDatabase.DefaultInstance;
-        db_reference = FirebaseDatabase.DefaultInstance.RootReference;
+        initializeDatabase();
+    }
+    //-----------------------------
+    public void initializeDatabase()
+    {
+        database = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/");
+        db_reference = database.RootReference;
+        Debug.Log("RootRef: " + database.RootReference.ToString());
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool getConnectionState()
     {
-
+        return db_reference != null ? true : false;
     }
-
-    /*
-        ÁTNÉZNI
-     */
-    /*public async System.Threading.Tasks.Task<bool> saveExists()
-    {
-        var data_snapshot = await database.GetReference("").GetValueAsync();
-        return data_snapshot.Exists;
-    }*/
 
     public void signinUser()
     {
-        //signin check
-        local_user = new User();
-        local_user.Username = username.text;
-        local_user.Password = password.text;
-        local_user.Name = nickname.text;
-
-        string local_user_json = JsonUtility.ToJson(local_user);
-
-        db_reference.Child("Player").Child(local_user.Username).SetRawJsonValueAsync(local_user_json)
-            .ContinueWith(task => {
-                if (task.IsCompleted) 
-                {
-                    Debug.Log("Successfully added user to database!");
-                }
-                else
-                {
-                    Debug.LogError("Failed to add user to database!");
-                }
-            });
+    
     }
 
-    public void loginUser()
+    public void loginUser(string username = "", string password = "")
     {
-        //login check
-        local_user = new User();//itt a konstruktort felhasználva, az adatbázisból leszedett adatokat töltjük be
+
+        //DEBUG
+        Debug.Log("U: " + username + " P: " + password);
+        if (db_reference == null) { Debug.Log("db_reference is null!"); } else { Debug.Log("DBref: " + db_reference.ToString()); }
+        //EOF DEBUG
+
+        Debug.Log("GETDATA: " + this.db_reference.Child("player").Child(username).Child(password).GetValueAsync().ToString());
+            this.db_reference.Child("player")
+                         .Child(username)
+                         .Child(password)
+                         .GetValueAsync()
+                         .ContinueWithOnMainThread(task => {
+                             Debug.Log("Benn van.");
+                             if (task.IsCompleted)
+                             {
+                                 Debug.Log("task.IsCompleted: Succeeded");
+                                 DataSnapshot data_snapshot = task.Result;
+                                 Debug.Log(task.Result.ToString());
+                             }
+                             else
+                             {
+                                 Debug.LogError("task.IsCompleted: Failed");
+                             }
+                         });
+
     }
 }
