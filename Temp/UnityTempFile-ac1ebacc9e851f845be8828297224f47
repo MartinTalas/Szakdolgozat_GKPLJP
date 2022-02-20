@@ -432,7 +432,6 @@ Assets\OSK\Assets\Scripts\KeyboardDragHandler.cs
 Assets\OSK\Assets\Scripts\KeyboardScript.cs
 Assets\Scripts\Achievement.cs
 Assets\Scripts\DataBaseManager.cs
-Assets\Scripts\FirebaseInit.cs
 Assets\Scripts\Player.cs
 Assets\Scripts\UIController.cs
 Assets\Scripts\VRInputField.cs
