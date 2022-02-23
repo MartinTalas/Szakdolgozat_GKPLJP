@@ -21,6 +21,59 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   sceneClasses:
+    Assets/Scenes/RoomScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9670}
+    - Class: 114
+      Script: {instanceID: 9830}
+    - Class: 114
+      Script: {instanceID: 10612}
+    - Class: 114
+      Script: {instanceID: 10704}
+    - Class: 114
+      Script: {instanceID: 11072}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 137
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 258
+      Script: {instanceID: 0}
     Assets/Scenes/UIScene.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -51,27 +104,27 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9526}
-    - Class: 114
       Script: {instanceID: 9528}
     - Class: 114
-      Script: {instanceID: 9534}
+      Script: {instanceID: 9530}
     - Class: 114
       Script: {instanceID: 9536}
     - Class: 114
-      Script: {instanceID: 9540}
+      Script: {instanceID: 9538}
     - Class: 114
-      Script: {instanceID: 9548}
+      Script: {instanceID: 9542}
     - Class: 114
-      Script: {instanceID: 9584}
+      Script: {instanceID: 9550}
     - Class: 114
       Script: {instanceID: 9586}
     - Class: 114
-      Script: {instanceID: 9668}
+      Script: {instanceID: 9588}
     - Class: 114
-      Script: {instanceID: 9828}
+      Script: {instanceID: 9670}
     - Class: 114
-      Script: {instanceID: 9888}
+      Script: {instanceID: 9830}
+    - Class: 114
+      Script: {instanceID: 9890}
     - Class: 114
       Script: {instanceID: 10330}
     - Class: 114
@@ -83,7 +136,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10704}
     - Class: 114
-      Script: {instanceID: 11070}
+      Script: {instanceID: 11072}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -611,7 +664,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 5c84c218c080a6b87f313c3ee21a1aa4
+      Hash: 4b7289f814b4aa56492acbdbc2ac6a28
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIController
@@ -641,12 +694,6 @@ ScriptsOnlyBuild:
     className: GvrKeyboard
   - hash:
       serializedVersion: 2
-      Hash: 024734a43517f9fa919924b748ab94ee
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FirebaseInit
-  - hash:
-      serializedVersion: 2
       Hash: 303ad70ce203ad874efe2965d0fbcff9
     assemblyName: Unity.Analytics.Tracker.dll
     namespaceName: UnityEngine.Analytics
@@ -663,12 +710,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 1af79e26c73891ee72b98666e2fd5ed0
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DataBaseManager
   - hash:
       serializedVersion: 2
       Hash: b8a5e8091ab0b8861d2add371082c5e0
@@ -1050,4 +1091,5 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/UIScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_7.apk
+  - Assets/Scenes/RoomScene.unity
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_8.apk

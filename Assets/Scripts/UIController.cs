@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -134,7 +135,8 @@ public class UIController : MonoBehaviour
     public void loginToGameButtonEvent()
     {
         //check
-        dataBaseManager.loginUser(login_username.text.ToString(), login_password.text.ToString());
+        //dataBaseManager.loginUser(login_username.text.ToString(), login_password.text.ToString());
+        SceneManager.LoadScene("RoomScene");
     }
 
     //klikkevent a játékba regisztráláshoz

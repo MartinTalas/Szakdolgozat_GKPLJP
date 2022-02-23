@@ -35,9 +35,10 @@ public sealed class DataBaseManager
 
     public void initializeDatabase()
     {
-        database = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/");
-        db_reference = database.RootReference;
-        Debug.Log("RootRef: " + database.RootReference.ToString());
+        database = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app");
+        db_reference = database.RootReference; //FirebaseDatabase.DefaultInstance.RootReference;
+        Debug.Log("RootRef: " + db_reference.ToString());
+        Debug.Log("RootRef2: " + database.GetReference("player").Child("test").ToString());
     }
 
     public bool getConnectionState()
@@ -53,6 +54,25 @@ public sealed class DataBaseManager
     
     }
 
+    /*public IEnumerator loginUser(string username = "", string password = "")
+    {
+        var db_task = database.GetReference("player").Child(username).Child(password).GetValueAsync();
+        yield return new WaitUntil(predicate: () => db_task.IsCompleted);
+
+        if(db_task.Exception != null)
+        {
+            Debug.Log("DB_TASK_EXCEPTION: " + db_task.Exception.Message.ToString());
+        }
+        else if(db_task.Result.Value == null)
+        {
+            Debug.Log("DB_TASK_RESULT IS NULL");
+        }
+        else
+        {
+            Debug.Log("DB_TASK_RESULT: " + db_task.Result.Value.ToString());
+        }
+    }*/
+
     public void loginUser(string username = "", string password = "")
     {
 
@@ -61,11 +81,13 @@ public sealed class DataBaseManager
         if (db_reference == null) { Debug.Log("db_reference is null!"); } else { Debug.Log("DBref: " + db_reference.ToString()); }
         //EOF DEBUG
 
-        db_reference.Child("player")
-                    .Child(username)
-                    .Child(password)
-                    .GetValueAsync()
-                    .ContinueWith( task => {
+        Debug.Log("Route: " + database.GetReference("player").Child(username).Child(password).ToString());
+        //db_reference.Child("player")
+        database.GetReference("player")
+                .Child(username)
+                .Child(password)
+                .GetValueAsync()
+                .ContinueWith( task => {
             if (task.IsCompleted)
             {
                 Debug.Log("task.IsCompleted: Succeeded");
