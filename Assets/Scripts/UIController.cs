@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     public Canvas SwitchCanvas;
     public Canvas SignUpCanvas;
     public Canvas LoginCanvas;
+    public Canvas GameChooserCanvas;
 
     //[SerializeField] VRInputField login_username;
     //[SerializeField] VRInputField login_password;
@@ -46,69 +47,100 @@ public class UIController : MonoBehaviour
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------[ LOADERS AND OTHERS ]--------------------------------------------------------------------
 
-    private void gameObjectLoader() 
+    private void gameObjectLoader()
     {
-        GameObject temp = GameObject.Find("SignSwitchCanvas");
-        if (temp != null)
+        GameObject temp;
+        //CANVAS [SIGNSWITCH]
         {
-            SwitchCanvas = temp.GetComponent<Canvas>();
-            if (SwitchCanvas == null)
+            temp = GameObject.Find("SignSwitchCanvas");
+            if (temp != null)
             {
-                Debug.LogError("Could not locate Canvas component on " + temp.name);
+                SwitchCanvas = temp.GetComponent<Canvas>();
+                if (SwitchCanvas == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
             }
+            temp = null;
         }
-        temp = null;
 
-        temp = GameObject.Find("SignUpCanvas");
-        if (temp != null)
+        //CANVAS [SIGNUP]
         {
-            SignUpCanvas = temp.GetComponent<Canvas>();
-            if (SignUpCanvas == null)
+            temp = GameObject.Find("SignUpCanvas");
+            if (temp != null)
             {
-                Debug.LogError("Could not locate Canvas component on " + temp.name);
+                SignUpCanvas = temp.GetComponent<Canvas>();
+                if (SignUpCanvas == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+                SignUpCanvas.enabled = false;
             }
-            SignUpCanvas.enabled = false;
+            temp = null;
         }
-        temp = null;
 
-        temp = GameObject.Find("LoginCanvas");
-        if (temp != null)
+        //CANVAS [LOGIN]
         {
-            LoginCanvas = temp.GetComponent<Canvas>();
-            if (LoginCanvas == null)
-            {
-                Debug.LogError("Could not locate Canvas component on " + temp.name);
-            }
-            LoginCanvas.enabled = false;
-        }
-        temp = null;
+            temp = GameObject.Find("LoginCanvas");
 
-        temp = GameObject.Find("UsernameInput");
-        if (temp != null)
-        {
-            login_username = temp.GetComponent<VRInputField>();
-            if (login_username == null)
+            if (temp != null)
             {
-                Debug.LogError("Could not locate Canvas component on " + temp.name);
+                LoginCanvas = temp.GetComponent<Canvas>();
+                if (LoginCanvas == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+                LoginCanvas.enabled = false;
             }
+            temp = null; 
         }
-        temp = null;
 
-        temp = GameObject.Find("PasswordInput");
-        if (temp != null)
+        //CANVAS [GAMECHOOSER]
         {
-            login_password = temp.GetComponent<VRInputField>();
-            if (login_password == null)
+            temp = GameObject.Find("GameChooserCanvas");
+            if (temp != null)
             {
-                Debug.LogError("Could not locate Canvas component on " + temp.name);
+                GameChooserCanvas = temp.GetComponent<Canvas>();
+                if (SwitchCanvas == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
             }
+            temp = null;
         }
-        temp = null;
+
+        //INPUT
+        {
+            temp = GameObject.Find("UsernameInput");
+            if (temp != null)
+            {
+                login_username = temp.GetComponent<VRInputField>();
+                if (login_username == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
+        //INPUT
+        {
+            temp = GameObject.Find("PasswordInput");
+            if (temp != null)
+            {
+                login_password = temp.GetComponent<VRInputField>();
+                if (login_password == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-----------------------------------------------------------------------[ CLICK EVENTS ]-----------------------------------------------------------------------
-    
+
     //klikkevent a regisztráció canvasára
     public void signUpClickEvent()
     {
@@ -143,6 +175,12 @@ public class UIController : MonoBehaviour
     public void signUpToGameButtonEvent()
     {
         //check+reg
+    }
+
+    //klikkevent a karakterválasztó scene-re
+    public void goToCharacterChooserScene()
+    {
+
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,2 @@
+C:\GitHub\Szakdolgozat_GKPLJP\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
+C:\GitHub\Szakdolgozat_GKPLJP\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
