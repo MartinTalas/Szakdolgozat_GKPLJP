@@ -105,6 +105,7 @@ public class UIController : MonoBehaviour
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
+                GameChooserCanvas.enabled = false; 
             }
             temp = null;
         }
@@ -146,6 +147,7 @@ public class UIController : MonoBehaviour
     {
         if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
         if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = true; } else { Debug.LogError("SignUpCanvas is null"); }
+        if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
     }
 
     //klikkevent a login canvasára
@@ -153,6 +155,7 @@ public class UIController : MonoBehaviour
     {
         if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
         if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
+        if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
     }
 
     //klikkevent a login/signup "elosztó" canvasra
@@ -163,24 +166,34 @@ public class UIController : MonoBehaviour
         if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
     }
 
-    //klikkevent a játékba belépéshez
-    public void loginToGameButtonEvent()
+    //klikkevent a game chooser canvasra
+    public void goToJoinCanvas()
+    {
+        if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
+        if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = false; } else { Debug.LogError("SignUpCanvas is null"); }
+        if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
+        if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
+    }
+
+    //klikkevent a játékba belépéshez !!DELETED!! Replaced by goToCharacterSelectorScene (NE TÖRÖLD AZ ADATBÁZIS MIATT (LOGIN))
+    /*public void loginToGameButtonEvent()
     {
         //check
         //dataBaseManager.loginUser(login_username.text.ToString(), login_password.text.ToString());
         SceneManager.LoadScene("RoomScene");
-    }
+    }*/
 
     //klikkevent a játékba regisztráláshoz
     public void signUpToGameButtonEvent()
     {
         //check+reg
+        goToCharacterSelectorScene();
     }
 
     //klikkevent a karakterválasztó scene-re
-    public void goToCharacterChooserScene()
+    public void goToCharacterSelectorScene()
     {
-
+        SceneManager.LoadScene("CharacterSelectorScene");
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AvatarDriver : MonoBehaviour
@@ -89,6 +90,6 @@ public class AvatarDriver : MonoBehaviour
     //Ok button: load the room scene!!!!
     public void ok()
     {
-
+        SceneManager.LoadScene("RoomScene");
     }
 }
