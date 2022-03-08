@@ -182,6 +182,7 @@
      <Compile Include="Assets\OSK\Assets\Scripts\KeyboardDragHandler.cs" />
      <Compile Include="Assets\OSK\Assets\Scripts\KeyboardScript.cs" />
      <Compile Include="Assets\Scripts\Achievement.cs" />
+     <Compile Include="Assets\Scripts\AvatarDriver.cs" />
      <Compile Include="Assets\Scripts\AvatarManager.cs" />
      <Compile Include="Assets\Scripts\DataBaseManager.cs" />
      <Compile Include="Assets\Scripts\GamePlayController.cs" />

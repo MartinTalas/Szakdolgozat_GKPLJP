@@ -1,14 +1,11 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AvatarManager
     - GvrEditorEmulator
     - GvrPointerInputModule
     - GvrPointerPhysicsRaycaster
     - GvrReticlePointer
-    - KeyboardDragHandler
-    - KeyboardScript
-    - UIController
-    - VRInputField
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
@@ -21,7 +18,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/RoomScene.unity:
+    Assets/Scenes/CharacterSelectorScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -40,64 +37,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
-      Script: {instanceID: 0}
-    - Class: 89
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
     - Class: 95
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 9670}
-    - Class: 114
-      Script: {instanceID: 9830}
-    - Class: 114
-      Script: {instanceID: 10612}
-    - Class: 114
-      Script: {instanceID: 10704}
-    - Class: 114
-      Script: {instanceID: 11072}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 137
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 258
-      Script: {instanceID: 0}
-    Assets/Scenes/UIScene.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
-    - Class: 65
-      Script: {instanceID: 0}
-    - Class: 81
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -124,22 +74,18 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9830}
     - Class: 114
-      Script: {instanceID: 9890}
+      Script: {instanceID: 10270}
     - Class: 114
-      Script: {instanceID: 10330}
+      Script: {instanceID: 10616}
     - Class: 114
-      Script: {instanceID: 10348}
+      Script: {instanceID: 10708}
     - Class: 114
-      Script: {instanceID: 10612}
-    - Class: 114
-      Script: {instanceID: 10664}
-    - Class: 114
-      Script: {instanceID: 10704}
-    - Class: 114
-      Script: {instanceID: 11072}
+      Script: {instanceID: 11076}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -664,7 +610,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 4b7289f814b4aa56492acbdbc2ac6a28
+      Hash: 302d6010e44f190c4e496e6ce4e1c0bb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIController
@@ -692,6 +638,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GvrKeyboard
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GamePlayController
   - hash:
       serializedVersion: 2
       Hash: 303ad70ce203ad874efe2965d0fbcff9
@@ -764,6 +716,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 2ccf75b0c61a62008aaf2ddca60deeac
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AvatarManager
   - hash:
       serializedVersion: 2
       Hash: f694021fab526c14fbd3efebc16d5eba
@@ -1090,6 +1048,5 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 13
   scenePathNames:
-  - Assets/Scenes/UIScene.unity
-  - Assets/Scenes/RoomScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_8.apk
+  - Assets/Scenes/CharacterSelectorScene.unity
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_9.apk
