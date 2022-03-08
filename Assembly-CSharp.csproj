@@ -184,6 +184,7 @@
      <Compile Include="Assets\Scripts\Achievement.cs" />
      <Compile Include="Assets\Scripts\AvatarManager.cs" />
      <Compile Include="Assets\Scripts\DataBaseManager.cs" />
+     <Compile Include="Assets\Scripts\GamePlayController.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\Scripts\VRInputField.cs" />
