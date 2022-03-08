@@ -73,7 +73,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 444}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 68
+  controlID: 133
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 472}
   m_MaxSize: {x: 10004, y: 14022}
   vertical: 1
-  controlID: 36
+  controlID: 106
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_MinSize: {x: 711, y: 472}
   m_MaxSize: {x: 18006, y: 14022}
   vertical: 0
-  controlID: 107
+  controlID: 13
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -363,18 +363,18 @@ MonoBehaviour:
     m_Folders:
     - Assets/Scripts
   m_ViewMode: 1
-  m_StartGridSize: 64
+  m_StartGridSize: 16
   m_LastFolders:
   - Assets/Scripts
-  m_LastFoldersGridSize: -1
+  m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\GitHub\Szakdolgozat_GKPLJP
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: be360000
-    m_LastClickedID: 14014
-    m_ExpandedIDs: 00000000542c0000f62d0000482e000094330000d83500001639000000ca9a3b
+    m_SelectedIDs: c2360000
+    m_LastClickedID: 14018
+    m_ExpandedIDs: 00000000582c0000fa2d00004c2e000098330000dc3500001a39000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -402,7 +402,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000542c0000f62d0000482e000094330000d8350000163900002a390000
+    m_ExpandedIDs: 00000000582c0000fa2d00004c2e000098330000dc3500001a390000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 64
+    m_GridSize: 16
   m_DirectoriesAreaWidth: 165
 --- !u!114 &15
 MonoBehaviour:
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewResizer:
-    m_CachedPref: 160
+    m_CachedPref: 147
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
@@ -522,23 +522,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 582a0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 8efbffff063a0000
+      m_SelectedIDs: 86b70000
+      m_LastClickedID: 46982
+      m_ExpandedIDs: 4463ffff8863ffff1265ffff7865ffff8467ffff4468ffff1a6affff526affff546affff166bffff4e6bffff506bffffba9affff449bffff089dffff4c9dffffd2a7ffff38a8ffffceaaffffe6c8ffff1ec9ffff20c9ffffa2c9ffffdac9ffff06cbffffa2cfffffe6d0ffffa4d5ffff1ed7ffffc8ddfffff8ddffff0ae2fffffae2ffff72e5ffff0ce7ffff86f1fffff0f1ffffaef4ffff4ef7ffff8efbffff9a3a00001a660000067a0000d07a00000a7b00005c7b0000987b0000e27b0000f07b0000b4980000f09e0000fe9f00000ca20000eaa200002ca80000aea80000b2b60000f0b6000072b70000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: SexButton
+        m_OriginalName: SexButton
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 46884
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -584,9 +584,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.38999987, y: 0.31, z: 4.94}
+    m_Target: {x: 1.9140625, y: 3.135376, z: -3.4082031}
     speed: 2
-    m_Value: {x: 0.38999987, y: 0.31, z: 4.94}
+    m_Value: {x: 1.9140625, y: 3.135376, z: -3.4082031}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -607,21 +607,21 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
     yGrid:
-      m_Target: 0
+      m_Target: 1
       speed: 2
-      m_Value: 0
+      m_Value: 1
     zGrid:
       m_Target: 0
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.0329713, y: -0.03537632, z: 0.0013461156, w: 0.99892694}
+    m_Target: {x: -0.15334737, y: 0.2764014, z: -0.04506135, w: -0.9477723}
     speed: 2
-    m_Value: {x: 0.03296808, y: -0.03537287, z: 0.0013459842, w: 0.9988294}
+    m_Value: {x: -0.15333082, y: 0.27637154, z: -0.045056485, w: -0.94767}
   m_Size:
-    m_Target: 6.315273
+    m_Target: 13.986995
     speed: 2
-    m_Value: 6.315273
+    m_Value: 13.986995
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -639,7 +639,7 @@ MonoBehaviour:
     m_DynamicClip: 1
     m_OcclusionCulling: 0
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: 0.010500048, y: -0.0068898844, z: 0.00005357606, w: 0.9999735}
+  m_LastSceneViewRotation: {x: 0.005923003, y: 0.21611735, z: 0.000998974, w: -0.9764594}
   m_LastSceneViewOrtho: 1
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
