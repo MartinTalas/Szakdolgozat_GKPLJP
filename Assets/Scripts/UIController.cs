@@ -193,7 +193,7 @@ public class UIController : MonoBehaviour
     //klikkevent a karakterválasztó scene-re
     public void goToCharacterSelectorScene()
     {
-        SceneManager.LoadScene("CharacterSelectorScene");
+        SceneManager.LoadScene("AvatarSelectorScene");
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------

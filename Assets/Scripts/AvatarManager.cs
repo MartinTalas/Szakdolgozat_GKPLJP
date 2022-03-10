@@ -40,35 +40,7 @@ public sealed class AvatarManager
     {
         selector_central_position = new Vector3(0.5f, 0.81f, 3.03f); //set default position
         default_rotation = new Vector3(0, 180, 0); //set default rotation
-
-        AddTag("Clone"); //add tag for the memory saving
     }
-
-    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------[ GAMEOBJECT TAG HANDLING ]-----------------------------------------------------------------
-
-    //"add tag" method for GameObject 
-    void AddTag(string value)
-    {
-        UnityEngine.Object[] asset = AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset");
-        if ((asset != null) && (asset.Length > 0))
-        {
-            SerializedObject s_obj = new SerializedObject(asset[0]);
-            SerializedProperty tags = s_obj.FindProperty("tags");
-
-            for (int i = 0; i < tags.arraySize; ++i)
-            {
-                if (tags.GetArrayElementAtIndex(i).stringValue == value) { return; }//Tag already exists
-            }
-
-            tags.InsertArrayElementAtIndex(0);
-            tags.GetArrayElementAtIndex(0).stringValue = value;
-
-            s_obj.ApplyModifiedProperties();
-            s_obj.Update();
-        }
-    }
-
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------[ FUNCTIONS ]------------------------------------------------------------------------
