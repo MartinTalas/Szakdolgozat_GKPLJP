@@ -6,7 +6,8 @@ using UnityEngine;
 
 public sealed class AvatarManager
 {
-
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------[ VARIABLES ]------------------------------------------------------------------------
 
     GameObject current_avatar; // the current avatar
     
@@ -27,7 +28,9 @@ public sealed class AvatarManager
     private bool sex = false;// false = female | true = male
     private bool outfit = false;// false = casual | true = elegant
 
-    //------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------[ SINGLETON PATTERN ]--------------------------------------------------------------------
+
 
     private static readonly Lazy<AvatarManager> lazy = new Lazy<AvatarManager>(() => new AvatarManager());
 
@@ -35,50 +38,50 @@ public sealed class AvatarManager
 
     private AvatarManager()
     {
-        selector_central_position = new Vector3(0.5f, 0.81f, 3.03f);
-        default_rotation = new Vector3(0, 180, 0);
+        selector_central_position = new Vector3(0.5f, 0.81f, 3.03f); //set default position
+        default_rotation = new Vector3(0, 180, 0); //set default rotation
 
-        //add tag for the memory saving
-        AddTag("Clone");
+        AddTag("Clone"); //add tag for the memory saving
     }
 
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------[ GAMEOBJECT TAG HANDLING ]-----------------------------------------------------------------
+
     //"add tag" method for GameObject 
-    void AddTag(string tag)
+    void AddTag(string value)
     {
         UnityEngine.Object[] asset = AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset");
         if ((asset != null) && (asset.Length > 0))
         {
-            SerializedObject so = new SerializedObject(asset[0]);
-            SerializedProperty tags = so.FindProperty("tags");
+            SerializedObject s_obj = new SerializedObject(asset[0]);
+            SerializedProperty tags = s_obj.FindProperty("tags");
 
             for (int i = 0; i < tags.arraySize; ++i)
             {
-                if (tags.GetArrayElementAtIndex(i).stringValue == tag)
-                {
-                    return;     // Tag already present, nothing to do.
-                }
+                if (tags.GetArrayElementAtIndex(i).stringValue == value) { return; }//Tag already exists
             }
 
             tags.InsertArrayElementAtIndex(0);
-            tags.GetArrayElementAtIndex(0).stringValue = tag;
-            so.ApplyModifiedProperties();
-            so.Update();
+            tags.GetArrayElementAtIndex(0).stringValue = value;
+
+            s_obj.ApplyModifiedProperties();
+            s_obj.Update();
         }
     }
 
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------[ FUNCTIONS ]------------------------------------------------------------------------
 
     //set actual avatar set (outfit and sex ("gender"))
     GameObject[] setActualAvatarSet(bool actual_sex, bool actual_outfit)
     {
+        this.sex = actual_sex;
+        this.outfit = actual_outfit;
 
-        sex = actual_sex;
-        outfit = actual_outfit;
-
-        if (sex)
+        if (this.sex)
         {
-            if (outfit)
+            if (this.outfit)
             {
                 return elegant_males;
             }
@@ -135,11 +138,13 @@ public sealed class AvatarManager
     public void buildLists(GameObject[] arg1, GameObject[] arg2, GameObject[] arg3, GameObject[] arg4) 
     {
         //get all avatars
-        casual_females = arg1;
-        casual_males = arg2;
-        elegant_females = arg3;
-        elegant_males = arg4;
-        actual_avatar_set = this.setActualAvatarSet(false, false);
+        this.casual_females = arg1;
+        this.casual_males = arg2;
+        this.elegant_females = arg3;
+        this.elegant_males = arg4;
+        
+        //set default avatar set
+        this.actual_avatar_set = this.setActualAvatarSet(false, false);
 
         //set avatar positions & rotations
         for(int i = 0; i < actual_avatar_set.Length; i++)
@@ -161,7 +166,7 @@ public sealed class AvatarManager
         }
 
         //set current avatar firtly
-        current_avatar = actual_avatar_set[0];
+        this.current_avatar = actual_avatar_set[0];
         //I do not wanted to instanticate the current avatar because it runs 8 times!!! It would cause absolute chaos! I used firstly burnt prefab
         
     }
@@ -169,31 +174,34 @@ public sealed class AvatarManager
     //set sex and outfit and change the actual avatar list
     public void setProperties(bool sex1, bool outfit1)
     {
-        actual_avatar_set = this.setActualAvatarSet(sex1, outfit1);
+        this.actual_avatar_set = this.setActualAvatarSet(sex1, outfit1);
     }
 
     //make preview
     public void setPreview() 
     {
-        current_avatar = actual_avatar_set[current_avatar_index];
-        current_avatar.tag = "Clone";
+        this.current_avatar = actual_avatar_set[current_avatar_index];
+        this.current_avatar.tag = "Clone";
 
         //destroy clones for memory saving
         var clones = GameObject.FindGameObjectsWithTag("Clone");
+
         foreach (var clone in clones)
         {
             MonoBehaviour.Destroy(clone);
         }
-        
+
         //set current active and "generate"
-        current_avatar.SetActive(true);
-        MonoBehaviour.Instantiate(current_avatar, current_avatar.transform.position, current_avatar.transform.rotation); 
+        this.current_avatar.SetActive(true);
+        MonoBehaviour.Instantiate(this.current_avatar, this.current_avatar.transform.position, this.current_avatar.transform.rotation); 
     }
 
-    //get avatar properties
+    //get avatar properties (sex and outfit)
     public bool[] getProperties()
     {
-        bool[] result = { sex, outfit }; 
+        bool[] result = { this.sex, this.outfit }; 
         return result;
     }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

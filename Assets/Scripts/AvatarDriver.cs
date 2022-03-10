@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class AvatarDriver : MonoBehaviour
 {
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------[ VARIABLES ]------------------------------------------------------------------------
+
+
     //temporapy avatar list (for singleton AvatarManager)
     public GameObject[] casual_females = new GameObject[8];
     public GameObject[] casual_males = new GameObject[8];
@@ -16,12 +20,16 @@ public class AvatarDriver : MonoBehaviour
     public GameObject firstLoader;
 
     AvatarManager avatar_manager;
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
+
     // Start is called before the first frame update
     void Start()
     {
         //build singleton (sealed) AvatarManager class
-        avatar_manager = AvatarManager.Instance;
-        avatar_manager.buildLists(casual_females, casual_males, elegant_females, elegant_males);
+        this.avatar_manager = AvatarManager.Instance;
+        this.avatar_manager.buildLists(casual_females, casual_males, elegant_females, elegant_males);
     }
 
     // Update is called once per frame
@@ -30,26 +38,29 @@ public class AvatarDriver : MonoBehaviour
         
     }
 
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------[ FUNCTIONS ]------------------------------------------------------------------------
+
     //click event for next avatar
     public void toRight()
     {
         firstLoader.SetActive(false);
-        avatar_manager.currentAvatar(true);
-        avatar_manager.setPreview();
+        this.avatar_manager.currentAvatar(true);
+        this.avatar_manager.setPreview();
     }
 
     //click event for previous avatar
     public void toLeft()
     {
         firstLoader.SetActive(false);
-        avatar_manager.currentAvatar(false);
-        avatar_manager.setPreview();
+        this.avatar_manager.currentAvatar(false);
+        this.avatar_manager.setPreview();
     }
 
     //set sex ("gender") property
     public void setSexProperty()
     {
-        bool sex = avatar_manager.getProperties()[0], outfit = avatar_manager.getProperties()[1];
+        bool sex = this.avatar_manager.getProperties()[0], outfit = this.avatar_manager.getProperties()[1];
         firstLoader.SetActive(false);
         if (sex)
         {
@@ -92,4 +103,6 @@ public class AvatarDriver : MonoBehaviour
     {
         SceneManager.LoadScene("RoomScene");
     }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
