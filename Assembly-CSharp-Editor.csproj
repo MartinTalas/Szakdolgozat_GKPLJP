@@ -55,6 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Editor\ReadmeEditor.cs" />
+     <Compile Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\Scripts\Editor\PackageChecker\PackageChecker.cs" />
      <Compile Include="Assets\GoogleVR\Demos\Editor\DemoInputManagerEditor.cs" />
      <Compile Include="Assets\GoogleVR\Demos\Editor\PermissionsDemoBuildProcessor.cs" />
      <Compile Include="Assets\GoogleVR\Editor\Controller\GvrControllerVisualEditor.cs" />
@@ -71,6 +73,7 @@
      <None Include="Assets\Firebase\Editor\FirebaseAnalytics_version-8.7.0_manifest.txt" />
      <None Include="Assets\Firebase\Editor\FirebaseAuth_version-8.7.0_manifest.txt" />
      <None Include="Assets\Firebase\Editor\FirebaseDatabase_version-8.7.0_manifest.txt" />
+     <None Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\Scripts\Editor\PackageChecker\PackageImportList.txt" />
      <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.168_manifest.txt" />
      <None Include="Assets\Firebase\Editor\AppDependencies.xml" />
      <None Include="Assets\Firebase\Editor\AnalyticsDependencies.xml" />
@@ -78,6 +81,21 @@
      <None Include="Assets\Firebase\Editor\DatabaseDependencies.xml" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProGrids">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.Editor">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProGrids.Editor">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -90,6 +108,9 @@
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AddOns.Editor">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

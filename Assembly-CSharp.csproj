@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
      <Compile Include="Assets\GoogleVR\Beta\Demos\Scripts\DemoObjectController6DoF.cs" />
      <Compile Include="Assets\GoogleVR\Beta\Demos\Scripts\DemoSeeThroughController.cs" />
      <Compile Include="Assets\GoogleVR\Beta\Scripts\GvrBetaControllerInput.cs" />
@@ -212,6 +213,21 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.ProGrids">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.Editor">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProGrids.Editor">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
@@ -223,6 +239,9 @@
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AddOns.Editor">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
