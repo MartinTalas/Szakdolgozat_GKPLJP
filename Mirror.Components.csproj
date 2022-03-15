@@ -308,6 +308,30 @@
  <Reference Include="Google.ProtocolBuffers">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
  </Reference>
+ <Reference Include="Mono.CecilX">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.CecilX.Mdb">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.CecilX.Pdb">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.CecilX.Rocks">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+ </Reference>
+ <Reference Include="Telepathy">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Runtime/Transport/Telepathy/Telepathy.dll</HintPath>
+ </Reference>
+ <Reference Include="Castle.Core">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Tests/Editor/Castle.Core.dll</HintPath>
+ </Reference>
+ <Reference Include="NSubstitute">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Tests/Editor/NSubstitute.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Threading.Tasks.Extensions">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Tests/Editor/System.Threading.Tasks.Extensions.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Compat">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Parse/Plugins/dotNet45/Unity.Compat.dll</HintPath>
  </Reference>
@@ -328,30 +352,6 @@
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="Mono.CecilX">
- <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
- </Reference>
- <Reference Include="Castle.Core">
- <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Tests/Editor/Castle.Core.dll</HintPath>
- </Reference>
- <Reference Include="NSubstitute">
- <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Tests/Editor/NSubstitute.dll</HintPath>
- </Reference>
- <Reference Include="Mono.CecilX.Mdb">
- <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
- </Reference>
- <Reference Include="System.Threading.Tasks.Extensions">
- <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Tests/Editor/System.Threading.Tasks.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Mono.CecilX.Pdb">
- <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
- </Reference>
- <Reference Include="Telepathy">
- <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Runtime/Transport/Telepathy/Telepathy.dll</HintPath>
- </Reference>
- <Reference Include="Mono.CecilX.Rocks">
- <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Mirror-9.0.0/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.8f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
