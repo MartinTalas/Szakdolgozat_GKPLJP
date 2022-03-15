@@ -32,7 +32,8 @@ public class UIController : MonoBehaviour
     public VRInputField login_password;
     public VRInputField sign_up_username;
     public VRInputField sign_up_password;
-    public VRInputField sign_up_again_password;
+    public VRInputField sign_up_again_password; 
+    public VRInputField game_id_input; //GameIDInput
 
     public VRInputField keyboard_input_field;
     private static FIELDENUM field_enum;
@@ -73,6 +74,7 @@ public class UIController : MonoBehaviour
     private void gameObjectLoader()
     {
         GameObject temp;
+
         //CANVAS [SIGNSWITCH]
         {
             temp = GameObject.Find("SignSwitchCanvas");
@@ -232,6 +234,19 @@ public class UIController : MonoBehaviour
             temp = null;
         }
 
+        //INPUT [GAMEID]
+        {
+            temp = GameObject.Find("GameIDInput");
+            if (temp != null)
+            {
+                game_id_input = temp.GetComponent<VRInputField>();
+                if (game_id_input == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -296,7 +311,8 @@ public class UIController : MonoBehaviour
     }
 
 
-    //----------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------[ KEYBOARD FUNCTIONS ]--------------------------------------------------------------------
 
 
     public void selectField(VRInputField field)

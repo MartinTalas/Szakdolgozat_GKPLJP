@@ -947,6 +947,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!114 &324399516
 MonoBehaviour:
@@ -1258,6 +1259,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!1 &407490578
 GameObject:
@@ -1454,6 +1456,8 @@ GameObject:
   - component: {fileID: 490765009}
   - component: {fileID: 490765008}
   - component: {fileID: 490765007}
+  - component: {fileID: 490765012}
+  - component: {fileID: 490765011}
   m_Layer: 5
   m_Name: GameIDInput
   m_TagString: Untagged
@@ -1586,6 +1590,60 @@ RectTransform:
   m_AnchoredPosition: {x: 4.14, y: 4.53}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &490765011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490765006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 490765012}
+          m_MethodName: selectField
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 490765007}
+            m_ObjectArgumentAssemblyTypeName: VRInputField, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &490765012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490765006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7c2ba35c953d34c81d3dc41f44fce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwitchCanvas: {fileID: 0}
+  SignUpCanvas: {fileID: 0}
+  LoginCanvas: {fileID: 0}
+  GameChooserCanvas: {fileID: 0}
+  KeyboardCanvas: {fileID: 0}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
+  keyboard_input_field: {fileID: 0}
 --- !u!1 &507654871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,6 +2602,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!114 &941448598
 MonoBehaviour:
@@ -2969,6 +3028,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!114 &1095731511
 MonoBehaviour:
@@ -3513,6 +3573,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!1 &1285841178
 GameObject:
@@ -3780,6 +3841,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!1 &1331104944
 GameObject:
@@ -3793,6 +3855,8 @@ GameObject:
   - component: {fileID: 1331104948}
   - component: {fileID: 1331104947}
   - component: {fileID: 1331104946}
+  - component: {fileID: 1331104950}
+  - component: {fileID: 1331104949}
   m_Layer: 5
   m_Name: SignUpPasswordInput
   m_TagString: Untagged
@@ -3925,6 +3989,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331104944}
   m_CullTransparentMesh: 0
+--- !u!114 &1331104949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331104944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1331104950}
+          m_MethodName: selectField
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1331104946}
+            m_ObjectArgumentAssemblyTypeName: VRInputField, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1331104950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331104944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7c2ba35c953d34c81d3dc41f44fce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwitchCanvas: {fileID: 0}
+  SignUpCanvas: {fileID: 0}
+  LoginCanvas: {fileID: 0}
+  GameChooserCanvas: {fileID: 0}
+  KeyboardCanvas: {fileID: 0}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
+  keyboard_input_field: {fileID: 0}
 --- !u!1 &1385493422
 GameObject:
   m_ObjectHideFlags: 0
@@ -3988,6 +4106,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!114 &1385493425
 MonoBehaviour:
@@ -4269,6 +4388,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!114 &1412487125
 MonoBehaviour:
@@ -4442,6 +4562,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!114 &1461210533
 MonoBehaviour:
@@ -4758,6 +4879,8 @@ GameObject:
   - component: {fileID: 1522827424}
   - component: {fileID: 1522827423}
   - component: {fileID: 1522827422}
+  - component: {fileID: 1522827426}
+  - component: {fileID: 1522827425}
   m_Layer: 5
   m_Name: SignUpUsernameInput
   m_TagString: Untagged
@@ -4890,6 +5013,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522827420}
   m_CullTransparentMesh: 0
+--- !u!114 &1522827425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522827420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1522827426}
+          m_MethodName: selectField
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1522827422}
+            m_ObjectArgumentAssemblyTypeName: VRInputField, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1522827426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522827420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7c2ba35c953d34c81d3dc41f44fce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwitchCanvas: {fileID: 0}
+  SignUpCanvas: {fileID: 0}
+  LoginCanvas: {fileID: 0}
+  GameChooserCanvas: {fileID: 0}
+  KeyboardCanvas: {fileID: 0}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
+  keyboard_input_field: {fileID: 0}
 --- !u!1 &1534079251
 GameObject:
   m_ObjectHideFlags: 0
@@ -4993,8 +5170,10 @@ GameObject:
   - component: {fileID: 1552804760}
   - component: {fileID: 1552804759}
   - component: {fileID: 1552804758}
+  - component: {fileID: 1552804762}
+  - component: {fileID: 1552804761}
   m_Layer: 5
-  m_Name: 'SignUpPasswordAgainInput '
+  m_Name: SignUpPasswordAgainInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5125,6 +5304,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552804756}
   m_CullTransparentMesh: 0
+--- !u!114 &1552804761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552804756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1552804762}
+          m_MethodName: selectField
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1552804758}
+            m_ObjectArgumentAssemblyTypeName: VRInputField, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1552804762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552804756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7c2ba35c953d34c81d3dc41f44fce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwitchCanvas: {fileID: 0}
+  SignUpCanvas: {fileID: 0}
+  LoginCanvas: {fileID: 0}
+  GameChooserCanvas: {fileID: 0}
+  KeyboardCanvas: {fileID: 0}
+  login_username: {fileID: 0}
+  login_password: {fileID: 0}
+  sign_up_username: {fileID: 0}
+  sign_up_password: {fileID: 0}
+  sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
+  keyboard_input_field: {fileID: 0}
 --- !u!1 &1569234532
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,6 +6152,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!1001 &1899199137
 PrefabInstance:
@@ -6555,6 +6789,7 @@ MonoBehaviour:
   sign_up_username: {fileID: 0}
   sign_up_password: {fileID: 0}
   sign_up_again_password: {fileID: 0}
+  game_id_input: {fileID: 0}
   keyboard_input_field: {fileID: 0}
 --- !u!114 &2092192220
 MonoBehaviour:
