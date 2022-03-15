@@ -26,9 +26,9 @@ public class KeyboardScript : MonoBehaviour
 
     public void CloseAllLayouts()
     {
-        EngLayoutSml.SetActive(false);
-        EngLayoutBig.SetActive(false);
-        SymbLayout.SetActive(false);
+        //EngLayoutSml.SetActive(false);
+        //EngLayoutBig.SetActive(false);
+        //SymbLayout.SetActive(false);
 
     }
 
