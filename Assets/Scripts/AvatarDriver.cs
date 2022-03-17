@@ -9,6 +9,9 @@ public class AvatarDriver : MonoBehaviour
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------[ VARIABLES ]------------------------------------------------------------------------
 
+    //Json parser
+    public JsonParser jsonParser;
+    public Data user_data;
 
     //temporapy avatar list (for singleton AvatarManager)
     public GameObject[] casual_females = new GameObject[8];
@@ -30,12 +33,15 @@ public class AvatarDriver : MonoBehaviour
         //build singleton (sealed) AvatarManager class
         this.avatar_manager = AvatarManager.Instance;
         this.avatar_manager.buildLists(casual_females, casual_males, elegant_females, elegant_males);
+
+        this.jsonParser = JsonParser.Instance;
+        this.loadUserData();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -98,10 +104,23 @@ public class AvatarDriver : MonoBehaviour
         avatar_manager.setPreview();
     }
 
-    //Ok button: load the room scene!!!!
+    //Ok button: load the RoomScene!!!
     public void ok()
     {
+        //save data:
+        user_data.avatar = avatar_manager.getJsonAvatarArray();
+        jsonParser.toJson<Data>(user_data, "userdata");
+
+        //go to RoomScene
         SceneManager.LoadScene("RoomScene");
+    }
+
+
+    //load user data;
+    private void loadUserData()
+    {
+        user_data = jsonParser.toObject<Data>("userdata");
+        GameObject.Find("UsernameDataText").GetComponent<Text>().text = user_data.username;
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------

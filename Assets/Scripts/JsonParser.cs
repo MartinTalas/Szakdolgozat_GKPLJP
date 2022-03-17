@@ -15,24 +15,24 @@ public sealed class JsonParser
 
     private JsonParser()
     {
-         
+        
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------[ PARSING FUNCTIONS ]--------------------------------------------------------------------
 
-    public void toJson<T>(T obj, string filename)
+    public void toJson<T>(T obj, string filename) //DEBUG WITH STRING RETURN
     {
         string json = JsonUtility.ToJson(obj, true);
 
-        string path = Path.Combine(Application.persistentDataPath + "/data/", filename + ".json");
+        string path = Application.persistentDataPath + "/" +filename + ".json";
         File.WriteAllText(path, json);
     }
 
-    public T toObject<T>(string filename) 
+    public T toObject<T>(string filename) //DEBUG WITH STRING RETURN
     {
         string json;
-        string path = Path.Combine(Application.persistentDataPath + "/data/", filename + ".json");
+        string path = Application.persistentDataPath + "/" + filename + ".json";
 
 
         json = File.ReadAllText(path);
@@ -43,5 +43,31 @@ public sealed class JsonParser
         return obj;
     }
 
+
+    // [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]
+    /*
+    public string getTESTText()
+    {
+        string json = "{ \"test\": \"test1\"}";
+        /*string path = "test.json";//Path.Combine(Application.persistentDataPath, "test" + ".json");
+        //File.WriteAllText(Application.dataPath + path, json);
+        using (StreamReader stream = new StreamReader(Application.dataPath + path))
+        {
+            json = stream.ReadToEnd();
+        }
+
+        
+        string pt = Path.Combine(Application.dataPath, "test" + ".json");
+        File.WriteAllText(pt, json);
+        string result = File.ReadAllText(pt); *./
+
+
+        string pt = Application.persistentDataPath + "/test" + ".json";
+        File.WriteAllText(pt, json);
+        string result = File.ReadAllText(pt);
+
+        return pt;
+    }
+    */
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
