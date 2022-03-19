@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Threading;
+using Firebase.Database;
 
 enum FIELDENUM //enum for the textfields [INPUTS]
 {
@@ -37,7 +39,9 @@ public class UIController : MonoBehaviour
     public VRInputField keyboard_input_field;
     private static FIELDENUM field_enum;
 
-    private DataBaseManager dataBaseManager; 
+    private DataBaseManager dataBaseManager;
+    private FirebaseDatabase db;
+
     private JsonParser jsonParser;
 
 
@@ -63,14 +67,13 @@ public class UIController : MonoBehaviour
     {
         this.gameObjectLoader();
 
-        //dataBaseManager = DataBaseManager.Instance;
-        //TESTTEXT.text = dataBaseManager.returnException();
+        dataBaseManager = DataBaseManager.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       //TESTTEXT.text = dataBaseManager.result;
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -322,17 +325,75 @@ public class UIController : MonoBehaviour
     //-------------------------------------------------------[EOF SCENE CHANGE]
 
     //click event to login
-    public void loginToGameButtonEvent()
+    public async void loginToGameButtonEvent()
     {
-        //check
-        //dataBaseManager.loginUser(login_username.text.ToString(), login_password.text.ToString());
+        int result = -1;
 
-        Data data = new Data();
-        data.username = login_username.text.ToString();
-        data.password = login_password.text.ToString();
+        if (login_username.text.ToString().Length == 0 || login_password.text.ToString().Length == 0)
+        {
+            result = 3; //empty fields
+        }
+        else 
+        {
+            db = dataBaseManager.getConnection();
+            try
+            {
+                await db.GetReference("player").Child(login_username.text.ToString())
+                                        .Child("password")
+                                        .GetValueAsync()
+                                        .ContinueWith(task =>
+                                        {
+                                            if (task.IsCompleted)
+                                            {
+                                                Debug.Log("task.IsCompleted: Succeeded");
+                                                DataSnapshot data_snapshot = task.Result;
+                                                Debug.Log(task.Result.ToString());
+                                                if (data_snapshot.Exists)
+                                                {
+                                                    Debug.Log(task.Result.ToString() + "completed");
+                                                    if (data_snapshot.Value.Equals(login_password.text.ToString()))
+                                                    {
+                                                        result = 0; //succeeded
+                                                        Debug.Log("LOGIN SUCCEEDED");
+                                                    }
+                                                    else
+                                                    {
+                                                        result = 1; //wrong password
+                                                        Debug.Log("LOGIN FAILED");
+                                                    }
 
-        jsonParser.toJson<Data>(data, "userdata");
-        goToJoinCanvas();
+                                                }
+                                                else
+                                                {
+                                                    result = 2; //sign up first
+                                                    Debug.Log(task.Result.ToString() + " -> NOT EXISTS");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Debug.LogError("task.IsCompleted: Failed");
+                                            }
+
+
+                                        });
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+            if(result == 0)
+            {
+                Data data = new Data();
+                data.username = login_username.text.ToString();
+                data.password = login_password.text.ToString();
+
+                jsonParser.toJson<Data>(data, "userdata");
+                goToJoinCanvas();
+            } 
+        }
+
+        TESTTEXT.text = result.ToString();
     }
 
     //click event to sign up

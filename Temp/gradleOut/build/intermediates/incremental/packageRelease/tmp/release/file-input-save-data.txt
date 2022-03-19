@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Mar 19 14:58:54 CET 2022
+#Sat Mar 19 17:01:26 CET 2022
 20.base=C\:\\GitHub\\Szakdolgozat_GKPLJP\\Temp\\gradleOut\\build\\intermediates\\merged_assets\\release\\out
 143.base=C\:\\GitHub\\Szakdolgozat_GKPLJP\\Temp\\gradleOut\\build\\intermediates\\merged_assets\\release\\out
 237.path=bin/Data/sharedassets1.assets.split2
