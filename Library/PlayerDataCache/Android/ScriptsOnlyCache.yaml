@@ -59,33 +59,33 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9750}
+      Script: {instanceID: 9912}
     - Class: 114
-      Script: {instanceID: 9752}
+      Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 9758}
+      Script: {instanceID: 9920}
     - Class: 114
-      Script: {instanceID: 9760}
+      Script: {instanceID: 9922}
     - Class: 114
-      Script: {instanceID: 9764}
+      Script: {instanceID: 9926}
     - Class: 114
-      Script: {instanceID: 9772}
+      Script: {instanceID: 9934}
     - Class: 114
-      Script: {instanceID: 9808}
+      Script: {instanceID: 9970}
     - Class: 114
-      Script: {instanceID: 9810}
+      Script: {instanceID: 9972}
     - Class: 114
-      Script: {instanceID: 9916}
+      Script: {instanceID: 10084}
     - Class: 114
-      Script: {instanceID: 10142}
+      Script: {instanceID: 10320}
     - Class: 114
-      Script: {instanceID: 10210}
+      Script: {instanceID: 10392}
     - Class: 114
-      Script: {instanceID: 11426}
+      Script: {instanceID: 11672}
     - Class: 114
-      Script: {instanceID: 11598}
+      Script: {instanceID: 11844}
     - Class: 114
-      Script: {instanceID: 12192}
+      Script: {instanceID: 12456}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -138,15 +138,15 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9916}
+      Script: {instanceID: 10084}
     - Class: 114
-      Script: {instanceID: 10142}
+      Script: {instanceID: 10320}
     - Class: 114
-      Script: {instanceID: 11426}
+      Script: {instanceID: 11672}
     - Class: 114
-      Script: {instanceID: 11598}
+      Script: {instanceID: 11844}
     - Class: 114
-      Script: {instanceID: 12192}
+      Script: {instanceID: 12456}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 137
@@ -187,43 +187,43 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9438}
+      Script: {instanceID: 9578}
     - Class: 114
-      Script: {instanceID: 9750}
+      Script: {instanceID: 9912}
     - Class: 114
-      Script: {instanceID: 9752}
+      Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 9758}
+      Script: {instanceID: 9920}
     - Class: 114
-      Script: {instanceID: 9760}
+      Script: {instanceID: 9922}
     - Class: 114
-      Script: {instanceID: 9764}
+      Script: {instanceID: 9926}
     - Class: 114
-      Script: {instanceID: 9772}
+      Script: {instanceID: 9934}
     - Class: 114
-      Script: {instanceID: 9808}
+      Script: {instanceID: 9970}
     - Class: 114
-      Script: {instanceID: 9810}
+      Script: {instanceID: 9972}
     - Class: 114
-      Script: {instanceID: 9916}
+      Script: {instanceID: 10084}
     - Class: 114
-      Script: {instanceID: 10142}
+      Script: {instanceID: 10320}
     - Class: 114
-      Script: {instanceID: 10228}
+      Script: {instanceID: 10412}
     - Class: 114
-      Script: {instanceID: 10986}
+      Script: {instanceID: 11208}
     - Class: 114
-      Script: {instanceID: 11018}
+      Script: {instanceID: 11244}
     - Class: 114
-      Script: {instanceID: 11426}
+      Script: {instanceID: 11672}
     - Class: 114
-      Script: {instanceID: 11520}
+      Script: {instanceID: 11766}
     - Class: 114
-      Script: {instanceID: 11598}
+      Script: {instanceID: 11844}
     - Class: 114
-      Script: {instanceID: 11770}
+      Script: {instanceID: 12020}
     - Class: 114
-      Script: {instanceID: 12192}
+      Script: {instanceID: 12456}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -835,7 +835,7 @@ ScriptsOnlyBuild:
     className: AvatarDriver
   - hash:
       serializedVersion: 2
-      Hash: 959fbbb2e4465aa58c72b0f8d50a58a8
+      Hash: e20f5e08736b7dd8c9014457b06af897
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIController
@@ -1534,4 +1534,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/UIScene.unity
   - Assets/Scenes/AvatarSelectorScene.unity
   - Assets/Scenes/RoomScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_11.apk
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_12_1_LATEST_STABLE.apk

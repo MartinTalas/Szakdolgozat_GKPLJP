@@ -40,6 +40,10 @@ public class UIController : MonoBehaviour
     private DataBaseManager dataBaseManager; 
     private JsonParser jsonParser;
 
+
+    //TESTOBJECTS
+    public Text TESTTEXT;
+
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
 
@@ -58,6 +62,9 @@ public class UIController : MonoBehaviour
     void Start()
     {
         this.gameObjectLoader();
+
+        //dataBaseManager = DataBaseManager.Instance;
+        //TESTTEXT.text = dataBaseManager.returnException();
     }
 
     // Update is called once per frame
@@ -245,6 +252,21 @@ public class UIController : MonoBehaviour
             }
             temp = null;
         }
+
+        //TESTING
+        //TEXT [TESTTEXT]
+        {
+            temp = GameObject.Find("TESTTEXT");
+            if (temp != null)
+            {
+                TESTTEXT = temp.GetComponent<Text>();
+                if (TESTTEXT == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -258,6 +280,7 @@ public class UIController : MonoBehaviour
         if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = true; } else { Debug.LogError("SignUpCanvas is null"); }
         if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+        selectField(sign_up_username);
     }
 
     //click event to the login canvas
@@ -267,6 +290,7 @@ public class UIController : MonoBehaviour
         if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+        selectField(login_username);
     }
 
     //click event to the first canvas (back button)
@@ -286,6 +310,7 @@ public class UIController : MonoBehaviour
         if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+        selectField(game_id_input);
     }
     //-------------------------------------------------------[EOF CANVAS CHANGE]
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Firebase;
 using Firebase.Database;
+using Firebase.Auth;
 using Firebase.Extensions;
 
 public sealed class DataBaseManager
@@ -13,9 +14,13 @@ public sealed class DataBaseManager
 
     //https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/
 
-    private FirebaseDatabase database;
-    private DatabaseReference db_reference;
-    
+    private FirebaseDatabase db;
+    private FirebaseApp firebaseApp;
+    //private DatabaseReference db_reference;
+    //private FirebaseStorage storage;
+    //private StorageReference stReference;
+    public string exception;
+
     private Player local_user;
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -27,7 +32,38 @@ public sealed class DataBaseManager
 
     private DataBaseManager()
     {
-        initializeDatabase();
+        try
+        {/*
+            Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+                var dependencyStatus = task.Result;
+                if (dependencyStatus == Firebase.DependencyStatus.Available)
+                {
+                    // Create and hold a reference to your FirebaseApp,
+                    // where app is a Firebase.FirebaseApp property of your application class.
+                    firebaseApp = Firebase.FirebaseApp.DefaultInstance;
+                    
+                    // Set a flag here to indicate whether Firebase is ready to use by your app.
+                }
+                else
+                {
+                    UnityEngine.Debug.LogError(System.String.Format(
+                      "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                    // Firebase Unity SDK is not safe to use here.
+                }
+            });*/
+
+        
+            this.db = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/");
+            //this.storage = FirebaseStorage.getInstance();
+            //this.stReference = storage.getReferenceFromUrl("gs://p-game-a75c2.appspot.com/speeches");
+            //Debug.Log("RootRef: " + db.ToString());
+        }
+        catch (Exception ex) 
+        {
+            exception = ex.ToString();
+            Debug.Log("DBEXC: "+ ex.Message);
+        }
+
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -35,15 +71,16 @@ public sealed class DataBaseManager
 
     public void initializeDatabase()
     {
-        database = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app");
-        db_reference = database.RootReference; //FirebaseDatabase.DefaultInstance.RootReference;
-        Debug.Log("RootRef: " + db_reference.ToString());
-        Debug.Log("RootRef2: " + database.GetReference("player").Child("test").ToString());
+        //database = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app");
+        //db_reference = database.RootReference; //FirebaseDatabase.DefaultInstance.RootReference;
+        //Debug.Log("RootRef: " + db_reference.ToString());
+        //Debug.Log("RootRef2: " + database.GetReference("player").Child("test").ToString());
     }
 
     public bool getConnectionState()
     {
-        return db_reference != null ? true : false;
+        //return db_reference != null ? true : false;
+        return false;
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -73,7 +110,7 @@ public sealed class DataBaseManager
         }
     }*/
 
-    public void loginUser(string username = "", string password = "")
+    /*public void loginUser(string username = "", string password = "")
     {
 
         //DEBUG
@@ -101,6 +138,11 @@ public sealed class DataBaseManager
         });
 
     }
+    */
 
+    public string returnException()
+    {
+        return this.exception;
+    }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
