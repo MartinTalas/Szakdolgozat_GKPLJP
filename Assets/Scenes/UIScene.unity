@@ -2457,7 +2457,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 941448597}
-          m_MethodName: loginToGameButtonEvent
+          m_MethodName: signUpToGameButtonEvent
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

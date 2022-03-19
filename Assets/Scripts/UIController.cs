@@ -437,9 +437,106 @@ public class UIController : MonoBehaviour
 
     //-------------------------------------------------------[SIGN UP]
     //click event to sign up
-    public void signUpToGameButtonEvent()
+    public async void signUpToGameButtonEvent()
     {
-        
+        int result = -1; //default
+
+        if (sign_up_username.text.ToString().Length == 0 || sign_up_password.text.ToString().Length == 0 || sign_up_again_password.text.ToString().Length == 0)
+        {
+            result = 3; //empty fields
+        }
+        else
+        {
+            db = dataBaseManager.getConnection();
+            try
+            {
+                await db.GetReference("player").Child(sign_up_username.text.ToString())
+                                        .GetValueAsync()
+                                        .ContinueWith(task =>
+                                        {
+                                            if (task.IsCompleted)
+                                            {
+                                                Debug.Log("task.IsCompleted: Succeeded");
+                                                DataSnapshot data_snapshot = task.Result;
+                                                Debug.Log(task.Result.ToString());
+                                                if (data_snapshot.Exists)
+                                                {
+                                                    /*var dictionary = data_snapshot.Value as Dictionary<string, object>;
+
+                                                    if (dictionary != null)
+                                                    {
+                                                        
+                                                        Debug.Log("EXISTS");
+                                                    }
+                                                    else
+                                                    {
+                                                        Debug.Log("NOT EXISTS");
+                                                    }*/
+                                                    result = 1; //Username is exists
+                                                }
+                                                else
+                                                {
+                                                    if(sign_up_password.text.ToString().Equals(sign_up_again_password.text.ToString()))
+                                                    {
+                                                        //todo
+                                                        //SAVE DATA
+                                                        result = 0; //OK
+                                                    }
+                                                    else
+                                                    {
+                                                        result = 2; //passwords are not matching
+                                                    }
+
+                                                    Debug.Log(task.Result.ToString() + " -> NOT EXISTS");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Debug.LogError("task.IsCompleted: Failed");
+                                            }
+
+
+                                        });
+            }
+            catch (Exception ex)
+            {
+                Debug.Log("Exception: " + ex);
+            }   
+        }
+
+        switch (result)
+        {
+            case -1:
+                info_text.text = "Something went wrong!";
+                break;
+
+            case 0:
+                Data data = new Data();
+                data.username = sign_up_username.text.ToString();
+                data.password = sign_up_password.text.ToString();
+
+                jsonParser.toJson<Data>(data, "userdata");
+                goToJoinCanvas();
+
+                info_text.text = "";
+
+                break;
+
+            case 1:
+                info_text.text = "Username is already taken!";
+                break;
+
+            case 2:
+                info_text.text = "Confirmation password is not match with the password!";
+                break;
+
+            case 3:
+                info_text.text = "Input fields are empty!";
+                break;
+
+            default: break;
+        }
+
     }
     //-------------------------------------------------------[EOF SIGN UP]
 
