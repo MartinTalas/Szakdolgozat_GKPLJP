@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
+ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
 MERGED from [:androidx.arch.core.core-runtime-2.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\3eb759074d67fc0fa7fe9ae882eb0563\AndroidManifest.xml:17:1-22:12
 MERGED from [:androidx.asynclayoutinflater.asynclayoutinflater-1.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\67bd0bc885bee457009b5d40a7925a2d\AndroidManifest.xml:17:1-22:12
 MERGED from [:androidx.browser.browser-1.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\efc0e127c88caf84a6c139a5e0a98a3a\AndroidManifest.xml:17:1-22:12
@@ -42,19 +42,19 @@ MERGED from [:com.google.android.gms.play-services-safetynet-17.0.0:] C:\Users\M
 MERGED from [:com.google.android.gms.play-services-stats-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f0ca6fd4391b6024a61567107a080373\AndroidManifest.xml:2:1-9:12
 MERGED from [:com.google.android.gms.play-services-tasks-17.2.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\5245ba8f1de988085b8791a4bb466fa7\AndroidManifest.xml:2:1-9:12
 MERGED from [:com.google.firebase.firebase-analytics-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8cbb40d4f36d610d9758efba1c82c0d2\AndroidManifest.xml:2:1-9:12
-MERGED from [:com.google.firebase.firebase-analytics-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\4e271708127e552166967d9ee2ad5ea0\AndroidManifest.xml:3:1-8:12
-MERGED from [:com.google.firebase.firebase-app-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\e6b217bb1f9e649982c6732acd28960c\AndroidManifest.xml:3:1-8:12
+MERGED from [:com.google.firebase.firebase-analytics-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f94f40182b71f3c93eb1170c5cb9981d\AndroidManifest.xml:3:1-8:12
+MERGED from [:com.google.firebase.firebase-app-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f3fcd98ee240de73443f7c3f96766801\AndroidManifest.xml:3:1-8:12
 MERGED from [:com.google.firebase.firebase-appcheck-interop-16.0.0-beta04:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\2800c116e64bda48328190eb5eb00059\AndroidManifest.xml:15:1-26:12
 MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:17:1-83:12
 MERGED from [:com.google.firebase.firebase-auth-interop-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b4a53dfeb26c55ab928a9eacdc45ad3e\AndroidManifest.xml:2:1-10:12
-MERGED from [:com.google.firebase.firebase-auth-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\4a93142a34a96f1acb8f13bdb4cb0dc6\AndroidManifest.xml:3:1-8:12
-MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:15:1-23:12
+MERGED from [:com.google.firebase.firebase-auth-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1d0ea3d71f735a7a82aa660cad1cd474\AndroidManifest.xml:3:1-8:12
+MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:15:1-23:12
 MERGED from [:com.google.firebase.firebase-components-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\3188b5604f6516e2c279cd4c5b8b0342\AndroidManifest.xml:15:1-23:12
 MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:15:1-38:12
 MERGED from [:com.google.firebase.firebase-database-collection-18.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\27b388fa01f055201baa9d11c3eb938a\AndroidManifest.xml:2:1-9:12
-MERGED from [:com.google.firebase.firebase-database-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\2faa607c2b4b6a0edb523f260d33cb51\AndroidManifest.xml:3:1-8:12
+MERGED from [:com.google.firebase.firebase-database-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\cd25a654c289e85dc8803eac0447b375\AndroidManifest.xml:3:1-8:12
 MERGED from [:com.google.firebase.firebase-dynamic-links-21.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f0adeecb20041c0ad9bda4ba79e53f41\AndroidManifest.xml:15:1-33:12
-MERGED from [:com.google.firebase.firebase-dynamic-links-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\948a74d18f0314dc80b85a1b1f23d1ab\AndroidManifest.xml:3:1-8:12
+MERGED from [:com.google.firebase.firebase-dynamic-links-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\752ad8ebdb0bd5407bcee0a784c7e3d5\AndroidManifest.xml:3:1-8:12
 MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1e505cc310bfefbafce26df1ddfcb2ce\AndroidManifest.xml:2:1-24:12
 MERGED from [:com.google.firebase.firebase-installations-interop-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8c008f04a973d912f11829ca11c457a0\AndroidManifest.xml:15:1-23:12
 MERGED from [:com.google.firebase.firebase-measurement-connector-19.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\07c87b6ef99a1b44d21831897d6ecc62\AndroidManifest.xml:17:1-25:12
@@ -64,22 +64,22 @@ MERGED from [:gvr-permissionsupport-release:] C:\Users\MartinDev\.gradle\caches\
 MERGED from [:gvr:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\903e362f57a67c8d7bf5cd9f31dede4a\AndroidManifest.xml:2:1-9:12
 MERGED from [:unitygvr:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\c2ffd6c736682d2cac4f31a03a8c4edf\AndroidManifest.xml:2:1-11:12
 MERGED from [:FirebaseApp.androidlib] C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-9:12
-INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
 	package
 		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:70-103
 		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml
 		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml
-		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
 		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:104-150
 	android:versionCode
 		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml
-		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-26:12
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:1-27:12
 		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:2:11-69
@@ -133,8 +133,8 @@ MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gra
 MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:26:5-81:19
 MERGED from [:com.google.firebase.firebase-auth-interop-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b4a53dfeb26c55ab928a9eacdc45ad3e\AndroidManifest.xml:7:5-8:19
 MERGED from [:com.google.firebase.firebase-auth-interop-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b4a53dfeb26c55ab928a9eacdc45ad3e\AndroidManifest.xml:7:5-8:19
-MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:19:3-22:17
-MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:19:3-22:17
+MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:19:3-22:17
+MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:19:3-22:17
 MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:28:5-36:19
 MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:28:5-36:19
 MERGED from [:com.google.firebase.firebase-dynamic-links-21.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f0adeecb20041c0ad9bda4ba79e53f41\AndroidManifest.xml:23:5-31:19
@@ -255,24 +255,42 @@ MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\Marti
 MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1e505cc310bfefbafce26df1ddfcb2ce\AndroidManifest.xml:11:5-67
 	android:name
 		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:22:20-62
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:23:3-77
+MERGED from [:com.google.android.gms.play-services-measurement-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0b125461c4162fa3ff19d9c5468d60dd\AndroidManifest.xml:24:5-79
+MERGED from [:com.google.android.gms.play-services-measurement-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0b125461c4162fa3ff19d9c5468d60dd\AndroidManifest.xml:24:5-79
+MERGED from [:com.google.android.gms.play-services-measurement-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\57f5b45ec715daca3da84866991a6a6c\AndroidManifest.xml:23:5-79
+MERGED from [:com.google.android.gms.play-services-measurement-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\57f5b45ec715daca3da84866991a6a6c\AndroidManifest.xml:23:5-79
+MERGED from [:com.google.android.gms.play-services-measurement-impl-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0ea573da0983b4b3f9ad142e2031fc47\AndroidManifest.xml:24:5-79
+MERGED from [:com.google.android.gms.play-services-measurement-impl-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0ea573da0983b4b3f9ad142e2031fc47\AndroidManifest.xml:24:5-79
+MERGED from [:com.google.android.gms.play-services-measurement-sdk-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\7612491e35501122a0fc90ccd552a648\AndroidManifest.xml:24:5-79
+MERGED from [:com.google.android.gms.play-services-measurement-sdk-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\7612491e35501122a0fc90ccd552a648\AndroidManifest.xml:24:5-79
+MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:24:5-79
+MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:24:5-79
+MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:25:5-79
+MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:25:5-79
+MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1e505cc310bfefbafce26df1ddfcb2ce\AndroidManifest.xml:10:5-79
+MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1e505cc310bfefbafce26df1ddfcb2ce\AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:23:20-74
 uses-feature#android.hardware.touchscreen
-ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:23:3-88
+ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:24:3-88
 	android:required
-		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:23:61-85
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:24:61-85
 	android:name
-		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:23:17-60
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:24:17-60
 uses-feature#android.hardware.touchscreen.multitouch
-ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:24:3-99
+ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:25:3-99
 	android:required
-		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:24:72-96
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:25:72-96
 	android:name
-		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:24:17-71
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:25:17-71
 uses-feature#android.hardware.touchscreen.multitouch.distinct
-ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:25:3-108
+ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:26:3-108
 	android:required
-		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:25:81-105
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:26:81-105
 	android:name
-		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:25:17-80
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml:26:17-80
 uses-sdk
 INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\src\main\AndroidManifest.xml
@@ -353,32 +371,32 @@ MERGED from [:com.google.android.gms.play-services-tasks-17.2.1:] C:\Users\Marti
 MERGED from [:com.google.android.gms.play-services-tasks-17.2.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\5245ba8f1de988085b8791a4bb466fa7\AndroidManifest.xml:5:5-44
 MERGED from [:com.google.firebase.firebase-analytics-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8cbb40d4f36d610d9758efba1c82c0d2\AndroidManifest.xml:5:5-44
 MERGED from [:com.google.firebase.firebase-analytics-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8cbb40d4f36d610d9758efba1c82c0d2\AndroidManifest.xml:5:5-44
-MERGED from [:com.google.firebase.firebase-analytics-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\4e271708127e552166967d9ee2ad5ea0\AndroidManifest.xml:7:3-41
-MERGED from [:com.google.firebase.firebase-analytics-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\4e271708127e552166967d9ee2ad5ea0\AndroidManifest.xml:7:3-41
-MERGED from [:com.google.firebase.firebase-app-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\e6b217bb1f9e649982c6732acd28960c\AndroidManifest.xml:7:3-41
-MERGED from [:com.google.firebase.firebase-app-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\e6b217bb1f9e649982c6732acd28960c\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-analytics-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f94f40182b71f3c93eb1170c5cb9981d\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-analytics-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f94f40182b71f3c93eb1170c5cb9981d\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-app-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f3fcd98ee240de73443f7c3f96766801\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-app-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f3fcd98ee240de73443f7c3f96766801\AndroidManifest.xml:7:3-41
 MERGED from [:com.google.firebase.firebase-appcheck-interop-16.0.0-beta04:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\2800c116e64bda48328190eb5eb00059\AndroidManifest.xml:19:5-21:41
 MERGED from [:com.google.firebase.firebase-appcheck-interop-16.0.0-beta04:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\2800c116e64bda48328190eb5eb00059\AndroidManifest.xml:19:5-21:41
 MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:21:5-44
 MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:21:5-44
 MERGED from [:com.google.firebase.firebase-auth-interop-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b4a53dfeb26c55ab928a9eacdc45ad3e\AndroidManifest.xml:5:5-44
 MERGED from [:com.google.firebase.firebase-auth-interop-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b4a53dfeb26c55ab928a9eacdc45ad3e\AndroidManifest.xml:5:5-44
-MERGED from [:com.google.firebase.firebase-auth-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\4a93142a34a96f1acb8f13bdb4cb0dc6\AndroidManifest.xml:7:3-41
-MERGED from [:com.google.firebase.firebase-auth-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\4a93142a34a96f1acb8f13bdb4cb0dc6\AndroidManifest.xml:7:3-41
-MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:16:3-72
-MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:16:3-72
+MERGED from [:com.google.firebase.firebase-auth-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1d0ea3d71f735a7a82aa660cad1cd474\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-auth-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1d0ea3d71f735a7a82aa660cad1cd474\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:16:3-72
+MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:16:3-72
 MERGED from [:com.google.firebase.firebase-components-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\3188b5604f6516e2c279cd4c5b8b0342\AndroidManifest.xml:19:5-21:41
 MERGED from [:com.google.firebase.firebase-components-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\3188b5604f6516e2c279cd4c5b8b0342\AndroidManifest.xml:19:5-21:41
 MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:19:5-21:41
 MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:19:5-21:41
 MERGED from [:com.google.firebase.firebase-database-collection-18.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\27b388fa01f055201baa9d11c3eb938a\AndroidManifest.xml:5:5-7:41
 MERGED from [:com.google.firebase.firebase-database-collection-18.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\27b388fa01f055201baa9d11c3eb938a\AndroidManifest.xml:5:5-7:41
-MERGED from [:com.google.firebase.firebase-database-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\2faa607c2b4b6a0edb523f260d33cb51\AndroidManifest.xml:7:3-41
-MERGED from [:com.google.firebase.firebase-database-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\2faa607c2b4b6a0edb523f260d33cb51\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-database-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\cd25a654c289e85dc8803eac0447b375\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-database-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\cd25a654c289e85dc8803eac0447b375\AndroidManifest.xml:7:3-41
 MERGED from [:com.google.firebase.firebase-dynamic-links-21.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f0adeecb20041c0ad9bda4ba79e53f41\AndroidManifest.xml:19:5-21:41
 MERGED from [:com.google.firebase.firebase-dynamic-links-21.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f0adeecb20041c0ad9bda4ba79e53f41\AndroidManifest.xml:19:5-21:41
-MERGED from [:com.google.firebase.firebase-dynamic-links-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\948a74d18f0314dc80b85a1b1f23d1ab\AndroidManifest.xml:7:3-41
-MERGED from [:com.google.firebase.firebase-dynamic-links-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\948a74d18f0314dc80b85a1b1f23d1ab\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-dynamic-links-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\752ad8ebdb0bd5407bcee0a784c7e3d5\AndroidManifest.xml:7:3-41
+MERGED from [:com.google.firebase.firebase-dynamic-links-unity-8.7.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\752ad8ebdb0bd5407bcee0a784c7e3d5\AndroidManifest.xml:7:3-41
 MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1e505cc310bfefbafce26df1ddfcb2ce\AndroidManifest.xml:6:5-8:41
 MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1e505cc310bfefbafce26df1ddfcb2ce\AndroidManifest.xml:6:5-8:41
 MERGED from [:com.google.firebase.firebase-installations-interop-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8c008f04a973d912f11829ca11c457a0\AndroidManifest.xml:19:5-21:41
@@ -422,22 +440,6 @@ ADDED from [:com.google.android.gms.play-services-basement-17.6.0:] C:\Users\Mar
 		ADDED from [:com.google.android.gms.play-services-basement-17.6.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\49f2e4ee21cea39c0d7bf2e3380130c8\AndroidManifest.xml:25:13-66
 	android:name
 		ADDED from [:com.google.android.gms.play-services-basement-17.6.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\49f2e4ee21cea39c0d7bf2e3380130c8\AndroidManifest.xml:24:13-58
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [:com.google.android.gms.play-services-measurement-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0b125461c4162fa3ff19d9c5468d60dd\AndroidManifest.xml:24:5-79
-MERGED from [:com.google.android.gms.play-services-measurement-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\57f5b45ec715daca3da84866991a6a6c\AndroidManifest.xml:23:5-79
-MERGED from [:com.google.android.gms.play-services-measurement-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\57f5b45ec715daca3da84866991a6a6c\AndroidManifest.xml:23:5-79
-MERGED from [:com.google.android.gms.play-services-measurement-impl-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0ea573da0983b4b3f9ad142e2031fc47\AndroidManifest.xml:24:5-79
-MERGED from [:com.google.android.gms.play-services-measurement-impl-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0ea573da0983b4b3f9ad142e2031fc47\AndroidManifest.xml:24:5-79
-MERGED from [:com.google.android.gms.play-services-measurement-sdk-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\7612491e35501122a0fc90ccd552a648\AndroidManifest.xml:24:5-79
-MERGED from [:com.google.android.gms.play-services-measurement-sdk-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\7612491e35501122a0fc90ccd552a648\AndroidManifest.xml:24:5-79
-MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:24:5-79
-MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:24:5-79
-MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:25:5-79
-MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:25:5-79
-MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1e505cc310bfefbafce26df1ddfcb2ce\AndroidManifest.xml:10:5-79
-MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\1e505cc310bfefbafce26df1ddfcb2ce\AndroidManifest.xml:10:5-79
-	android:name
-		ADDED from [:com.google.android.gms.play-services-measurement-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0b125461c4162fa3ff19d9c5468d60dd\AndroidManifest.xml:24:22-76
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [:com.google.android.gms.play-services-measurement-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\0b125461c4162fa3ff19d9c5468d60dd\AndroidManifest.xml:25:5-68
 MERGED from [:com.google.android.gms.play-services-measurement-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\57f5b45ec715daca3da84866991a6a6c\AndroidManifest.xml:24:5-68
@@ -484,8 +486,8 @@ service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:com.google.android.gms.play-services-measurement-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\57f5b45ec715daca3da84866991a6a6c\AndroidManifest.xml:27:9-33:19
 MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:74:9-80:19
 MERGED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:74:9-80:19
-MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:21:5-164
-MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:21:5-164
+MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:21:5-164
+MERGED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:21:5-164
 MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:29:9-35:19
 MERGED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:29:9-35:19
 MERGED from [:com.google.firebase.firebase-dynamic-links-21.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\f0adeecb20041c0ad9bda4ba79e53f41\AndroidManifest.xml:24:9-30:19
@@ -495,9 +497,9 @@ MERGED from [:com.google.firebase.firebase-installations-17.0.0:] C:\Users\Marti
 	android:exported
 		ADDED from [:com.google.android.gms.play-services-measurement-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\57f5b45ec715daca3da84866991a6a6c\AndroidManifest.xml:29:13-37
 	tools:targetApi
-		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:21:142-161
+		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:21:142-161
 	android:directBootAware
-		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:21:86-116
+		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:21:86-116
 	android:name
 		ADDED from [:com.google.android.gms.play-services-measurement-api-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\57f5b45ec715daca3da84866991a6a6c\AndroidManifest.xml:28:13-84
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
@@ -575,17 +577,17 @@ ADDED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.grad
 	android:name
 		ADDED from [:com.google.firebase.firebase-auth-21.0.1:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\8b526abd7f223be0fa11f3a5f0212a31\AndroidManifest.xml:78:17-109
 provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:20:5-229
+ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:20:5-229
 	android:authorities
-		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:20:80-146
+		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:20:80-146
 	android:exported
-		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:20:178-202
+		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:20:178-202
 	android:directBootAware
-		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:20:147-177
+		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:20:147-177
 	android:initOrder
-		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:20:203-226
+		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:20:203-226
 	android:name
-		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\424846b0a62d73770b11a8926e512eee\AndroidManifest.xml:20:15-79
+		ADDED from [:com.google.firebase.firebase-common-20.0.0:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\b84663b6a713adbfec57f2996b4ce2e7\AndroidManifest.xml:20:15-79
 meta-data#com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar
 ADDED from [:com.google.firebase.firebase-database-20.0.3:] C:\Users\MartinDev\.gradle\caches\transforms-2\files-2.1\a050ac162b92c2afb61c26b1ab00107e\AndroidManifest.xml:32:13-34:85
 	android:value

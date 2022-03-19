@@ -37,6 +37,7 @@ public class UIController : MonoBehaviour
     public VRInputField game_id_input; //GameIDInput
 
     public Text info_text;
+    public Text internet_connection_lost_text;
 
     public VRInputField keyboard_input_field;
     private static FIELDENUM field_enum;
@@ -75,7 +76,14 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //TESTTEXT.text = dataBaseManager.result;
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            internet_connection_lost_text.enabled = true;//elvileg ez lenne a false
+        }
+        else
+        {
+            internet_connection_lost_text.enabled = false; // és ez a true, fura, ellenőriztetni kell!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -272,6 +280,21 @@ public class UIController : MonoBehaviour
             temp = null;
         }
 
+        //TEXT [NETWORK.CONNECTION]
+        {
+            temp = GameObject.Find("InternetConnectionLostText");
+            if (temp != null)
+            {
+                internet_connection_lost_text = temp.GetComponent<Text>();
+                if (internet_connection_lost_text == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+                internet_connection_lost_text.enabled = false;
+            }
+            temp = null;
+        }
+
         //TESTING
         //TEXT [TESTTEXT]
         {
@@ -286,6 +309,7 @@ public class UIController : MonoBehaviour
             }
             temp = null;
         }
+        
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -295,48 +319,83 @@ public class UIController : MonoBehaviour
     //click event to the sign up canvas
     public void signUpClickEvent()
     {
-        if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
-        if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = true; } else { Debug.LogError("SignUpCanvas is null"); }
-        if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
-        if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
-        selectField(sign_up_username);
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
+            if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = true; } else { Debug.LogError("SignUpCanvas is null"); }
+            if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
+            if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+            selectField(sign_up_username);
+        }
     }
 
     //click event to the login canvas
     public void loginClickEvent()
     {
-        if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
-        if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
-        if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
-        if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
-        selectField(login_username);
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
+            if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
+            if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
+            if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+            selectField(login_username);
+        }
     }
 
     //click event to the first canvas (back button)
     public void backToSignHubButtonEvent()
     {
-        if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
-        if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = false; } else { Debug.LogError("SignUpCanvas is null"); }
-        if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
-        if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+            if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = false; } else { Debug.LogError("SignUpCanvas is null"); }
+            if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
+            if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
+        }
     }
 
     //click event to join canvas
     public void goToJoinCanvas()
     {
-        if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
-        if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = false; } else { Debug.LogError("SignUpCanvas is null"); }
-        if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
-        if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
-        if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
-        selectField(game_id_input);
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
+            if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = false; } else { Debug.LogError("SignUpCanvas is null"); }
+            if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
+            if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
+            if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+            selectField(game_id_input);
+        }
     }
     //-------------------------------------------------------[EOF CANVAS CHANGE]            <(EOF = end of)>
 
     //-------------------------------------------------------[SCENE CHANGE]
     public void goToCharacterSelectorScene()
     {
-        SceneManager.LoadScene("AvatarSelectorScene");
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            SceneManager.LoadScene("AvatarSelectorScene");
+        }
     }
     //-------------------------------------------------------[EOF SCENE CHANGE]
 
@@ -344,93 +403,100 @@ public class UIController : MonoBehaviour
     //click event to login
     public async void loginToGameButtonEvent()
     {
-        int result = -1;
-
-        if (login_username.text.ToString().Length == 0 || login_password.text.ToString().Length == 0)
+        if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            result = 3; //empty fields
+            Debug.Log("Error. Check internet connection!");
         }
-        else 
+        else
         {
-            db = dataBaseManager.getConnection();
-            try
+            int result = -1;
+
+            if (login_username.text.ToString().Length == 0 || login_password.text.ToString().Length == 0)
             {
-                await db.GetReference("player").Child(login_username.text.ToString())
-                                        .Child("password")
-                                        .GetValueAsync()
-                                        .ContinueWith(task =>
-                                        {
-                                            if (task.IsCompleted)
+                result = 3; //empty fields
+            }
+            else
+            {
+                db = dataBaseManager.getConnection();
+                try
+                {
+                    await db.GetReference("player").Child(login_username.text.ToString())
+                                            .Child("password")
+                                            .GetValueAsync()
+                                            .ContinueWith(task =>
                                             {
-                                                Debug.Log("task.IsCompleted: Succeeded");
-                                                DataSnapshot data_snapshot = task.Result;
-                                                Debug.Log(task.Result.ToString());
-                                                if (data_snapshot.Exists)
+                                                if (task.IsCompleted)
                                                 {
-                                                    Debug.Log(task.Result.ToString() + "completed");
-                                                    if (data_snapshot.Value.Equals(login_password.text.ToString()))
+                                                    Debug.Log("task.IsCompleted: Succeeded");
+                                                    DataSnapshot data_snapshot = task.Result;
+                                                    Debug.Log(task.Result.ToString());
+                                                    if (data_snapshot.Exists)
                                                     {
-                                                        result = 0; //succeeded
+                                                        Debug.Log(task.Result.ToString() + "completed");
+                                                        if (data_snapshot.Value.Equals(login_password.text.ToString()))
+                                                        {
+                                                            result = 0; //succeeded
                                                         Debug.Log("LOGIN SUCCEEDED");
+                                                        }
+                                                        else
+                                                        {
+                                                            result = 1; //wrong password
+                                                        Debug.Log("LOGIN FAILED");
+                                                        }
+
                                                     }
                                                     else
                                                     {
-                                                        result = 1; //wrong password
-                                                        Debug.Log("LOGIN FAILED");
+                                                        result = 2; //sign up first
+                                                    Debug.Log(task.Result.ToString() + " -> NOT EXISTS");
                                                     }
-
                                                 }
                                                 else
                                                 {
-                                                    result = 2; //sign up first
-                                                    Debug.Log(task.Result.ToString() + " -> NOT EXISTS");
+                                                    Debug.LogError("task.IsCompleted: Failed");
                                                 }
-                                            }
-                                            else
-                                            {
-                                                Debug.LogError("task.IsCompleted: Failed");
-                                            }
 
 
-                                        });
+                                            });
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log("Exception: " + ex);
+                }
             }
-            catch (Exception ex)
+
+            switch (result)
             {
-                Debug.Log("Exception: " + ex);
+                case -1:
+                    info_text.text = "Something went wrong!";
+                    break;
+
+                case 0:
+                    Data data = new Data();
+                    data.username = login_username.text.ToString();
+                    data.password = login_password.text.ToString();
+
+                    jsonParser.toJson<Data>(data, "userdata");
+                    goToJoinCanvas();
+
+                    info_text.text = "";
+
+                    break;
+
+                case 1:
+                    info_text.text = "Incorrect password!";
+                    break;
+
+                case 2:
+                    info_text.text = "Incorrect username!";
+                    break;
+
+                case 3:
+                    info_text.text = "Input fields are empty!";
+                    break;
+
+                default: break;
             }
-        }
-
-        switch (result)
-        {
-            case -1:
-                info_text.text = "Something went wrong!";
-                break;
-
-            case 0:
-                Data data = new Data();
-                data.username = login_username.text.ToString();
-                data.password = login_password.text.ToString();
-
-                jsonParser.toJson<Data>(data, "userdata");
-                goToJoinCanvas();
-
-                info_text.text = "";
-
-                break;
-
-            case 1:
-                info_text.text = "Incorrect password!";
-                break;
-
-            case 2:
-                info_text.text = "Incorrect username!";
-                break;
-
-            case 3:
-                info_text.text = "Input fields are empty!";
-                break;
-
-            default: break;
         }
     }
     //-------------------------------------------------------[EOF LOGIN]
@@ -439,102 +505,100 @@ public class UIController : MonoBehaviour
     //click event to sign up
     public async void signUpToGameButtonEvent()
     {
-        int result = -1; //default
-
-        if (sign_up_username.text.ToString().Length == 0 || sign_up_password.text.ToString().Length == 0 || sign_up_again_password.text.ToString().Length == 0)
+        if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            result = 3; //empty fields
+            Debug.Log("Error. Check internet connection!");
         }
         else
         {
-            db = dataBaseManager.getConnection();
-            try
-            {
-                await db.GetReference("player").Child(sign_up_username.text.ToString())
-                                        .GetValueAsync()
-                                        .ContinueWith(task =>
-                                        {
-                                            if (task.IsCompleted)
-                                            {
-                                                Debug.Log("task.IsCompleted: Succeeded");
-                                                DataSnapshot data_snapshot = task.Result;
-                                                Debug.Log(task.Result.ToString());
-                                                if (data_snapshot.Exists)
-                                                {
-                                                    /*var dictionary = data_snapshot.Value as Dictionary<string, object>;
+            int result = -1; //default
 
-                                                    if (dictionary != null)
+            if (sign_up_username.text.ToString().Length == 0 || sign_up_password.text.ToString().Length == 0 || sign_up_again_password.text.ToString().Length == 0)
+            {
+                result = 3; //empty fields
+            }
+            else
+            {
+                db = dataBaseManager.getConnection();
+                try
+                {
+                    await db.GetReference("player").Child(sign_up_username.text.ToString())
+                                            .GetValueAsync()
+                                            .ContinueWith(task =>
+                                            {
+                                                if (task.IsCompleted)
+                                                {
+                                                    Debug.Log("task.IsCompleted: Succeeded");
+                                                    DataSnapshot data_snapshot = task.Result;
+                                                    Debug.Log(task.Result.ToString());
+                                                    if (data_snapshot.Exists)
                                                     {
-                                                        
-                                                        Debug.Log("EXISTS");
-                                                    }
+                                                        result = 1; //Username is exists
+                                                }
                                                     else
                                                     {
-                                                        Debug.Log("NOT EXISTS");
-                                                    }*/
-                                                    result = 1; //Username is exists
+                                                        if (sign_up_password.text.ToString().Equals(sign_up_again_password.text.ToString()))
+                                                        {
+                                                        //todo
+                                                        //SAVE DATA
+                                                        db.GetReference("player").Child(sign_up_username.text.ToString()).Child("password").SetValueAsync(sign_up_password.text.ToString());
+
+                                                            result = 0; //OK
+                                                    }
+                                                        else
+                                                        {
+                                                            result = 2; //passwords are not matching
+                                                    }
+
+                                                        Debug.Log(task.Result.ToString() + " USER NOT EXISTS");
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    if(sign_up_password.text.ToString().Equals(sign_up_again_password.text.ToString()))
-                                                    {
-                                                        //todo
-                                                        //SAVE DATA
-                                                        result = 0; //OK
-                                                    }
-                                                    else
-                                                    {
-                                                        result = 2; //passwords are not matching
-                                                    }
-
-                                                    Debug.Log(task.Result.ToString() + " -> NOT EXISTS");
+                                                    Debug.LogError("task.IsCompleted: Failed");
                                                 }
-                                            }
-                                            else
-                                            {
-                                                Debug.LogError("task.IsCompleted: Failed");
-                                            }
 
 
-                                        });
+                                            });
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log("Exception: " + ex);
+                }
             }
-            catch (Exception ex)
+
+            switch (result)
             {
-                Debug.Log("Exception: " + ex);
-            }   
-        }
+                case -1:
+                    info_text.text = "Something went wrong!";
+                    break;
 
-        switch (result)
-        {
-            case -1:
-                info_text.text = "Something went wrong!";
-                break;
+                case 0:
+                    Data data = new Data();
+                    data.username = sign_up_username.text.ToString();
+                    data.password = sign_up_password.text.ToString();
 
-            case 0:
-                Data data = new Data();
-                data.username = sign_up_username.text.ToString();
-                data.password = sign_up_password.text.ToString();
+                    jsonParser.toJson<Data>(data, "userdata");
+                    goToJoinCanvas();
 
-                jsonParser.toJson<Data>(data, "userdata");
-                goToJoinCanvas();
+                    info_text.text = "";
 
-                info_text.text = "";
+                    break;
 
-                break;
+                case 1:
+                    info_text.text = "Username is already taken!";
+                    break;
 
-            case 1:
-                info_text.text = "Username is already taken!";
-                break;
+                case 2:
+                    info_text.text = "Confirmation password is not match with the password!";
+                    break;
 
-            case 2:
-                info_text.text = "Confirmation password is not match with the password!";
-                break;
+                case 3:
+                    info_text.text = "Input fields are empty!";
+                    break;
 
-            case 3:
-                info_text.text = "Input fields are empty!";
-                break;
-
-            default: break;
+                default: break;
+            }
         }
 
     }
@@ -542,16 +606,30 @@ public class UIController : MonoBehaviour
 
     public void join() // SET GAMEID            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]
     {
-        int dummy = 420;
-        saveGameID(dummy);
-        goToCharacterSelectorScene();
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            int dummy = 420;
+            saveGameID(dummy);
+            goToCharacterSelectorScene();
+        }
     }
 
     public void Host() // SET GAMEID            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]
     {
-        int dummy = 420;
-        saveGameID(dummy);
-        goToCharacterSelectorScene();
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            int dummy = 420;
+            saveGameID(dummy);
+            goToCharacterSelectorScene();
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
