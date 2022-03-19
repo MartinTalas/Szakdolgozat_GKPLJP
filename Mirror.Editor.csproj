@@ -296,6 +296,9 @@
  <Reference Include="Firebase.Database">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.Database.dll</HintPath>
  </Reference>
+ <Reference Include="Firebase.DynamicLinks">
+ <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.DynamicLinks.dll</HintPath>
+ </Reference>
  <Reference Include="Firebase.Platform">
  <HintPath>C:/GitHub/Szakdolgozat_GKPLJP/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
  </Reference>

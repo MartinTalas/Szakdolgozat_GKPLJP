@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-enum FIELDENUM
+enum FIELDENUM //enum for the textfields [INPUTS]
 {
     LOGIN_USERNAME,
     LOGIN_PASSWORD,
@@ -20,8 +21,6 @@ public class UIController : MonoBehaviour
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------[ VARIABLESS ]------------------------------------------------------------------------
 
-    //public static UIController Instance { get; private set; }
-
     public Canvas SwitchCanvas;
     public Canvas SignUpCanvas;
     public Canvas LoginCanvas;
@@ -32,21 +31,40 @@ public class UIController : MonoBehaviour
     public VRInputField login_password;
     public VRInputField sign_up_username;
     public VRInputField sign_up_password;
-    public VRInputField sign_up_again_password;
+    public VRInputField sign_up_again_password; 
+    public VRInputField game_id_input; //GameIDInput
 
     public VRInputField keyboard_input_field;
     private static FIELDENUM field_enum;
 
     private DataBaseManager dataBaseManager; 
+    private JsonParser jsonParser;
+
+
+    //TESTOBJECTS
+    public Text TESTTEXT;
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
+
+    // Awake is called first
+    void Awake()
+    {
+        //dataBaseManager = DataBaseManager.Instance; // EZ OKOZZA A HIBÁT!!!!!!!!!
+        jsonParser = JsonParser.Instance;
+        
+        //Set json to default
+        Data default_data = new Data();
+        jsonParser.toJson<Data>(default_data, "userdata");
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         this.gameObjectLoader();
-        dataBaseManager = DataBaseManager.Instance;
+
+        //dataBaseManager = DataBaseManager.Instance;
+        //TESTTEXT.text = dataBaseManager.returnException();
     }
 
     // Update is called once per frame
@@ -55,24 +73,13 @@ public class UIController : MonoBehaviour
         
     }
 
-    // Awake is called first
-    void Awake()
-    {
-       /*
-       if (Instance == null)
-       {
-            Instance = this;
-            Debug.Log("ONCE");
-       }
-       */
-    }
-
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------[ LOADERS AND OTHERS ]--------------------------------------------------------------------
 
     private void gameObjectLoader()
     {
         GameObject temp;
+
         //CANVAS [SIGNSWITCH]
         {
             temp = GameObject.Find("SignSwitchCanvas");
@@ -232,30 +239,61 @@ public class UIController : MonoBehaviour
             temp = null;
         }
 
+        //INPUT [GAMEID]
+        {
+            temp = GameObject.Find("GameIDInput");
+            if (temp != null)
+            {
+                game_id_input = temp.GetComponent<VRInputField>();
+                if (game_id_input == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
+        //TESTING
+        //TEXT [TESTTEXT]
+        {
+            temp = GameObject.Find("TESTTEXT");
+            if (temp != null)
+            {
+                TESTTEXT = temp.GetComponent<Text>();
+                if (TESTTEXT == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-----------------------------------------------------------------------[ CLICK EVENTS ]-----------------------------------------------------------------------
 
-    //klikkevent a regisztráció canvasára
+    //-------------------------------------------------------[CANVAS CHANGE]
+    //click event to the sign up canvas
     public void signUpClickEvent()
     {
         if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
         if (!isNull<Canvas>(SignUpCanvas)) { SignUpCanvas.enabled = true; } else { Debug.LogError("SignUpCanvas is null"); }
         if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+        selectField(sign_up_username);
     }
 
-    //klikkevent a login canvasára
+    //click event to the login canvas
     public void loginClickEvent()
     {
         if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
         if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+        selectField(login_username);
     }
 
-    //klikkevent a login/signup "elosztó" canvasra
+    //click event to the first canvas (back button)
     public void backToSignHubButtonEvent()
     {
         if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
@@ -264,7 +302,7 @@ public class UIController : MonoBehaviour
         if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
     }
 
-    //klikkevent a game chooser canvasra
+    //click event to join canvas
     public void goToJoinCanvas()
     {
         if (!isNull<Canvas>(SwitchCanvas)) { SwitchCanvas.enabled = false; } else { Debug.LogError("SwitchCanvas is null"); }
@@ -272,76 +310,120 @@ public class UIController : MonoBehaviour
         if (!isNull<Canvas>(LoginCanvas)) { LoginCanvas.enabled = false; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(GameChooserCanvas)) { GameChooserCanvas.enabled = true; } else { Debug.LogError("LoginCanvas is null"); }
         if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+        selectField(game_id_input);
     }
+    //-------------------------------------------------------[EOF CANVAS CHANGE]
 
-    //klikkevent a játékba belépéshez !!DELETED!! Replaced by goToCharacterSelectorScene (NE TÖRÖLD AZ ADATBÁZIS MIATT (LOGIN))
-    /*public void loginToGameButtonEvent()
-    {
-        //check
-        //dataBaseManager.loginUser(login_username.text.ToString(), login_password.text.ToString());
-        SceneManager.LoadScene("RoomScene");
-    }*/
-
-    //klikkevent a játékba regisztráláshoz
-    public void signUpToGameButtonEvent()
-    {
-        //check+reg
-        goToCharacterSelectorScene();
-    }
-
-    //klikkevent a karakterválasztó scene-re
+    //-------------------------------------------------------[SCENE CHANGE]
     public void goToCharacterSelectorScene()
     {
         SceneManager.LoadScene("AvatarSelectorScene");
     }
+    //-------------------------------------------------------[EOF SCENE CHANGE]
+
+    //click event to login
+    public void loginToGameButtonEvent()
+    {
+        //check
+        //dataBaseManager.loginUser(login_username.text.ToString(), login_password.text.ToString());
+
+        Data data = new Data();
+        data.username = login_username.text.ToString();
+        data.password = login_password.text.ToString();
+
+        jsonParser.toJson<Data>(data, "userdata");
+        goToJoinCanvas();
+    }
+
+    //click event to sign up
+    public void signUpToGameButtonEvent()
+    {
+        //check+reg
+        goToJoinCanvas();
+    }
+
+    public void join() // SET GAMEID            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]
+    {
+        int dummy = 420;
+        saveGameID(dummy);
+        goToCharacterSelectorScene();
+    }
+
+    public void Host() // SET GAMEID            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]
+    {
+        int dummy = 420;
+        saveGameID(dummy);
+        goToCharacterSelectorScene();
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------[ DATA FUNCTIONS ]----------------------------------------------------------------------
+
+    private void saveGameID(int game_id)
+    {
+        Data data = jsonParser.toObject<Data>("userdata");
+        data.game_id = game_id;
+        jsonParser.toJson<Data>(data, "userdata");
+    }
 
 
-    //----------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------[ KEYBOARD FUNCTIONS ]--------------------------------------------------------------------
 
-
+    //handle selected text field
     public void selectField(VRInputField field)
     {
-        if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
+        inputHightlight(field);//highlight the selected text field
 
-        keyboard_input_field.text = field.text;
-        Debug.Log(field.name);
+        if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); } //activate keyboard 
+
         switch (field.name) 
         {
             case "UsernameInput":
                 field_enum = FIELDENUM.LOGIN_USERNAME;
-                Debug.Log(field_enum);
+                keyboard_input_field.text = login_username.text;
                 break;
 
             case "PasswordInput":
                 field_enum = FIELDENUM.LOGIN_PASSWORD;
-                Debug.Log(field_enum);
+                keyboard_input_field.text = login_password.text;
                 break;
 
             case "SignUpUsernameInput":
                 field_enum = FIELDENUM.SIGN_UP_USERNAME;
+                keyboard_input_field.text = sign_up_username.text;
                 break;
 
             case "SignUpPasswordInput":
                 field_enum = FIELDENUM.SIGN_UP_PASSWORD;
+                keyboard_input_field.text = sign_up_password.text;
                 break; 
 
             case "SignUpPasswordAgainInput":
                 field_enum = FIELDENUM.SIGN_UP_PASSWORD_AGAIN;
+                keyboard_input_field.text = sign_up_again_password.text;
                 break;
-            
+
+            case "GameIDInput":
+                field_enum = FIELDENUM.GAME_CODE;
+                keyboard_input_field.text = game_id_input.text;
+                break;
+
             default:
                 field_enum = FIELDENUM.NON;
+                keyboard_input_field.text = "";
                 break;
         }
 
-        Debug.Log(field_enum);
+        //keyboard_input_field.text = ""; //clear the keyboard field
     }
 
-
+    //handle changes in the keyboard text field
     public void updateTextFields()
     {
         string temp = keyboard_input_field.text;
-        if (field_enum != FIELDENUM.NON && temp.Length > 0)
+
+        if (field_enum != FIELDENUM.NON )//&& temp.Length > 0) // without this: works! (!?)
         {
             switch (field_enum)
             {
@@ -365,6 +447,10 @@ public class UIController : MonoBehaviour
                     sign_up_again_password.text = temp;
                     break;
 
+                case FIELDENUM.GAME_CODE:
+                    game_id_input.text = temp;
+                    break;
+
                 default:
                     field_enum = FIELDENUM.NON;
                     break;
@@ -373,9 +459,93 @@ public class UIController : MonoBehaviour
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------[ INPUT HIGHLIGHTING FUNCTION ]----------------------------------------------------------------
+    
+    // [INPUT FIELDS]:
+
+    /*
+        login_username;
+        login_password;
+        sign_up_username;
+        sign_up_password;
+        sign_up_again_password;
+        game_id_input;
+    */
+
+    private void inputHightlight(VRInputField highlight_this)
+    {
+        switch (highlight_this.name)
+        {
+            case "UsernameInput":
+                login_username.image.color = new Color32(202,229,255,255);// [HIGHLIGHTED]>-----[*]
+                login_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                break;
+
+            case "PasswordInput":
+                login_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                login_password.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
+                sign_up_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                break;
+
+            case "SignUpUsernameInput":
+                login_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                login_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_username.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
+                sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                break;
+
+            case "SignUpPasswordInput":
+                login_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                login_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_password.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
+                sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                break;
+
+            case "SignUpPasswordAgainInput":
+                login_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                login_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_again_password.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
+                game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                break;
+
+            case "GameIDInput":
+                login_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                login_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                game_id_input.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
+                break;
+
+            default:
+                login_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                login_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                break;
+        }
+
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------[ PRIVATE CHECK FUNCTIONS AND MISCELLANEOUS FUNCTIONS ]----------------------------------------------------
 
-    //akármilyen objektumra null ellenőrzés
+    //null check for any object 
     private bool isNull<T>(T obj)
     {
        return obj == null ? true : false;

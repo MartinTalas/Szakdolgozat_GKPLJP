@@ -28,6 +28,8 @@ public sealed class AvatarManager
     private bool sex = false;// false = female | true = male
     private bool outfit = false;// false = casual | true = elegant
 
+    public int[] int_avatar = { 0, 0, 0 }; //default (for json) [sex, outfit, avatarindex]
+
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------[ SINGLETON PATTERN ]--------------------------------------------------------------------
 
@@ -53,23 +55,31 @@ public sealed class AvatarManager
 
         if (this.sex)
         {
+            int_avatar[0] = 1; //male
+
             if (this.outfit)
             {
+                int_avatar[1] = 1;
                 return elegant_males;
             }
             else
             {
+                int_avatar[1] = 0;
                 return casual_males;
             }
         }
         else
         {
+            int_avatar[0] = 0; //female
+
             if (outfit)
             {
+                int_avatar[1] = 1;
                 return elegant_females;
             }
             else
             {
+                int_avatar[1] = 0;
                 return casual_females;
             }
         }
@@ -104,6 +114,8 @@ public sealed class AvatarManager
 
             current_avatar = actual_avatar_set[current_avatar_index];
         }
+
+        int_avatar[2] = current_avatar_index;
     }
 
     //load the avatar lists
@@ -173,6 +185,11 @@ public sealed class AvatarManager
     {
         bool[] result = { this.sex, this.outfit }; 
         return result;
+    }
+
+    public int[] getJsonAvatarArray()
+    {
+        return this.int_avatar;
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------

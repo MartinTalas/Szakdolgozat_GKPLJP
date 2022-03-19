@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UIScene.unity
     guid: c76d5a0b5f1b3bc48be00db3c405fe1d
-  - enabled: 0
-    path: Assets/Scenes/REMOVE_CharacterSelectorScene.unity
-    guid: 1d3a13ea016b0864587252d59299608d
   - enabled: 1
     path: Assets/Scenes/AvatarSelectorScene.unity
     guid: f2a6f0d30ce15c040a5e803dea582bb5
