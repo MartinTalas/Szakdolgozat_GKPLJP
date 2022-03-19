@@ -36,6 +36,8 @@ public class UIController : MonoBehaviour
     public VRInputField sign_up_again_password; 
     public VRInputField game_id_input; //GameIDInput
 
+    public Text info_text;
+
     public VRInputField keyboard_input_field;
     private static FIELDENUM field_enum;
 
@@ -256,6 +258,20 @@ public class UIController : MonoBehaviour
             temp = null;
         }
 
+        //TEXT [INFO]
+        {
+            temp = GameObject.Find("InfoText");
+            if (temp != null)
+            {
+                info_text = temp.GetComponent<Text>();
+                if (info_text == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
         //TESTING
         //TEXT [TESTTEXT]
         {
@@ -315,7 +331,7 @@ public class UIController : MonoBehaviour
         if (!isNull<Canvas>(KeyboardCanvas)) { KeyboardCanvas.enabled = true; } else { Debug.LogError("SwitchCanvas is null"); }
         selectField(game_id_input);
     }
-    //-------------------------------------------------------[EOF CANVAS CHANGE]
+    //-------------------------------------------------------[EOF CANVAS CHANGE]            <(EOF = end of)>
 
     //-------------------------------------------------------[SCENE CHANGE]
     public void goToCharacterSelectorScene()
@@ -324,6 +340,7 @@ public class UIController : MonoBehaviour
     }
     //-------------------------------------------------------[EOF SCENE CHANGE]
 
+    //-------------------------------------------------------[LOGIN]
     //click event to login
     public async void loginToGameButtonEvent()
     {
@@ -379,29 +396,52 @@ public class UIController : MonoBehaviour
             }
             catch (Exception ex)
             {
-
+                Debug.Log("Exception: " + ex);
             }
-            
-            if(result == 0)
-            {
+        }
+
+        switch (result)
+        {
+            case -1:
+                info_text.text = "Something went wrong!";
+                break;
+
+            case 0:
                 Data data = new Data();
                 data.username = login_username.text.ToString();
                 data.password = login_password.text.ToString();
 
                 jsonParser.toJson<Data>(data, "userdata");
                 goToJoinCanvas();
-            } 
+
+                info_text.text = "";
+
+                break;
+
+            case 1:
+                info_text.text = "Incorrect password!";
+                break;
+
+            case 2:
+                info_text.text = "Incorrect username!";
+                break;
+
+            case 3:
+                info_text.text = "Input fields are empty!";
+                break;
+
+            default: break;
         }
-
-        TESTTEXT.text = result.ToString();
     }
+    //-------------------------------------------------------[EOF LOGIN]
 
+    //-------------------------------------------------------[SIGN UP]
     //click event to sign up
     public void signUpToGameButtonEvent()
     {
-        //check+reg
-        goToJoinCanvas();
+        
     }
+    //-------------------------------------------------------[EOF SIGN UP]
 
     public void join() // SET GAMEID            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]
     {

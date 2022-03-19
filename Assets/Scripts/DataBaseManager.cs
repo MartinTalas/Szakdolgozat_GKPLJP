@@ -57,19 +57,16 @@ public sealed class DataBaseManager
             //this.storage = FirebaseStorage.getInstance();
             //this.stReference = storage.getReferenceFromUrl("gs://p-game-a75c2.appspot.com/speeches");
             //Debug.Log("RootRef: " + db.ToString());
-
-            exception = "It works correctly(?)!";
         }
         catch (Exception ex)
         {
-            exception = ex.ToString();
-            Debug.Log("DBEXC: " + ex.Message);
+            Debug.Log("DB_EXC: " + ex.Message + "\n" + ex);
         }
 
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //-------------------------------------------------------------------[ CONNECTION FUNCTIONS ]-------------------------------------------------------------------
+    //-------------------------------------------------------------------[ CONNECTION FUNCTION ]--------------------------------------------------------------------
 
     public FirebaseDatabase getConnection()
     {
