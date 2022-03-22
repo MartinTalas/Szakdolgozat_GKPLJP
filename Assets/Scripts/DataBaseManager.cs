@@ -70,7 +70,15 @@ public sealed class DataBaseManager
 
     public FirebaseDatabase getConnection()
     {
-        return db;
+        if (db == null)
+        { 
+            db = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/");
+            return db;
+        }
+        else
+        {
+            return db;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------

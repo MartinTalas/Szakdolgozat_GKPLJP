@@ -47,7 +47,7 @@ public class AvatarDriver : MonoBehaviour
         }
         else
         {
-            GameObject.Find("InternetConnectionLostText").GetComponentInChildren<Text>().enabled = false; // és ez a true, fura, ellenőriztetni kell!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            GameObject.Find("InternetConnectionLostText").GetComponentInChildren<Text>().enabled = false; 
         }
     }
 

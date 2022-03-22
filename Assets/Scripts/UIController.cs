@@ -38,6 +38,8 @@ public class UIController : MonoBehaviour
 
     public Text info_text;
     public Text internet_connection_lost_text;
+    public Text game_id_text;
+    public Text game_id_content_text;
 
     public VRInputField keyboard_input_field;
     private static FIELDENUM field_enum;
@@ -46,7 +48,6 @@ public class UIController : MonoBehaviour
     private FirebaseDatabase db;
 
     private JsonParser jsonParser;
-
 
     //TESTOBJECTS
     public Text TESTTEXT;
@@ -78,11 +79,11 @@ public class UIController : MonoBehaviour
     {
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            internet_connection_lost_text.enabled = true;//elvileg ez lenne a false
+            internet_connection_lost_text.enabled = true;
         }
         else
         {
-            internet_connection_lost_text.enabled = false; // és ez a true, fura, ellenőriztetni kell!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            internet_connection_lost_text.enabled = false; 
         }
     }
 
@@ -266,6 +267,35 @@ public class UIController : MonoBehaviour
             temp = null;
         }
 
+        //TEXT [GAMEID.CONTENT]
+        {
+            temp = GameObject.Find("GeneratedGameIDText");
+            if (temp != null)
+            {
+                game_id_content_text = temp.GetComponent<Text>();
+                if (game_id_content_text == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
+        //TEXT [GAMEID.INFO]
+        {
+            temp = GameObject.Find("GameIDInfoText");
+            if (temp != null)
+            {
+                game_id_text = temp.GetComponent<Text>();
+                if (game_id_text == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+                game_id_text.enabled = false;
+            }
+            temp = null;
+        }
+
         //TEXT [INFO]
         {
             temp = GameObject.Find("InfoText");
@@ -280,7 +310,7 @@ public class UIController : MonoBehaviour
             temp = null;
         }
 
-        //TEXT [NETWORK.CONNECTION]
+        //TEXT [NETWORK.CONNECTION.INTERNET]
         {
             temp = GameObject.Find("InternetConnectionLostText");
             if (temp != null)
@@ -409,9 +439,9 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            int result = -1;
+            int result = -1; //default
 
-            if (login_username.text.ToString().Length == 0 || login_password.text.ToString().Length == 0)
+            if (login_username.text.ToString().Length == 0 || login_password.text.ToString().Length == 0) //empty field check
             {
                 result = 3; //empty fields
             }
@@ -427,9 +457,9 @@ public class UIController : MonoBehaviour
                                             {
                                                 if (task.IsCompleted)
                                                 {
-                                                    Debug.Log("task.IsCompleted: Succeeded");
+                                                    Debug.Log("task.IsCompleted: Succeeded [Login]");
                                                     DataSnapshot data_snapshot = task.Result;
-                                                    Debug.Log(task.Result.ToString());
+
                                                     if (data_snapshot.Exists)
                                                     {
                                                         Debug.Log(task.Result.ToString() + "completed");
@@ -448,12 +478,12 @@ public class UIController : MonoBehaviour
                                                     else
                                                     {
                                                         result = 2; //sign up first
-                                                    Debug.Log(task.Result.ToString() + " -> NOT EXISTS");
+                                                    Debug.Log(task.Result.ToString() + " USER DOES NOT EXISTS");
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    Debug.LogError("task.IsCompleted: Failed");
+                                                    Debug.LogError("task.IsCompleted: Failed [Login]");
                                                 }
 
 
@@ -465,7 +495,7 @@ public class UIController : MonoBehaviour
                 }
             }
 
-            switch (result)
+            switch (result) //for user messages
             {
                 case -1:
                     info_text.text = "Something went wrong!";
@@ -513,7 +543,7 @@ public class UIController : MonoBehaviour
         {
             int result = -1; //default
 
-            if (sign_up_username.text.ToString().Length == 0 || sign_up_password.text.ToString().Length == 0 || sign_up_again_password.text.ToString().Length == 0)
+            if (sign_up_username.text.ToString().Length == 0 || sign_up_password.text.ToString().Length == 0 || sign_up_again_password.text.ToString().Length == 0) //empty field check
             {
                 result = 3; //empty fields
             }
@@ -528,34 +558,34 @@ public class UIController : MonoBehaviour
                                             {
                                                 if (task.IsCompleted)
                                                 {
-                                                    Debug.Log("task.IsCompleted: Succeeded");
-                                                    DataSnapshot data_snapshot = task.Result;
-                                                    Debug.Log(task.Result.ToString());
+                                                    Debug.Log("task.IsCompleted: Succeeded [Sign Up]");
+                                                    DataSnapshot data_snapshot = task.Result; 
+
                                                     if (data_snapshot.Exists)
                                                     {
                                                         result = 1; //Username is exists
-                                                }
+                                                    }
                                                     else
                                                     {
                                                         if (sign_up_password.text.ToString().Equals(sign_up_again_password.text.ToString()))
                                                         {
-                                                        //todo
+                                                        
                                                         //SAVE DATA
                                                         db.GetReference("player").Child(sign_up_username.text.ToString()).Child("password").SetValueAsync(sign_up_password.text.ToString());
 
-                                                            result = 0; //OK
+                                                            result = 0; //Succeeded
                                                     }
                                                         else
                                                         {
                                                             result = 2; //passwords are not matching
                                                     }
 
-                                                        Debug.Log(task.Result.ToString() + " USER NOT EXISTS");
+                                                        Debug.Log(task.Result.ToString() + " USER DOES NOT EXISTS");
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    Debug.LogError("task.IsCompleted: Failed");
+                                                    Debug.LogError("task.IsCompleted: Failed [Sign Up]");
                                                 }
 
 
@@ -567,7 +597,7 @@ public class UIController : MonoBehaviour
                 }
             }
 
-            switch (result)
+            switch (result) //for user messages
             {
                 case -1:
                     info_text.text = "Something went wrong!";
@@ -604,7 +634,7 @@ public class UIController : MonoBehaviour
     }
     //-------------------------------------------------------[EOF SIGN UP]
 
-    public void join() // SET GAMEID            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]
+    public async void join()
     {
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
@@ -612,13 +642,92 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            int dummy = 420;
-            saveGameID(dummy);
-            goToCharacterSelectorScene();
+            int player_num = 999;
+            bool is_game_id_exists = false;
+
+            if (game_id_input.text.Length == 8)
+            {
+                string id = game_id_input.text.ToString();
+
+                db = dataBaseManager.getConnection();
+                await db.GetReference("games").Child(id.ToUpper())
+                                              .GetValueAsync()
+                                              .ContinueWith(task =>
+                                              {
+                                                  if (task.IsCompleted)
+                                                  {
+                                                      Debug.Log("task.IsCompleted: Succeeded [Join]");
+                                                      DataSnapshot data_snapshot = task.Result;
+
+                                                      if (data_snapshot.Exists)
+                                                      {
+                                                          Debug.Log(task.Result.ToString() + " GAME ID IS EXISTS");
+                                                          is_game_id_exists = true; //true if game id is exists
+
+                                                          var dts = data_snapshot.Value as Dictionary<string, object>;
+                                                          var dts_vc = dts.Values as Dictionary<string, object>.ValueCollection;
+                                                          Debug.Log("User count: "+ dts_vc.Count);
+                                                          player_num = dts_vc.Count;
+                                                  }
+                                                      else
+                                                      {
+                                                          Debug.Log(task.Result.ToString() + " GAME ID DOES NOT EXISTS");
+                                                          is_game_id_exists = false; //false, if game id is exists
+                                                  }
+                                                  }
+                                                  else
+                                                  {
+                                                      Debug.LogError("task.IsCompleted: Failed [Join]");
+                                                  }
+
+
+                                              });
+                if (is_game_id_exists)
+                {
+                    info_text.text = "";
+                    saveGameID(id); //save game ID to json
+                }
+                else
+                {
+                    info_text.text = "Incorrect game ID!";
+                }
+            }
+            else
+            {
+                info_text.text = "Game ID requires 8 letters!";
+            }
+
+            saveParticipant(player_num);
+        }
+    }
+    
+    public async void host() 
+    {
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            Data dt = jsonParser.toObject<Data>("userdata");
+            Debug.Log(dt.game_id + " " + dt.username);
+            if (dt.game_id.Length > 0)
+            {
+                db = dataBaseManager.getConnection();
+                await db.GetReference("games").Child(dt.game_id).Child(dt.username).SetValueAsync(1);
+                info_text.text = "";
+
+                saveJoinStatus(true); // save host status (for multiplayer)
+                goToCharacterSelectorScene();
+            }
+            else
+            {
+                info_text.text = "Please generate game ID first!";
+            }
         }
     }
 
-    public void Host() // SET GAMEID            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]            [TODO]
+    public async void generateGameIDButton()
     {
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
@@ -626,22 +735,122 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            int dummy = 420;
-            saveGameID(dummy);
-            goToCharacterSelectorScene();
+            db = dataBaseManager.getConnection();
+            try
+            {
+                bool is_game_id_exists = false; //check the game id -> true if exists, else false
+                string generated_game_id = generateGameID(); //generate random id [8 character] 26^8 variation                              "ZYRGIMUV" <- this game ID is exists
+
+                await db.GetReference("games").Child(generated_game_id)
+                                              .GetValueAsync()
+                                              .ContinueWith(task =>
+                                              {
+                                                  if (task.IsCompleted)
+                                                  {
+                                                      Debug.Log("task.IsCompleted: Succeeded [Generate]");
+                                                      DataSnapshot data_snapshot = task.Result;
+
+                                                      if (data_snapshot.Exists)
+                                                      {
+                                                          Debug.Log(task.Result.ToString() + " GAME ID IS EXISTS");
+                                                          is_game_id_exists = true; //true if game id is exists
+                                                      }
+                                                      else
+                                                      {
+                                                          Debug.Log(task.Result.ToString() + " GAME ID DOES NOT EXISTS");
+                                                          is_game_id_exists = false; //false, if game id is exists
+                                                      }
+                                                  }
+                                                  else
+                                                  {
+                                                      Debug.LogError("task.IsCompleted: Failed [Generate]");
+                                                  }
+
+
+                                              });
+
+                if (is_game_id_exists)
+                {
+                    info_text.text = "Please press the \"Generate ID\" button again, error occured!";//game ID was generated redundantly!";
+                    game_id_content_text.text = "";//there is no game ID => empty string
+                    game_id_text.enabled = false; //there is no game ID generated yet, so no need the title text
+                }
+                else
+                {
+                    info_text.text = ""; //there is no error
+                    game_id_content_text.text = generated_game_id; //show game ID
+                    game_id_text.enabled = true; //title text
+                    saveGameID(generated_game_id); //save game id to json
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.Log("Exception: " + ex);
+            }
         }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------[ DATA FUNCTIONS ]----------------------------------------------------------------------
 
-    private void saveGameID(int game_id)
+    private async void saveParticipant(int player_num)
+    {
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            Data dt = jsonParser.toObject<Data>("userdata");
+            Debug.Log(dt.game_id + " " + dt.username);
+            if (dt.game_id.Length > 0)
+            {
+                db = dataBaseManager.getConnection();
+                await db.GetReference("games").Child(dt.game_id).Child(dt.username).SetValueAsync(player_num + 1);
+                info_text.text = "";
+
+                saveJoinStatus(false); // save host status (for multiplayer)
+                goToCharacterSelectorScene();
+            }
+            else
+            {
+                info_text.text = "ID DIDNT SAVED TO JSON?????";
+            }
+        }
+    }
+
+    private void saveGameID(string game_id)
     {
         Data data = jsonParser.toObject<Data>("userdata");
         data.game_id = game_id;
         jsonParser.toJson<Data>(data, "userdata");
     }
 
+    private void saveJoinStatus(bool is_hosting)
+    {
+        Data data = jsonParser.toObject<Data>("userdata");
+        data.is_host = is_hosting;
+        jsonParser.toJson<Data>(data, "userdata");
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------[ GAME-ID RANDOM GENERATOR ]-----------------------------------------------------------------
+
+    private string generateGameID()
+    {
+        string result_id = "";
+        
+        System.Random rand = new System.Random();
+        for (int i = 0; i < 8; i++)
+        {
+            char ch = (char)(rand.Next(26) + 'a');
+            result_id += ch;
+        }
+        
+        Console.WriteLine(result_id.ToUpper());
+        return result_id.ToUpper();
+    }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------[ KEYBOARD FUNCTIONS ]--------------------------------------------------------------------

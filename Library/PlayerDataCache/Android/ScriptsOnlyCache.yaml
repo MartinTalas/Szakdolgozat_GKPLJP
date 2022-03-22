@@ -835,7 +835,7 @@ ScriptsOnlyBuild:
     className: AvatarDriver
   - hash:
       serializedVersion: 2
-      Hash: bca87206fe5febd025e6848f950db5c3
+      Hash: 25c3d8f28c5c2676ab62b234b5125a8a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIController
