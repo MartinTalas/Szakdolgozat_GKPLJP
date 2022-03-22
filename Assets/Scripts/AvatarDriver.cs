@@ -41,7 +41,14 @@ public class AvatarDriver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            GameObject.Find("InternetConnectionLostText").GetComponentInChildren<Text>().enabled = true;
+        }
+        else
+        {
+            GameObject.Find("InternetConnectionLostText").GetComponentInChildren<Text>().enabled = false; 
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -107,12 +114,19 @@ public class AvatarDriver : MonoBehaviour
     //Ok button: load the RoomScene!!!
     public void ok()
     {
-        //save data:
-        user_data.avatar = avatar_manager.getJsonAvatarArray();
-        jsonParser.toJson<Data>(user_data, "userdata");
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            //DO NOTHING
+        }
+        else
+        {
+            //save data:
+            user_data.avatar = avatar_manager.getJsonAvatarArray();
+            jsonParser.toJson<Data>(user_data, "userdata");
 
-        //go to RoomScene
-        SceneManager.LoadScene("RoomScene");
+            //go to RoomScene
+            SceneManager.LoadScene("RoomScene");
+        }
     }
 
 

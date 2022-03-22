@@ -26,7 +26,7 @@ public sealed class DataBaseManager
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------[ SINGLETON PATTERN ]--------------------------------------------------------------------
 
-    private static readonly Lazy<DataBaseManager> lazy =  new Lazy<DataBaseManager>(() => new DataBaseManager());
+    private static readonly Lazy<DataBaseManager> lazy = new Lazy<DataBaseManager>(() => new DataBaseManager());
 
     public static DataBaseManager Instance { get { return lazy.Value; } }
 
@@ -52,97 +52,34 @@ public sealed class DataBaseManager
                 }
             });*/
 
-        
+
             this.db = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/");
             //this.storage = FirebaseStorage.getInstance();
             //this.stReference = storage.getReferenceFromUrl("gs://p-game-a75c2.appspot.com/speeches");
             //Debug.Log("RootRef: " + db.ToString());
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
-            exception = ex.ToString();
-            Debug.Log("DBEXC: "+ ex.Message);
+            Debug.Log("DB_EXC: " + ex.Message + "\n" + ex);
         }
 
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //-------------------------------------------------------------------[ CONNECTION FUNCTIONS ]-------------------------------------------------------------------
+    //-------------------------------------------------------------------[ CONNECTION FUNCTION ]--------------------------------------------------------------------
 
-    public void initializeDatabase()
+    public FirebaseDatabase getConnection()
     {
-        //database = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app");
-        //db_reference = database.RootReference; //FirebaseDatabase.DefaultInstance.RootReference;
-        //Debug.Log("RootRef: " + db_reference.ToString());
-        //Debug.Log("RootRef2: " + database.GetReference("player").Child("test").ToString());
-    }
-
-    public bool getConnectionState()
-    {
-        //return db_reference != null ? true : false;
-        return false;
-    }
-
-    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------[ LOGIN / SIGN UP FUNCTIONS ]-----------------------------------------------------------------
-
-    public void signinUser()
-    {
-    
-    }
-
-    /*public IEnumerator loginUser(string username = "", string password = "")
-    {
-        var db_task = database.GetReference("player").Child(username).Child(password).GetValueAsync();
-        yield return new WaitUntil(predicate: () => db_task.IsCompleted);
-
-        if(db_task.Exception != null)
-        {
-            Debug.Log("DB_TASK_EXCEPTION: " + db_task.Exception.Message.ToString());
-        }
-        else if(db_task.Result.Value == null)
-        {
-            Debug.Log("DB_TASK_RESULT IS NULL");
+        if (db == null)
+        { 
+            db = FirebaseDatabase.GetInstance("https://p-game-a75c2-default-rtdb.europe-west1.firebasedatabase.app/");
+            return db;
         }
         else
         {
-            Debug.Log("DB_TASK_RESULT: " + db_task.Result.Value.ToString());
+            return db;
         }
-    }*/
-
-    /*public void loginUser(string username = "", string password = "")
-    {
-
-        //DEBUG
-        Debug.Log("U: " + username + " P: " + password);
-        if (db_reference == null) { Debug.Log("db_reference is null!"); } else { Debug.Log("DBref: " + db_reference.ToString()); }
-        //EOF DEBUG
-
-        Debug.Log("Route: " + database.GetReference("player").Child(username).Child(password).ToString());
-        //db_reference.Child("player")
-        database.GetReference("player")
-                .Child(username)
-                .Child(password)
-                .GetValueAsync()
-                .ContinueWith( task => {
-            if (task.IsCompleted)
-            {
-                Debug.Log("task.IsCompleted: Succeeded");
-                DataSnapshot data_snapshot = task.Result;
-                Debug.Log(task.Result.ToString());
-            }
-            else
-            {
-                Debug.LogError("task.IsCompleted: Failed");
-            }
-        });
-
     }
-    */
 
-    public string returnException()
-    {
-        return this.exception;
-    }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

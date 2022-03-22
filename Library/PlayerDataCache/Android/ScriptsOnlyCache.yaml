@@ -835,7 +835,7 @@ ScriptsOnlyBuild:
     className: AvatarDriver
   - hash:
       serializedVersion: 2
-      Hash: e20f5e08736b7dd8c9014457b06af897
+      Hash: 25c3d8f28c5c2676ab62b234b5125a8a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIController
@@ -1534,4 +1534,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/UIScene.unity
   - Assets/Scenes/AvatarSelectorScene.unity
   - Assets/Scenes/RoomScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_12_1_LATEST_STABLE.apk
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_14.apk
