@@ -8,15 +8,10 @@ using Mirror;
 
 public class VRNetworkManager : NetworkManager
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    GameObject player;
+    [SerializeField] public int min_players = 2;
+    [SerializeField] public int max_players = 8;
+    [SerializeField] private GamePlayer game_player_prefab;
+    public List<GamePlayer> game_players { get; } = new List<GamePlayer>();
 }

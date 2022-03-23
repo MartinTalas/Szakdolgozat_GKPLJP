@@ -62,8 +62,10 @@ public class UIController : MonoBehaviour
         jsonParser = JsonParser.Instance;
         
         //Set json to default
-        Data default_data = new Data();
-        jsonParser.toJson<Data>(default_data, "userdata");
+        Data data = new Data();
+        jsonParser.toJson<Data>(data, "userdata");
+
+        Debug.Log(data.username + " " + data.password + " " + data.game_id + " " + data.avatar.ToString() + " " + data.is_host);
     }
 
     // Start is called before the first frame update
@@ -502,11 +504,14 @@ public class UIController : MonoBehaviour
                     break;
 
                 case 0:
-                    Data data = new Data();
+                    Data data = jsonParser.toObject<Data>("userdata");
                     data.username = login_username.text.ToString();
                     data.password = login_password.text.ToString();
 
                     jsonParser.toJson<Data>(data, "userdata");
+
+                    Debug.Log(data.username + " " + data.password + " " + data.game_id + " " + data.avatar.ToString() + " " + data.is_host);
+
                     goToJoinCanvas();
 
                     info_text.text = "";
@@ -604,11 +609,14 @@ public class UIController : MonoBehaviour
                     break;
 
                 case 0:
-                    Data data = new Data();
+                    Data data = jsonParser.toObject<Data>("userdata");
                     data.username = sign_up_username.text.ToString();
                     data.password = sign_up_password.text.ToString();
 
                     jsonParser.toJson<Data>(data, "userdata");
+                    
+                    Debug.Log(data.username + " " + data.password + " " + data.game_id + " " + data.avatar.ToString() + " " + data.is_host);
+
                     goToJoinCanvas();
 
                     info_text.text = "";
@@ -825,6 +833,8 @@ public class UIController : MonoBehaviour
         Data data = jsonParser.toObject<Data>("userdata");
         data.game_id = game_id;
         jsonParser.toJson<Data>(data, "userdata");
+
+        Debug.Log(data.username + " " + data.password + " " + data.game_id + " " + data.avatar.ToString() + data.is_host);
     }
 
     private void saveJoinStatus(bool is_hosting)
@@ -832,6 +842,8 @@ public class UIController : MonoBehaviour
         Data data = jsonParser.toObject<Data>("userdata");
         data.is_host = is_hosting;
         jsonParser.toJson<Data>(data, "userdata");
+
+        Debug.Log(data.username + " " + data.password + " " + data.game_id + " " + data.avatar.ToString() + " " + data.is_host);
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------

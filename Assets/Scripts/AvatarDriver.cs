@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,9 @@ public class AvatarDriver : MonoBehaviour
 {
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------[ VARIABLES ]------------------------------------------------------------------------
+
+    //Network [MULTIPLAYER] 
+    [SerializeField] private VRNetworkManager network_manager;
 
     //Json parser
     public JsonParser jsonParser;
@@ -35,7 +39,9 @@ public class AvatarDriver : MonoBehaviour
         this.avatar_manager.buildLists(casual_females, casual_males, elegant_females, elegant_males);
 
         this.jsonParser = JsonParser.Instance;
-        this.loadUserData();
+        this.loadUserData(); //load user data from json [SCENE COMMUNICATION]
+
+        network_manager = GameObject.Find("NetworkManager").GetComponentInChildren<VRNetworkManager>();
     }
 
     // Update is called once per frame
@@ -124,8 +130,63 @@ public class AvatarDriver : MonoBehaviour
             user_data.avatar = avatar_manager.getJsonAvatarArray();
             jsonParser.toJson<Data>(user_data, "userdata");
 
-            //go to RoomScene
-            SceneManager.LoadScene("RoomScene");
+            if(user_data.is_host)
+            {
+                //TODO: HOST
+                //if (network_manager != null)
+                {
+                    try
+                    {
+                        Debug.Log("Hosting a game...");
+                        network_manager.StartHost();
+                        Debug.Log("HOSTED"/*network_manager.networkAddress.ToString()*/);
+                    }
+                    catch (Exception ex)
+                    {
+                        if(network_manager != null)
+                        {
+                            GameObject.Find("TEST_TEXT").GetComponentInChildren<Text>().text = ex.ToString(); 
+                        }
+                        Debug.Log(ex);
+                    }
+
+                }
+                //else
+                {
+                  //  Debug.Log("fuckedup");
+                }
+            }
+            else
+            {
+                //TODO: JOIN
+
+                //if(network_manager != null)
+                {
+                    try
+                    {
+                        //JOIN
+                        Debug.Log("joining");
+                        network_manager.networkAddress = "localhost";
+                        network_manager.StartClient();
+                    }
+                    catch(Exception ex)
+                    {
+                        if (network_manager != null)
+                        {
+                            GameObject.Find("TEST_TEXT").GetComponentInChildren<Text>().text = ex.ToString();
+                        }
+                        Debug.Log(ex);
+                    }
+                }
+                //else
+                {
+                  //  Debug.Log("fuckedup");
+                }
+            }
+
+
+
+            loadUserData(); //go to RoomScene
         }
     }
 
@@ -135,6 +196,12 @@ public class AvatarDriver : MonoBehaviour
     {
         user_data = jsonParser.toObject<Data>("userdata");
         GameObject.Find("UsernameDataText").GetComponent<Text>().text = user_data.username;
+    }
+
+    //load the room scene [RoomScene]
+    private void loadRoomScene()
+    {
+        SceneManager.LoadScene("RoomScene");
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------

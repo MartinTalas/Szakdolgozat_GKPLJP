@@ -21,7 +21,7 @@ public sealed class JsonParser
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------[ PARSING FUNCTIONS ]--------------------------------------------------------------------
 
-    public void toJson<T>(T obj, string filename) //DEBUG WITH STRING RETURN
+    public void toJson<T>(T obj, string filename) // create and save JSON from TEMPLATE object
     {
         string json = JsonUtility.ToJson(obj, true);
 
@@ -29,11 +29,10 @@ public sealed class JsonParser
         File.WriteAllText(path, json);
     }
 
-    public T toObject<T>(string filename) //DEBUG WITH STRING RETURN
+    public T toObject<T>(string filename) // create TEMPLATE object from JSON
     {
         string json;
         string path = Application.persistentDataPath + "/" + filename + ".json";
-
 
         json = File.ReadAllText(path);
 
@@ -42,32 +41,5 @@ public sealed class JsonParser
         
         return obj;
     }
-
-
-    // [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]            [ DEGUG ]
-    /*
-    public string getTESTText()
-    {
-        string json = "{ \"test\": \"test1\"}";
-        /*string path = "test.json";//Path.Combine(Application.persistentDataPath, "test" + ".json");
-        //File.WriteAllText(Application.dataPath + path, json);
-        using (StreamReader stream = new StreamReader(Application.dataPath + path))
-        {
-            json = stream.ReadToEnd();
-        }
-
-        
-        string pt = Path.Combine(Application.dataPath, "test" + ".json");
-        File.WriteAllText(pt, json);
-        string result = File.ReadAllText(pt); *./
-
-
-        string pt = Application.persistentDataPath + "/test" + ".json";
-        File.WriteAllText(pt, json);
-        string result = File.ReadAllText(pt);
-
-        return pt;
-    }
-    */
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

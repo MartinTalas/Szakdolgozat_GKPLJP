@@ -2,16 +2,19 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AvatarDriver
+    - GamePlayer
     - GvrEditorEmulator
     - GvrPointerInputModule
     - GvrPointerPhysicsRaycaster
     - GvrReticlePointer
     - KeyboardDragHandler
     - KeyboardScript
+    - Player
     - UIController
     - VRInputField
     - VRNetworkManager
     Mirror.dll:
+    - Mirror.NetworkIdentity
     - Mirror.TelepathyTransport
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -59,6 +62,8 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 9578}
+    - Class: 114
       Script: {instanceID: 9912}
     - Class: 114
       Script: {instanceID: 9914}
@@ -85,7 +90,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11844}
     - Class: 114
+      Script: {instanceID: 12018}
+    - Class: 114
+      Script: {instanceID: 12020}
+    - Class: 114
+      Script: {instanceID: 12052}
+    - Class: 114
       Script: {instanceID: 12456}
+    - Class: 114
+      Script: {instanceID: 32572}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -187,8 +200,6 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9578}
-    - Class: 114
       Script: {instanceID: 9912}
     - Class: 114
       Script: {instanceID: 9914}
@@ -220,8 +231,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11766}
     - Class: 114
       Script: {instanceID: 11844}
-    - Class: 114
-      Script: {instanceID: 12020}
     - Class: 114
       Script: {instanceID: 12456}
     - Class: 115
@@ -829,7 +838,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 6333adbc580ec78abf2faa74c305a010
+      Hash: ec8f959e617b40fc71e18c36257fc40e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AvatarDriver
@@ -1339,10 +1348,16 @@ ScriptsOnlyBuild:
     className: NetworkIdentity
   - hash:
       serializedVersion: 2
-      Hash: 8eb11f41c8ff401e699b7cf075ef1775
+      Hash: 649b17d665a78313f60b9eb975e3c63b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRNetworkManager
+  - hash:
+      serializedVersion: 2
+      Hash: a30a413bcec27a5fee22a1a8e174a276
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Player
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1529,9 +1544,15 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 6fd2bb55b3ee5edb6040a1c5bccd0e07
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GamePlayer
   platform: 13
   scenePathNames:
   - Assets/Scenes/UIScene.unity
   - Assets/Scenes/AvatarSelectorScene.unity
   - Assets/Scenes/RoomScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_14.apk
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_1_1.apk
