@@ -23,6 +23,7 @@ public class AvatarDriver : MonoBehaviour
     public GameObject firstLoader;
 
     AvatarManager avatar_manager;
+    NetworkManager network_manager;
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
@@ -36,6 +37,8 @@ public class AvatarDriver : MonoBehaviour
 
         this.jsonParser = JsonParser.Instance;
         this.loadUserData();
+
+        this.network_manager = new NetworkManager();
     }
 
     // Update is called once per frame
@@ -124,8 +127,9 @@ public class AvatarDriver : MonoBehaviour
             user_data.avatar = avatar_manager.getJsonAvatarArray();
             jsonParser.toJson<Data>(user_data, "userdata");
 
+            network_manager.OnConnectedToMaster();
             //go to RoomScene
-            SceneManager.LoadScene("RoomScene");
+            //SceneManager.LoadScene("RoomScene");
         }
     }
 
