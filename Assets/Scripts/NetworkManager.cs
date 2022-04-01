@@ -3,26 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.GameVersion = "450663d7-f8a4-41e4-bbec-5eb49a985cf4";
-        PhotonNetwork.ConnectUsingSettings();
-        
+        ConnectToServer();
     }
 
     void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
         Debug.Log("Try to connect to server...");
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nTry to connect to server...";
+    }
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("Connected to Lobby.");
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nConnected to lobby";
+
     }
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to server.");
+
         base.OnConnectedToMaster();
 
         RoomOptions room_options = new RoomOptions();
@@ -30,17 +36,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         room_options.IsVisible = true;
         room_options.IsOpen = true;
 
-        PhotonNetwork.JoinOrCreateRoom("Room", room_options, TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom("Room2", room_options, TypedLobby.Default);
+        Debug.Log("Connected to server.");
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nConnected to server";
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("Joined to the room.");
         base.OnJoinedRoom();
+        Debug.Log("Joined to the room.");
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nJoined to the room.";
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nOther player joined to the room.";
     }
 }

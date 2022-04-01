@@ -1,0 +1,4 @@
+#Fri Apr 01 22:42:57 CEST 2022
+base.0=C\:\\GitHub\\Szakdolgozat_GKPLJP\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
