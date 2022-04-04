@@ -823,7 +823,7 @@ public class UIController : MonoBehaviour
     private void saveGameID(string game_id)
     {
         Data data = jsonParser.toObject<Data>("userdata");
-        data.game_id = game_id;
+        data.game_id = game_id.ToUpper();
         jsonParser.toJson<Data>(data, "userdata");
     }
 

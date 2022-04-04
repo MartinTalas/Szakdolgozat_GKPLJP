@@ -4,10 +4,14 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using System;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
+
+    private Data data; //data for avatars and positioning
+    private JsonParser jsonParser; //handle json
+
     void Start()
     {
         ConnectToServer();
@@ -28,17 +32,25 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
+        setData();
+        try
+        {
+            base.OnConnectedToMaster();
 
-        base.OnConnectedToMaster();
+            RoomOptions room_options = new RoomOptions();
+            room_options.MaxPlayers = 8;
+            room_options.IsVisible = true;
+            room_options.IsOpen = true;
 
-        RoomOptions room_options = new RoomOptions();
-        room_options.MaxPlayers = 8;
-        room_options.IsVisible = true;
-        room_options.IsOpen = true;
-
-        PhotonNetwork.JoinOrCreateRoom("Room2", room_options, TypedLobby.Default);
-        Debug.Log("Connected to server.");
-        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nConnected to server";
+            PhotonNetwork.JoinOrCreateRoom(data.game_id.ToUpper(), room_options, TypedLobby.Default);
+            Debug.Log("Connected to server.");
+            GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nConnected to server";
+            GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\n" + data.game_id;
+        }
+        catch(Exception ex)
+        {
+            GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\n"+ex;
+        }
     }
 
     public override void OnJoinedRoom()
@@ -52,5 +64,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         base.OnPlayerEnteredRoom(newPlayer);
         GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nOther player joined to the room.";
+    }
+
+    private void setData()
+    {
+        jsonParser = JsonParser.Instance;
+        data = jsonParser.toObject<Data>("userdata");
     }
 }
