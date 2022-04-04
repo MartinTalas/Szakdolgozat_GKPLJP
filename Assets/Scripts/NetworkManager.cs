@@ -57,13 +57,19 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log("Joined to the room.");
+
         GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nJoined to the room.";
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += PhotonNetwork.CountOfPlayers.ToString() + " Players Online";
+
+        data.player_position = PhotonNetwork.CountOfPlayers;
+        jsonParser.toJson<Data>(data, "userdata");
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
         GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nOther player joined to the room.";
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += PhotonNetwork.CountOfPlayers.ToString() + " Players Online";
     }
 
     private void setData()

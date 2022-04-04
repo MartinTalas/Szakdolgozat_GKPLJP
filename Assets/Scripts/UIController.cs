@@ -803,7 +803,7 @@ public class UIController : MonoBehaviour
         else
         {
             Data dt = jsonParser.toObject<Data>("userdata");
-            Debug.Log(dt.game_id + " " + dt.username);
+            Debug.Log(dt.game_id + " " + dt.username + " " + player_num);
             if (dt.game_id.Length > 0)
             {
                 db = dataBaseManager.getConnection();
@@ -811,11 +811,15 @@ public class UIController : MonoBehaviour
                 info_text.text = "";
 
                 saveJoinStatus(false); // save host status (for multiplayer)
+
+                //dt.player_position = player_num;
+                //jsonParser.toJson<Data>(dt, "userdata");
+
                 goToCharacterSelectorScene();
             }
             else
             {
-                info_text.text = "ID DIDNT SAVED TO JSON?????";
+                info_text.text = "Something went wrong! Please press the button again!";
             }
         }
     }
