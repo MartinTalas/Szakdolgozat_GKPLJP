@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class SpawnPlayer : MonoBehaviourPunCallbacks
 {
@@ -9,12 +10,14 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        spawned_player = PhotonNetwork.Instantiate("Spwned player", transform.position, transform.rotation);
+        Debug.Log("New player joined to the room!");
+        spawned_player = PhotonNetwork.Instantiate("PLAYER", transform.position, transform.rotation);
     }
 
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
+        Debug.Log("Player left!");
         PhotonNetwork.Destroy(spawned_player);
     }
 }

@@ -673,7 +673,7 @@ public class UIController : MonoBehaviour
                                                       {
                                                           Debug.Log(task.Result.ToString() + " GAME ID DOES NOT EXISTS");
                                                           is_game_id_exists = false; //false, if game id is exists
-                                                  }
+                                                      }
                                                   }
                                                   else
                                                   {

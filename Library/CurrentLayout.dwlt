@@ -73,7 +73,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 444}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 92
+  controlID: 54
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 113
+  controlID: 87
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 198
+  controlID: 166
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,8 +196,8 @@ MonoBehaviour:
     y: 0
     width: 541
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 72}
+  m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -361,20 +361,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Resources
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Resources
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\GitHub\Szakdolgozat_GKPLJP
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 96440000
-    m_LastClickedID: 17558
-    m_ExpandedIDs: 000000006c330000003600000a3800008c390000d43a00001e3b0000223b00005c3f00007242000000430000a846000046490000484900005e4900007673000000ca9a3b
+    m_SelectedIDs: 94f10000
+    m_LastClickedID: 61844
+    m_ExpandedIDs: 000000006e330000023600000c3800008e390000d63a0000203b0000243b00005e3f00007442000002430000aa460000484900004a490000604900003459000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -402,7 +402,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006c33000000360000743600000a3800008c390000d43a0000223b00005c3f00007242000000430000ba440000a846000046490000484900005e49000076730000
+    m_ExpandedIDs: 000000006e330000023600000c3800008e390000d63a0000203b0000243b00005e3f00007442000002430000aa460000484900004a4900006049000034590000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -433,18 +433,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Player
+      m_OriginalName: Player
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 61844
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 6}
     m_CreateAssetUtility:
@@ -522,9 +522,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 58e00100
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: ae40ffffe240ffff5243ffffbe44ffff5247ffff8647fffff249ffff5a4bffffd050ffffca59ffff6667ffffc66bffffe06cffff146dffff806fffffe870ffff6472ffff9872ffff0475ffff6c76ffff927dfffff48bffff249cffff5c9cffff0eacffff16acffff34caffffb6d7ffff56d9fffff0e6ffff86fbffff009e0000
+      m_ExpandedIDs: ded2ffff12d3ffff7cd5ffffe4d6ffff88e1ffffc0e1ffff2ce4ffff94e5ffffc6e8fffffae8ffff6aebffffd6ecffff86fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -615,9 +615,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.10638261, y: 0.105143905, z: -0.010626903, w: 0.988889}
+    m_Target: {x: 0.18060318, y: -0.5092378, z: 0.11105458, w: 0.83433455}
     speed: 2
-    m_Value: {x: 0.106362045, y: 0.10512358, z: -0.010624848, w: 0.9886978}
+    m_Value: {x: 0.18056816, y: -0.50913906, z: 0.111033045, w: 0.8341728}
   m_Size:
     m_Target: 56.14798
     speed: 2
