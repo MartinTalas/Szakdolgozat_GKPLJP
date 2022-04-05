@@ -13,6 +13,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
     private Vector3 real_position = new Vector3(0, 0, 0);
     private Vector3 real_rotation = new Vector3(0, 0, 0);
     private GameObject camera; //camera
+    private string avatar = "PLAYER_";
 
     public override void OnJoinedRoom()
     {
@@ -21,7 +22,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         Debug.Log("New player joined to the room!");
 
-        spawned_player = PhotonNetwork.Instantiate("PLAYER", real_position, UnityEngine.Quaternion.Euler(real_rotation));//transform.position, transform.rotation);
+        spawned_player = PhotonNetwork.Instantiate(avatar, real_position, UnityEngine.Quaternion.Euler(real_rotation));//transform.position, transform.rotation);
     }
 
     public override void OnLeftRoom()
@@ -65,7 +66,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 real_rotation = new Vector3(0, 270, 0);
                 real_position = new Vector3(1.303125f, 0, 1.25f);
                 camera.transform.rotation = UnityEngine.Quaternion.Euler(real_rotation);
-                camera.transform.position = new Vector3(1.17f, 1.6f, 1.24f);
+                camera.transform.position = new Vector3(1.17f, 0, 1.24f);
                 break;
             case 5:
                 real_rotation = new Vector3(0, 90, 0);
@@ -75,7 +76,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 break;
             case 6:
                 real_rotation = new Vector3(0, 270, 0);
-                real_position = new Vector3(1.303125f, 0, 1.25f); 
+                real_position = new Vector3(1.303125f,0, 1.25f); 
                 camera.transform.rotation = UnityEngine.Quaternion.Euler(real_rotation);
                 camera.transform.position = new Vector3(1.17f, 1.6f, 3.15f);
                 break;
@@ -97,5 +98,38 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.rotation = UnityEngine.Quaternion.Euler(real_rotation);
                 break;
         }
+
+        string sex = "", outfit = "", index = "";
+
+        if (data.avatar[0] == 0) //female
+        {
+            sex = "0";
+
+            if (data.avatar[1] == 0) //casual
+            {
+                outfit = "0";
+            }
+            else //elegant
+            {
+                outfit = "1";
+            }
+        }
+        else //male
+        {
+            sex = "1";
+
+            if (data.avatar[1] == 0) //casual
+            {
+                outfit = "0";
+            }
+            else //elegant
+            {
+                outfit = "1";
+            }
+        }
+
+        avatar += sex;
+        avatar += outfit;
+        avatar += data.avatar[2].ToString();
     }
 }
