@@ -21,7 +21,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
         base.OnJoinedRoom();
         Debug.Log("New player joined to the room!");
-
+        
         spawned_player = PhotonNetwork.Instantiate(avatar, real_position, UnityEngine.Quaternion.Euler(real_rotation));//transform.position, transform.rotation);
     }
 
