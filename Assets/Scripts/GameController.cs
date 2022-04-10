@@ -18,7 +18,6 @@ public class GameController : MonoBehaviour
     private string current_speaker = "ERR";
     private int current_speaker_points = 0;
     private bool is_voted = false;
-    private bool is_last = false;
     private bool first_time = true;
     private bool once = true;
     private List<string> player_list;
@@ -26,6 +25,8 @@ public class GameController : MonoBehaviour
     public Canvas rate_canvas;
     public Canvas menu_canvas;
     public Canvas speaker_canvas;
+    public Canvas start_canvas;
+    public Canvas wait_canvas;
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
 
@@ -367,7 +368,6 @@ public class GameController : MonoBehaviour
 
     private void canvasLoader()
     {
-        //getPlayerList();
         GameObject temp;
 
         //CANVAS [CURRENT]

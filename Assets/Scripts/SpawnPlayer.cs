@@ -19,21 +19,16 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
     private GameObject camera; //camera
     private string avatar = "PLAYER_";
 
-    private Vector3 temp_position = new Vector3(0, 0, 0);
-    private Vector3 temp_rotation = new Vector3(0, 0, 0);
 
-
-    private PlayerListManager playerListManager;
 
     public override void OnJoinedRoom()
     {
-        playerListManager = PlayerListManager.Instance;
         setData();
         
         base.OnJoinedRoom();
         Debug.Log("New player joined to the room!");
         
-        spawned_player = PhotonNetwork.Instantiate(avatar, temp_position, UnityEngine.Quaternion.Euler(temp_rotation));//transform.position, transform.rotation);
+        spawned_player = PhotonNetwork.Instantiate(avatar, real_position, UnityEngine.Quaternion.Euler(real_rotation));//transform.position, transform.rotation);
     }
 
     public override void OnLeftRoom()

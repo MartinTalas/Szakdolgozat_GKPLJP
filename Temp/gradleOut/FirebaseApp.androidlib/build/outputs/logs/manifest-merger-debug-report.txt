@@ -1,0 +1,31 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:2:1-6:12
+	package
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:3:11-50
+		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:5:11-36
+		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml:4:11-34
+		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+uses-sdk
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+		ADDED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
+		INJECTED from C:\GitHub\Szakdolgozat_GKPLJP\Temp\gradleOut\FirebaseApp.androidlib\AndroidManifest.xml
