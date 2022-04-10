@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour
     private int current_speaker_points = 0;
     private bool is_voted = false;
     private bool is_last = false;
+    private bool first_time = true;
+    private bool once = true;
     private List<string> player_list;
 
     public Canvas rate_canvas;
@@ -27,23 +29,28 @@ public class GameController : MonoBehaviour
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
 
+    void Awake()
+    {
+        dataBaseManager = DataBaseManager.Instance;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         canvasLoader();
-
         rating = Rating.Instance;
-        dataBaseManager = DataBaseManager.Instance;
+        
         jsonParser = JsonParser.Instance;
 
         data = jsonParser.toObject<Data>("userdata");
+        player_list = new List<string>();
+
         FirebaseDatabase.DefaultInstance.GetReference("current_speaker").Child(data.game_id).ValueChanged += currentSpeakerChanged();
         FirebaseDatabase.DefaultInstance.GetReference("games").Child(data.game_id).ChildAdded += playerListChanged();
 
-        player_list = new List<string>();
+        InvokeRepeating("getPlayerList", 0.5f, 1.0f); //getPlayerList();
     }
 
-    bool firstset = true;
     // Update is called once per frame
     void Update()
     {
@@ -61,6 +68,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("FIRST: null");
         }*/
+
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -118,9 +126,11 @@ public class GameController : MonoBehaviour
 
     private async void getPlayerList()
     {
+        string debug = "";
+        string str = "";
         try 
         {
-            /*db = dataBaseManager.getConnection();
+            db = dataBaseManager.getConnection();
             await db.GetReference("games").Child(data.game_id)
                                            .GetValueAsync()
                                            .ContinueWith(task =>
@@ -138,28 +148,48 @@ public class GameController : MonoBehaviour
                                                        player_list.Clear();
                                                        foreach(var item in dts)
                                                        {
-                                                           player_list.Add(item.Key);
-                                                           Debug.Log("Players:" + item.Key);
+                                                           if (!player_list.Contains(item.Key))
+                                                           {
+                                                               player_list.Add(item.Key);
+                                                               str += " " + item.Key;
+                                                               
+                                                           }
                                                        }
 
+                                                       Debug.Log("Players:" + str);
+
+                                                       if (once)
+                                                       {
+                                                           once = false;
+                                                           debug = "playerlist count: " + player_list.Count + ", ";
+                                                       }
                                                    }
                                                    else
                                                    {
                                                        Debug.Log(task.Result.ToString() + " ERROR");
+                                                       debug += " " + task.Result.ToString();
                                                    }
                                                }
                                                else
                                                {
+                                                   debug += " " + task.Result.ToString();
                                                    Debug.LogError("task.IsCompleted: Failed [get playerlist]");
                                                }
 
-                                           });*/
+                                           });
+
+            if(first_time)
+            {
+                setCurrentSpeaker(player_list[0]);
+                first_time = false;
+            }
         }
         catch (Exception ex)
         {
             Debug.Log("Exception: " + ex);
-            GameObject.Find("TESTTEXT").GetComponent<Text>().text = "GETPLAYERLIST EX";
+            debug = "\nplayerlist " + ex.Message;
         }
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
     }
 
     private async void confirmation()
@@ -170,7 +200,7 @@ public class GameController : MonoBehaviour
         }
         else
         {  
-            /*db = dataBaseManager.getConnection();
+            db = dataBaseManager.getConnection();
             try
             {
                 int pnts = current_speaker_points + rating.getVoteRate();
@@ -180,13 +210,14 @@ public class GameController : MonoBehaviour
             {
                 Debug.Log("Exception: " + ex);
             }
-            */
+            
         }
     }
 
     private async void setCurrentSpeaker(string speaker)
     {
-        /*if (Application.internetReachability == NetworkReachability.NotReachable)
+        string debug = "";
+        if (Application.internetReachability == NetworkReachability.NotReachable)
         {
             Debug.Log("Error. Check internet connection!");
         }
@@ -196,34 +227,49 @@ public class GameController : MonoBehaviour
             try
             {
                 await db.GetReference("current_speaker").Child(data.game_id).SetValueAsync(speaker);
+                current_speaker = speaker;
             }
             catch (Exception ex)
             {
                 Debug.Log("Exception: " + ex);
+                debug = "\n scsp" + ex.Message;
             }
 
         }
-
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
         canvasChanger();
-        */
     }
 
     private async void getCurrentSpeaker()
     {
-        /*db = dataBaseManager.getConnection();
-        await db.GetReference("current_speaker").Child(data.game_id).GetValueAsync().ContinueWith(task =>
+        string debug = "";
+        try
         {
-            if (task.IsCompleted)
+            db = dataBaseManager.getConnection();
+            await db.GetReference("current_speaker").Child(data.game_id).GetValueAsync().ContinueWith(task =>
             {
-                Debug.Log("task.IsCompleted: Succeeded [CURRENT SPEAKER]");
-                DataSnapshot data_snapshot = task.Result;
-
-                if (data_snapshot.Exists)
+                if (task.IsCompleted)
                 {
-                    Debug.Log("GETCURRENT" + data_snapshot.Value.ToString());
+                    Debug.Log("task.IsCompleted: Succeeded [CURRENT SPEAKER]");
+                    DataSnapshot data_snapshot = task.Result;
+
+                    if (data_snapshot.Exists)
+                    {
+                        Debug.Log("GETCURRENT" + data_snapshot.Value.ToString());
+                        current_speaker = data_snapshot.Value.ToString();
+                        debug = "get current: " + current_speaker + ", ";
+
+                    }
                 }
-            }
-        });*/
+            });
+            canvasChanger();
+        }
+        catch(Exception ex)
+        {
+            debug = "\ngetCurrentSpeaker: " + ex.Message;
+        }
+
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
     }
 
 
@@ -235,8 +281,12 @@ public class GameController : MonoBehaviour
     
     private EventHandler<ValueChangedEventArgs> currentSpeakerChanged()
     {
-    //    getCurrentSpeaker();
-       // is_voted = true;
+
+
+        getCurrentSpeaker();
+        canvasChanger();
+
+        is_voted = true;
 
         return null; //dummy return
 
@@ -244,7 +294,7 @@ public class GameController : MonoBehaviour
     
     private EventHandler<ChildChangedEventArgs> playerListChanged()
     {
-        //getPlayerList();
+        getPlayerList();
         return null; //dummy return
     }
 
@@ -252,33 +302,39 @@ public class GameController : MonoBehaviour
 
     public void confirm()
     {
-        /*getPlayerList();
+        getPlayerList();
         if (!is_voted)
         {
             confirmation();
             is_voted = false;
 
             canvasChanger();
-        }*/
+        }
     }
 
     public void next()
     {
-        /*for (int i = 0; i < player_list.Count; i++)
+        string str = "";
+        for(int i = 0; i < player_list.Count; i++)
         {
-            is_last = (i == player_list.Count-1) ? true : false;
+            str += " " + player_list[i].ToString();
         }
+        Debug.Log("PLAYER LIST:    -> " + str);
         string n_speaker = "";
         
         for(int i = 0; i < player_list.Count; i++)
         {
-            if(player_list[i] == data.username && !is_last)
+            if(player_list[i] == current_speaker && !(i == player_list.Count - 1))
             {
                 n_speaker = player_list[i + 1];
             }
+            else
+            {
+                //ENDGAME CANVAS
+            }
         }
         setCurrentSpeaker(n_speaker);
-        canvasChanger();*/
+        canvasChanger();
     }
 
     public void menu()
@@ -324,7 +380,7 @@ public class GameController : MonoBehaviour
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
-                speaker_canvas.enabled = true;
+                speaker_canvas.enabled = false;
             }
             temp = null;
         }
@@ -339,7 +395,7 @@ public class GameController : MonoBehaviour
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
-                 rate_canvas.enabled = false;
+                rate_canvas.enabled = false;
             }
             temp = null;
         }
@@ -362,16 +418,19 @@ public class GameController : MonoBehaviour
 
     private void canvasChanger()
     {
-        /*if (current_speaker == data.username)
+        if (current_speaker == data.username)
         {
-            speaker_canvas.enabled = true;
             rate_canvas.enabled = false;
+            menu_canvas.enabled = false;
+            speaker_canvas.enabled = true;
         }
         else
         {
-            speaker_canvas.enabled = false;
             rate_canvas.enabled = true;
-        }*/
+            menu_canvas.enabled = false;
+            speaker_canvas.enabled = false;
+        }
+        Debug.Log("Current speaker: " + current_speaker + "; Me: " + data.username);
     }
 
     private void setFirstSpeaker()

@@ -26,7 +26,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Connected to Lobby.");
-        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nConnected to lobby";
 
     }
 
@@ -44,8 +43,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
             PhotonNetwork.JoinOrCreateRoom(data.game_id.ToUpper(), room_options, TypedLobby.Default);
             Debug.Log("Connected to server.");
-            GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nConnected to server";
-            GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\n" + data.game_id;
         }
         catch(Exception ex)
         {
@@ -58,9 +55,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         Debug.Log("Joined to the room.");
 
-        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nJoined to the room.";
-        GameObject.Find("TESTTEXT").GetComponent<Text>().text += PhotonNetwork.CountOfPlayers.ToString() + " Players Online";
-
         data.player_position = PhotonNetwork.CountOfPlayers;
         jsonParser.toJson<Data>(data, "userdata");
     }
@@ -68,8 +62,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
-        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nOther player joined to the room.";
-        GameObject.Find("TESTTEXT").GetComponent<Text>().text += PhotonNetwork.CountOfPlayers.ToString() + " Players Online";
     }
 
     private void setData()

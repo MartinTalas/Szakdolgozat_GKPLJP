@@ -2252,4 +2252,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/UIScene.unity
   - Assets/Scenes/AvatarSelectorScene.unity
   - Assets/Scenes/RoomScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_16_1.apk
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_16_2.apk

@@ -12,20 +12,28 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
     private int position; //position (AS GAME QUEUE)
     private Vector3 real_position = new Vector3(0, 0, 0);
     private Vector3 real_rotation = new Vector3(0, 0, 0);
-    private GameObject camera; //camera
-    private string avatar = "PLAYER_";
 
     private Vector3 control_position = new Vector3(0, 0, 0);
     private Vector3 control_rotation = new Vector3(0, 0, 0);
 
+    private GameObject camera; //camera
+    private string avatar = "PLAYER_";
+
+    private Vector3 temp_position = new Vector3(0, 0, 0);
+    private Vector3 temp_rotation = new Vector3(0, 0, 0);
+
+
+    private PlayerListManager playerListManager;
+
     public override void OnJoinedRoom()
     {
+        playerListManager = PlayerListManager.Instance;
         setData();
-
+        
         base.OnJoinedRoom();
         Debug.Log("New player joined to the room!");
         
-        spawned_player = PhotonNetwork.Instantiate(avatar, real_position, UnityEngine.Quaternion.Euler(real_rotation));//transform.position, transform.rotation);
+        spawned_player = PhotonNetwork.Instantiate(avatar, temp_position, UnityEngine.Quaternion.Euler(temp_rotation));//transform.position, transform.rotation);
     }
 
     public override void OnLeftRoom()
@@ -54,7 +62,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.position = new Vector3(0, 1.5f, -1.87f);
 
                 control_position = new Vector3(0, 1.1f, -1.25f);
-                control_rotation = new Vector3(-50, 0, 0);
+                control_rotation = new Vector3(50, 0, 0);
                 break;
             case 2:
                 real_rotation = new Vector3(0, 270, 0);
@@ -63,7 +71,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.position = new Vector3(1.17f, 1.5f, -0.66f);
 
                 control_position = new Vector3(0.56f, 1.1f, -0.62f);
-                control_rotation = new Vector3(-50, 270, 0);
+                control_rotation = new Vector3(50, 270, 0);
                 break;
             case 3:
                 real_rotation = new Vector3(0, 90, 0);
@@ -72,7 +80,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.position = new Vector3(-1.18f, 1.5f, -0.66f);
 
                 control_position = new Vector3(-0.56f, 1.1f, -0.62f);
-                control_rotation = new Vector3(-50, 90, 0);
+                control_rotation = new Vector3(50, 90, 0);
                 break;
             case 4:
                 real_rotation = new Vector3(0, 270, 0);
@@ -81,7 +89,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.position = new Vector3(1.17f, 1.5f, 1.24f);
 
                 control_position = new Vector3(0.56f, 1.1f, 1.24f);
-                control_rotation = new Vector3(-50, 270, 0);
+                control_rotation = new Vector3(50, 270, 0);
                 break;
             case 5:
                 real_rotation = new Vector3(0, 90, 0);
@@ -90,7 +98,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.position = new Vector3(-1.18f, 1.5f, 1.24f);
 
                 control_position = new Vector3(-0.56f, 1.1f, 1.24f);
-                control_rotation = new Vector3(-50, 90, 0);
+                control_rotation = new Vector3(50, 90, 0);
                 break;
             case 6:
                 real_rotation = new Vector3(0, 270, 0);
@@ -99,7 +107,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.position = new Vector3(1.17f, 1.5f, 3.15f);
 
                 control_position = new Vector3(0.56f, 1.1f, 3.15f);
-                control_rotation = new Vector3(-50, 270, 0);
+                control_rotation = new Vector3(50, 270, 0);
                 break;
             case 7:
                 real_rotation = new Vector3(0, 90, 0);
@@ -108,7 +116,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.position = new Vector3(-1.18f, 1.5f, 3.15f);
 
                 control_position = new Vector3(-0.56f, 1.1f, 3.15f);
-                control_rotation = new Vector3(-50, 90, 0);
+                control_rotation = new Vector3(50, 90, 0);
                 break;
             case 8:
                 real_rotation = new Vector3(0, 180, 0);
@@ -117,7 +125,7 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
                 camera.transform.position = new Vector3(0, 1.5f, 4.35f);
 
                 control_position = new Vector3(0, 1.1f, 3.78f);
-                control_rotation = new Vector3(-50, 180, 0);
+                control_rotation = new Vector3(50, 180, 0);
                 break;
             default:
                 real_rotation = new Vector3(0, 0, 0);
@@ -161,5 +169,6 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
         avatar += sex;
         avatar += outfit;
         avatar += data.avatar[2].ToString();
+
     }
 }
