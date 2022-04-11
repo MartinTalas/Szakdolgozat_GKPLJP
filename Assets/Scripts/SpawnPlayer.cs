@@ -58,6 +58,8 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
                 control_position = new Vector3(0, 1.1f, -1.25f);
                 control_rotation = new Vector3(50, 0, 0);
+                GameObject.Find("StartCanvas").GetComponent<Canvas>().enabled = true;
+                GameObject.Find("WaitCanvas").GetComponent<Canvas>().enabled = false;
                 break;
             case 2:
                 real_rotation = new Vector3(0, 270, 0);
@@ -67,6 +69,8 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
                 control_position = new Vector3(0.56f, 1.1f, -0.62f);
                 control_rotation = new Vector3(50, 270, 0);
+                GameObject.Find("StartCanvas").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("WaitCanvas").GetComponent<Canvas>().enabled = true;
                 break;
             case 3:
                 real_rotation = new Vector3(0, 90, 0);
@@ -76,6 +80,8 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
                 control_position = new Vector3(-0.56f, 1.1f, -0.62f);
                 control_rotation = new Vector3(50, 90, 0);
+                GameObject.Find("StartCanvas").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("WaitCanvas").GetComponent<Canvas>().enabled = true;
                 break;
             case 4:
                 real_rotation = new Vector3(0, 270, 0);
@@ -85,6 +91,8 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
                 control_position = new Vector3(0.56f, 1.1f, 1.24f);
                 control_rotation = new Vector3(50, 270, 0);
+                GameObject.Find("StartCanvas").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("WaitCanvas").GetComponent<Canvas>().enabled = true;
                 break;
             case 5:
                 real_rotation = new Vector3(0, 90, 0);
@@ -94,6 +102,8 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
                 control_position = new Vector3(-0.56f, 1.1f, 1.24f);
                 control_rotation = new Vector3(50, 90, 0);
+                GameObject.Find("StartCanvas").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("WaitCanvas").GetComponent<Canvas>().enabled = true;
                 break;
             case 6:
                 real_rotation = new Vector3(0, 270, 0);
@@ -103,6 +113,8 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
                 control_position = new Vector3(0.56f, 1.1f, 3.15f);
                 control_rotation = new Vector3(50, 270, 0);
+                GameObject.Find("StartCanvas").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("WaitCanvas").GetComponent<Canvas>().enabled = true;
                 break;
             case 7:
                 real_rotation = new Vector3(0, 90, 0);
@@ -112,6 +124,8 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
                 control_position = new Vector3(-0.56f, 1.1f, 3.15f);
                 control_rotation = new Vector3(50, 90, 0);
+                GameObject.Find("StartCanvas").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("WaitCanvas").GetComponent<Canvas>().enabled = true;
                 break;
             case 8:
                 real_rotation = new Vector3(0, 180, 0);
@@ -121,6 +135,8 @@ public class SpawnPlayer : MonoBehaviourPunCallbacks
 
                 control_position = new Vector3(0, 1.1f, 3.78f);
                 control_rotation = new Vector3(50, 180, 0);
+                GameObject.Find("StartCanvas").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("WaitCanvas").GetComponent<Canvas>().enabled = true;
                 break;
             default:
                 real_rotation = new Vector3(0, 0, 0);

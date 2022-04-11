@@ -1,5 +1,6 @@
 ﻿using Firebase.Database;
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,9 +19,9 @@ public class GameController : MonoBehaviour
     private string current_speaker = "ERR";
     private int current_speaker_points = 0;
     private bool is_voted = false;
-    private bool first_time = true;
     private bool once = true;
     private List<string> player_list;
+    private Dictionary<int, string> player_dictionary;
 
     public Canvas rate_canvas;
     public Canvas menu_canvas;
@@ -45,9 +46,10 @@ public class GameController : MonoBehaviour
 
         data = jsonParser.toObject<Data>("userdata");
         player_list = new List<string>();
+        player_dictionary = new Dictionary<int, string>();
 
-        FirebaseDatabase.DefaultInstance.GetReference("current_speaker").Child(data.game_id).ValueChanged += currentSpeakerChanged();
-        FirebaseDatabase.DefaultInstance.GetReference("games").Child(data.game_id).ChildAdded += playerListChanged();
+        FirebaseDatabase.DefaultInstance.GetReference("current_speaker").Child(data.game_id).ValueChanged += currentSpeakerChanged;
+        FirebaseDatabase.DefaultInstance.GetReference("games").Child(data.game_id).ChildAdded += playerListChanged;
 
         InvokeRepeating("getPlayerList", 0.5f, 1.0f); //getPlayerList();
     }
@@ -145,16 +147,30 @@ public class GameController : MonoBehaviour
                                                    {
                                                        Debug.Log(task.Result.ToString());
                                                        var dts = data_snapshot.Value as Dictionary<string, object>;
-
+                                                       Dictionary<int, string> temp = new Dictionary<int, string>();
                                                        player_list.Clear();
+                                                       player_dictionary.Clear();
+                                                       temp.Clear();
+
                                                        foreach (var item in dts)
                                                        {
                                                            if (!player_list.Contains(item.Key))
                                                            {
                                                                player_list.Add(item.Key);
+                                                               temp.Add(Int32.Parse(item.Value.ToString()), item.Key);
                                                                str += " " + item.Key;
 
                                                            }
+                                                       }
+
+                                                       foreach(var item in temp.OrderBy(order => order.Key))
+                                                       {
+                                                           player_dictionary.Add(item.Key, item.Value);
+                                                       }
+
+                                                       foreach (var item in player_dictionary)
+                                                       {
+                                                           Debug.Log("DICTIONARY: " + item.Key + " " + item.Value);
                                                        }
 
                                                        Debug.Log("Players:" + str);
@@ -162,29 +178,19 @@ public class GameController : MonoBehaviour
                                                        if (once)
                                                        {
                                                            once = false;
-                                                           debug = "playerlist count: " + player_list.Count + ", ";
                                                        }
                                                    }
                                                    else
                                                    {
                                                        Debug.Log(task.Result.ToString() + " ERROR");
-                                                       debug += " " + task.Result.ToString();
                                                    }
                                                }
                                                else
                                                {
-                                                   debug += " " + task.Result.ToString();
                                                    Debug.LogError("task.IsCompleted: Failed [get playerlist]");
                                                }
 
                                            });
-
-            if (first_time)
-            {
-                setDefaultControl();
-                setFirstSpeaker();
-                first_time = false;
-            }
         }
         catch (Exception ex)
         {
@@ -216,6 +222,46 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private async void setCurrentSpeaker()
+    {
+        string debug = "";
+        string next_speaker = "";
+
+        for (int i = 0; i < player_dictionary.Count; i++)
+        {
+            if (current_speaker == player_dictionary.ElementAt(i).Value)
+            {
+                next_speaker = player_dictionary.ElementAt(i).Value;
+            }
+
+            if (next_speaker == player_dictionary.ElementAt(player_dictionary.Count - 1).Value)
+            {
+                next_speaker = "END";
+            }
+        }
+
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Error. Check internet connection!");
+        }
+        else
+        {
+            db = dataBaseManager.getConnection();
+            try
+            {
+                await db.GetReference("current_speaker").Child(data.game_id).SetValueAsync(next_speaker);
+                current_speaker = next_speaker;
+            }
+            catch (Exception ex)
+            {
+                Debug.Log("Exception: " + ex);
+                debug = "\n scsp" + ex.Message;
+            }
+
+        }
+        GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
+    }
+
     private async void setCurrentSpeaker(string speaker)
     {
         string debug = "";
@@ -239,7 +285,6 @@ public class GameController : MonoBehaviour
 
         }
         GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
-        //canvasChanger();
     }
 
     private async void getCurrentSpeaker()
@@ -264,7 +309,6 @@ public class GameController : MonoBehaviour
                     }
                 }
             });
-            //canvasChanger();
         }
         catch (Exception ex)
         {
@@ -281,23 +325,46 @@ public class GameController : MonoBehaviour
         //current_speaker_points = -1;
     }
 
-    private EventHandler<ValueChangedEventArgs> currentSpeakerChanged()
+    private void currentSpeakerChanged(object sender, ValueChangedEventArgs args)
     {
-
-
         getCurrentSpeaker();
-        //canvasChanger();
+
+        Debug.Log("CHANGE ARGS " + args.Snapshot.Value);
+        if (true)
+        {
+            if (args.DatabaseError == null)
+            {
+                current_speaker = args.Snapshot.Value.ToString();
+            }
+
+            if (current_speaker == data.username)
+            {
+                Debug.Log("IF");
+                rate_canvas.enabled = false;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = true;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+                
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                rate_canvas.enabled = true;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = false;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+            }
+        }
 
         is_voted = true;
 
-        return null; //dummy return
-
     }
 
-    private EventHandler<ChildChangedEventArgs> playerListChanged()
+    private void playerListChanged(object sender, ChildChangedEventArgs args)
     {
         getPlayerList();
-        return null; //dummy return
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -316,27 +383,7 @@ public class GameController : MonoBehaviour
 
     public void next()
     {
-        string str = "";
-        for (int i = 0; i < player_list.Count; i++)
-        {
-            str += " " + player_list[i].ToString();
-        }
-        Debug.Log("PLAYER LIST:    -> " + str);
-        string n_speaker = "";
-
-        for (int i = 0; i < player_list.Count; i++)
-        {
-            if (player_list[i] == current_speaker && !(i == player_list.Count - 1))
-            {
-                n_speaker = player_list[i + 1];
-            }
-            else
-            {
-                //ENDGAME CANVAS
-            }
-        }
-        setCurrentSpeaker(n_speaker);
-        //canvasChanger();
+        setCurrentSpeaker();
     }
 
     public void menu()
@@ -468,29 +515,9 @@ public class GameController : MonoBehaviour
         Debug.Log("Current speaker: " + current_speaker + "; Me: " + data.username);
     }
 
-    private void setFirstSpeaker()
-    {
-        current_speaker = player_list[0];
-
-        setCurrentSpeaker(current_speaker);
-    }
-
-    private void setDefaultControl()
-    {
-        if (player_list[0] == data.username)
-        {
-            start_canvas.enabled = true;
-            wait_canvas.enabled = false;
-        }
-        else
-        {
-            start_canvas.enabled = true;
-            wait_canvas.enabled = false;
-        }
-    }
-
     public void startSet()
     {
+        current_speaker = player_dictionary.ElementAt(0).Value;
         setCurrentSpeaker(current_speaker);
         canvasChanger();
     }
