@@ -10,7 +10,6 @@ ScriptsOnlyBuild:
     - KeyboardDragHandler
     - KeyboardScript
     - NetworkManager
-    - Readme
     - SpawnPlayer
     - UIController
     - VRInputField
@@ -24,6 +23,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -1624,7 +1625,7 @@ ScriptsOnlyBuild:
     className: LobbyMainPanel
   - hash:
       serializedVersion: 2
-      Hash: 25c7b8df7044954b758e81c644f8f4e7
+      Hash: 6d68f9def54fedeb6aea4713ec3b5ffd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -2251,4 +2252,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/UIScene.unity
   - Assets/Scenes/AvatarSelectorScene.unity
   - Assets/Scenes/RoomScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_16_3.apk
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_16_4.apk

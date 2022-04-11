@@ -488,6 +488,7 @@ public class UIController : MonoBehaviour
 
 
                                             });
+                    
                 }
                 catch (Exception ex)
                 {
@@ -590,6 +591,7 @@ public class UIController : MonoBehaviour
 
 
                                             });
+                    
                 }
                 catch (Exception ex)
                 {
@@ -636,6 +638,10 @@ public class UIController : MonoBehaviour
 
     public async void join()
     {
+        Data data = new Data();
+        data = jsonParser.toObject<Data>("userdata");
+
+        bool is_joined = false;
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
             Debug.Log("Error. Check internet connection!");
@@ -663,12 +669,22 @@ public class UIController : MonoBehaviour
                                                       {
                                                           Debug.Log(task.Result.ToString() + " GAME ID IS EXISTS");
                                                           is_game_id_exists = true; //true if game id is exists
-
+                                                          string DEBUG = "-------------DEBUG:";
                                                           var dts = data_snapshot.Value as Dictionary<string, object>;
-                                                          var dts_vc = dts.Values as Dictionary<string, object>.ValueCollection;
-                                                          Debug.Log("User count: "+ dts_vc.Count);
-                                                          player_num = dts_vc.Count;
-                                                  }
+                                                          
+                                                          player_num = dts.Count + 1;
+                                                          foreach(var item in dts)
+                                                          {
+                                                              DEBUG += item.Key +" = " + item.Value + "\n";
+                                                              if(data.username == item.Key.ToString())
+                                                              {
+                                                                  is_joined = true;
+                                                                  string str_helper = item.Value.ToString();
+                                                                  player_num = Int32.Parse(str_helper);
+                                                              }
+                                                          }
+                                                          Debug.Log(DEBUG);
+                                                      }
                                                       else
                                                       {
                                                           Debug.Log(task.Result.ToString() + " GAME ID DOES NOT EXISTS");
@@ -697,7 +713,7 @@ public class UIController : MonoBehaviour
                 info_text.text = "Game ID requires 8 letters!";
             }
 
-            saveParticipant(player_num);
+            saveParticipant(player_num, is_joined);
         }
     }
     
@@ -711,6 +727,9 @@ public class UIController : MonoBehaviour
         {
             Data dt = jsonParser.toObject<Data>("userdata");
             Debug.Log(dt.game_id + " " + dt.username);
+            dt.player_position = 1;
+            jsonParser.toJson<Data>(dt, "userdata");
+
             if (dt.game_id.Length > 0)
             {
                 db = dataBaseManager.getConnection();
@@ -794,7 +813,7 @@ public class UIController : MonoBehaviour
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------[ DATA FUNCTIONS ]----------------------------------------------------------------------
 
-    private async void saveParticipant(int player_num)
+    private async void saveParticipant(int player_num, bool is_joined)
     {
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
@@ -806,14 +825,18 @@ public class UIController : MonoBehaviour
             Debug.Log(dt.game_id + " " + dt.username + " " + player_num);
             if (dt.game_id.Length > 0)
             {
-                db = dataBaseManager.getConnection();
-                await db.GetReference("games").Child(dt.game_id).Child(dt.username).SetValueAsync(player_num + 1);
+                if (!is_joined)
+                {
+                    db = dataBaseManager.getConnection();
+                    await db.GetReference("games").Child(dt.game_id).Child(dt.username).SetValueAsync(player_num);
+                }
+
                 info_text.text = "";
 
                 saveJoinStatus(false); // save host status (for multiplayer)
 
-                //dt.player_position = player_num;
-                //jsonParser.toJson<Data>(dt, "userdata");
+                dt.player_position = player_num;
+                jsonParser.toJson<Data>(dt, "userdata");
 
                 goToCharacterSelectorScene();
             }

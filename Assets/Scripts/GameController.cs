@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
     {
         canvasLoader();
         rating = Rating.Instance;
-        
+
         jsonParser = JsonParser.Instance;
 
         data = jsonParser.toObject<Data>("userdata");
@@ -129,7 +129,7 @@ public class GameController : MonoBehaviour
     {
         string debug = "";
         string str = "";
-        try 
+        try
         {
             db = dataBaseManager.getConnection();
             await db.GetReference("games").Child(data.game_id)
@@ -147,13 +147,13 @@ public class GameController : MonoBehaviour
                                                        var dts = data_snapshot.Value as Dictionary<string, object>;
 
                                                        player_list.Clear();
-                                                       foreach(var item in dts)
+                                                       foreach (var item in dts)
                                                        {
                                                            if (!player_list.Contains(item.Key))
                                                            {
                                                                player_list.Add(item.Key);
                                                                str += " " + item.Key;
-                                                               
+
                                                            }
                                                        }
 
@@ -179,9 +179,10 @@ public class GameController : MonoBehaviour
 
                                            });
 
-            if(first_time)
+            if (first_time)
             {
-                setCurrentSpeaker(player_list[0]);
+                setDefaultControl();
+                setFirstSpeaker();
                 first_time = false;
             }
         }
@@ -200,7 +201,7 @@ public class GameController : MonoBehaviour
             Debug.Log("Error. Check internet connection!");
         }
         else
-        {  
+        {
             db = dataBaseManager.getConnection();
             try
             {
@@ -211,7 +212,7 @@ public class GameController : MonoBehaviour
             {
                 Debug.Log("Exception: " + ex);
             }
-            
+
         }
     }
 
@@ -238,7 +239,7 @@ public class GameController : MonoBehaviour
 
         }
         GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
-        canvasChanger();
+        //canvasChanger();
     }
 
     private async void getCurrentSpeaker()
@@ -263,9 +264,9 @@ public class GameController : MonoBehaviour
                     }
                 }
             });
-            canvasChanger();
+            //canvasChanger();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             debug = "\ngetCurrentSpeaker: " + ex.Message;
         }
@@ -279,20 +280,20 @@ public class GameController : MonoBehaviour
         //await;dblistener
         //current_speaker_points = -1;
     }
-    
+
     private EventHandler<ValueChangedEventArgs> currentSpeakerChanged()
     {
 
 
         getCurrentSpeaker();
-        canvasChanger();
+        //canvasChanger();
 
         is_voted = true;
 
         return null; //dummy return
 
     }
-    
+
     private EventHandler<ChildChangedEventArgs> playerListChanged()
     {
         getPlayerList();
@@ -309,23 +310,23 @@ public class GameController : MonoBehaviour
             confirmation();
             is_voted = false;
 
-            canvasChanger();
+            //canvasChanger();
         }
     }
 
     public void next()
     {
         string str = "";
-        for(int i = 0; i < player_list.Count; i++)
+        for (int i = 0; i < player_list.Count; i++)
         {
             str += " " + player_list[i].ToString();
         }
         Debug.Log("PLAYER LIST:    -> " + str);
         string n_speaker = "";
-        
-        for(int i = 0; i < player_list.Count; i++)
+
+        for (int i = 0; i < player_list.Count; i++)
         {
-            if(player_list[i] == current_speaker && !(i == player_list.Count - 1))
+            if (player_list[i] == current_speaker && !(i == player_list.Count - 1))
             {
                 n_speaker = player_list[i + 1];
             }
@@ -335,7 +336,7 @@ public class GameController : MonoBehaviour
             }
         }
         setCurrentSpeaker(n_speaker);
-        canvasChanger();
+        //canvasChanger();
     }
 
     public void menu()
@@ -384,7 +385,7 @@ public class GameController : MonoBehaviour
             }
             temp = null;
         }
-        
+
         //CANVAS [RATE]
         {
             temp = GameObject.Find("RateCanvas");
@@ -399,7 +400,7 @@ public class GameController : MonoBehaviour
             }
             temp = null;
         }
-        
+
         //CANVAS [MENU]
         {
             temp = GameObject.Find("GameMenuCanvas");
@@ -414,6 +415,36 @@ public class GameController : MonoBehaviour
             }
             temp = null;
         }
+
+        //CANVAS [START]
+        {
+            temp = GameObject.Find("StartCanvas");
+            if (temp != null)
+            {
+                start_canvas = temp.GetComponent<Canvas>();
+                if (start_canvas == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+                start_canvas.enabled = true;
+            }
+            temp = null;
+        }
+
+        //CANVAS [WAIT]
+        {
+            temp = GameObject.Find("WaitCanvas");
+            if (temp != null)
+            {
+                wait_canvas = temp.GetComponent<Canvas>();
+                if (wait_canvas == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+                wait_canvas.enabled = false;
+            }
+            temp = null;
+        }
     }
 
     private void canvasChanger()
@@ -423,21 +454,44 @@ public class GameController : MonoBehaviour
             rate_canvas.enabled = false;
             menu_canvas.enabled = false;
             speaker_canvas.enabled = true;
+            start_canvas.enabled = false;
+            wait_canvas.enabled = false;
         }
         else
         {
             rate_canvas.enabled = true;
             menu_canvas.enabled = false;
             speaker_canvas.enabled = false;
+            start_canvas.enabled = false;
+            wait_canvas.enabled = false;
         }
         Debug.Log("Current speaker: " + current_speaker + "; Me: " + data.username);
     }
 
     private void setFirstSpeaker()
     {
-        //current_speaker = player_list[0];
+        current_speaker = player_list[0];
 
-        //setCurrentSpeaker(current_speaker);
-        //canvasChanger();
+        setCurrentSpeaker(current_speaker);
+    }
+
+    private void setDefaultControl()
+    {
+        if (player_list[0] == data.username)
+        {
+            start_canvas.enabled = true;
+            wait_canvas.enabled = false;
+        }
+        else
+        {
+            start_canvas.enabled = true;
+            wait_canvas.enabled = false;
+        }
+    }
+
+    public void startSet()
+    {
+        setCurrentSpeaker(current_speaker);
+        canvasChanger();
     }
 }

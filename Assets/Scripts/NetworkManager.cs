@@ -21,7 +21,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.ConnectUsingSettings();
         Debug.Log("Try to connect to server...");
-        GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\nTry to connect to server...";
     }
     public override void OnJoinedLobby()
     {
@@ -55,8 +54,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         Debug.Log("Joined to the room.");
 
-        data.player_position = PhotonNetwork.CountOfPlayers;
-        jsonParser.toJson<Data>(data, "userdata");
+        //data.player_position = PhotonNetwork.CountOfPlayers; //try other option: from db
+        //jsonParser.toJson<Data>(data, "userdata");
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
