@@ -260,6 +260,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!114 &19006600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,6 +640,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!1001 &99662889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -943,6 +951,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!1 &154518755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1095,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!114 &154518761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,6 +1333,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!1 &176145388
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,6 +3356,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!114 &736802747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4361,6 +4385,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!1 &1033305182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4475,7 +4503,7 @@ GameObject:
   - component: {fileID: 1035211545}
   - component: {fileID: 1035211544}
   m_Layer: 5
-  m_Name: ControlUsernameText
+  m_Name: UsernameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5846,6 +5874,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!114 &1321101543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6933,6 +6965,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!114 &1631660966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7509,7 +7545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1790390923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7999,6 +8035,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!114 &1843205307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8993,6 +9033,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!1 &2017059126
 GameObject:
   m_ObjectHideFlags: 0
@@ -9333,6 +9377,10 @@ MonoBehaviour:
   speaker_canvas: {fileID: 0}
   start_canvas: {fileID: 0}
   wait_canvas: {fileID: 0}
+  topic: {fileID: 0}
+  current_topic: {fileID: 0}
+  username: {fileID: 0}
+  current_username: {fileID: 0}
 --- !u!114 &2035078840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9642,7 +9690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2108497321
 RectTransform:
   m_ObjectHideFlags: 0

@@ -28,6 +28,12 @@ public class GameController : MonoBehaviour
     public Canvas speaker_canvas;
     public Canvas start_canvas;
     public Canvas wait_canvas;
+
+    public Text topic;
+    public Text current_topic;
+    public Text username;
+    public Text current_username;
+
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------[ INHERITED FROM MONOBEHAVIOUS ]---------------------------------------------------------------
 
@@ -50,6 +56,7 @@ public class GameController : MonoBehaviour
 
         FirebaseDatabase.DefaultInstance.GetReference("current_speaker").Child(data.game_id).ValueChanged += currentSpeakerChanged;
         FirebaseDatabase.DefaultInstance.GetReference("games").Child(data.game_id).ChildAdded += playerListChanged;
+        FirebaseDatabase.DefaultInstance.GetReference("games").Child(data.game_id).ValueChanged += playerListValueChanged;
 
         InvokeRepeating("getPlayerList", 0.5f, 1.0f); //getPlayerList();
     }
@@ -57,20 +64,6 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*try
-        {
-            
-            while (firstset)
-            {
-                setFirstSpeaker();
-                firstset = false;
-                Debug.Log("FIRST: SET");
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.Log("FIRST: null");
-        }*/
 
     }
 
@@ -175,10 +168,6 @@ public class GameController : MonoBehaviour
 
                                                        Debug.Log("Players:" + str);
 
-                                                       if (once)
-                                                       {
-                                                           once = false;
-                                                       }
                                                    }
                                                    else
                                                    {
@@ -224,6 +213,7 @@ public class GameController : MonoBehaviour
 
     private async void setCurrentSpeaker()
     {
+        Debug.Log("SET CURRENT");
         string debug = "";
         string next_speaker = "";
 
@@ -231,13 +221,18 @@ public class GameController : MonoBehaviour
         {
             if (current_speaker == player_dictionary.ElementAt(i).Value)
             {
-                next_speaker = player_dictionary.ElementAt(i).Value;
+                next_speaker = player_dictionary.ElementAt(i + 1).Value;
+                break;
             }
-
-            if (next_speaker == player_dictionary.ElementAt(player_dictionary.Count - 1).Value)
+            else if (next_speaker == player_dictionary.ElementAt(player_dictionary.Count - 1).Value)
             {
                 next_speaker = "END";
             }
+            else
+            {
+                next_speaker = "ERR";
+            }
+            Debug.Log("NEXT: " + next_speaker);
         }
 
         if (Application.internetReachability == NetworkReachability.NotReachable)
@@ -260,6 +255,8 @@ public class GameController : MonoBehaviour
 
         }
         GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
+
+        Debug.Log("Current: " + current_speaker);
     }
 
     private async void setCurrentSpeaker(string speaker)
@@ -305,10 +302,87 @@ public class GameController : MonoBehaviour
                         Debug.Log("GETCURRENT" + data_snapshot.Value.ToString());
                         current_speaker = data_snapshot.Value.ToString();
                         debug = "get current: " + current_speaker + ", ";
+                        if(current_speaker == "")
+                        {
+                            current_speaker = "ERR";
+                        }
 
                     }
+
+
                 }
+            
             });
+            if (current_speaker == data.username)
+            {
+                Debug.Log("change IF:" + current_speaker + ":");
+                rate_canvas.enabled = false;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = true;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+
+            }
+            else if (current_speaker == "")
+            {
+                Debug.Log("change ELSE IF:" + current_speaker + ":");
+
+                rate_canvas.enabled = false;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = false;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+            }
+            else if (current_speaker == "ERR")
+            {
+                Debug.Log("change ELSE IF:" + current_speaker + ":");
+
+                rate_canvas.enabled = false;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = false;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+            }
+            else
+            {
+                Debug.Log("change ELSE speaker:" + current_speaker + ":");
+                rate_canvas.enabled = true;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = false;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+            }
+
+
+            /*if (current_speaker == data.username)
+            {
+                Debug.Log("IF");
+                rate_canvas.enabled = false;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = true;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+
+            }
+            else if(current_speaker == "")
+            {
+                Debug.Log("ELSE IF");
+
+                rate_canvas.enabled = false;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = false;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+            }
+            else
+            {
+                Debug.Log("ELSE");
+                rate_canvas.enabled = true;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = false;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+            }*/
         }
         catch (Exception ex)
         {
@@ -329,40 +403,65 @@ public class GameController : MonoBehaviour
     {
         getCurrentSpeaker();
 
-        Debug.Log("CHANGE ARGS " + args.Snapshot.Value);
-        if (true)
+        //Debug.Log("CHANGE ARGS " + args.Snapshot.Value);
+        
+        /*if (current_speaker == data.username)
         {
-            if (args.DatabaseError == null)
-            {
-                current_speaker = args.Snapshot.Value.ToString();
-            }
+            Debug.Log("change IF:" + current_speaker + ":");
+            rate_canvas.enabled = false;
+            menu_canvas.enabled = false;
+            speaker_canvas.enabled = true;
+            start_canvas.enabled = false;
+            wait_canvas.enabled = false;
 
-            if (current_speaker == data.username)
-            {
-                Debug.Log("IF");
-                rate_canvas.enabled = false;
-                menu_canvas.enabled = false;
-                speaker_canvas.enabled = true;
-                start_canvas.enabled = false;
-                wait_canvas.enabled = false;
-                
-            }
-            else
-            {
-                Debug.Log("ELSE");
-                rate_canvas.enabled = true;
-                menu_canvas.enabled = false;
-                speaker_canvas.enabled = false;
-                start_canvas.enabled = false;
-                wait_canvas.enabled = false;
-            }
         }
+        else if (current_speaker == "")
+        {
+            Debug.Log("change ELSE IF:" + current_speaker + ":");
+
+            rate_canvas.enabled = false;
+            menu_canvas.enabled = false;
+            speaker_canvas.enabled = false;
+            start_canvas.enabled = false;
+            wait_canvas.enabled = false;
+        }
+        else if (current_speaker == "ERR")
+        {
+            Debug.Log("change ELSE IF:" + current_speaker + ":");
+
+            rate_canvas.enabled = false;
+            menu_canvas.enabled = false;
+            speaker_canvas.enabled = false;
+            start_canvas.enabled = false;
+            wait_canvas.enabled = false;
+        }
+        else
+        {
+            Debug.Log("change ELSE speaker:" + current_speaker + ":" );
+            rate_canvas.enabled = true;
+            menu_canvas.enabled = false;
+            speaker_canvas.enabled = false;
+            start_canvas.enabled = false;
+            wait_canvas.enabled = false;
+        }*/
+        
 
         is_voted = true;
+
+        if (once)
+        {
+            setCurrentSpeaker();
+            once = false;
+        }
 
     }
 
     private void playerListChanged(object sender, ChildChangedEventArgs args)
+    {
+        getPlayerList(); 
+    }
+
+    private void playerListValueChanged(object sender, ValueChangedEventArgs args)
     {
         getPlayerList();
     }
@@ -376,14 +475,13 @@ public class GameController : MonoBehaviour
         {
             confirmation();
             is_voted = false;
-
-            //canvasChanger();
         }
     }
 
     public void next()
     {
         setCurrentSpeaker();
+        canvasChanger();
     }
 
     public void menu()
@@ -428,7 +526,6 @@ public class GameController : MonoBehaviour
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
-                speaker_canvas.enabled = false;
             }
             temp = null;
         }
@@ -443,7 +540,6 @@ public class GameController : MonoBehaviour
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
-                rate_canvas.enabled = false;
             }
             temp = null;
         }
@@ -458,7 +554,6 @@ public class GameController : MonoBehaviour
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
-                menu_canvas.enabled = false;
             }
             temp = null;
         }
@@ -473,7 +568,6 @@ public class GameController : MonoBehaviour
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
-                start_canvas.enabled = true;
             }
             temp = null;
         }
@@ -488,10 +582,81 @@ public class GameController : MonoBehaviour
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
-                wait_canvas.enabled = false;
             }
             temp = null;
         }
+
+        JsonParser jp = JsonParser.Instance;
+        Data dt = jp.toObject<Data>("userdata");
+        //TEXT [TOPIC]
+        {
+            temp = GameObject.Find("TopicText");
+            if (temp != null)
+            {
+                topic = temp.GetComponent<Text>();
+                topic.text = dt.topic;
+
+                if (topic == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
+        //TEXT [CURRENT TOPIC]
+        {
+            temp = GameObject.Find("CurrentTopicText");
+            if (temp != null)
+            {
+                current_topic = temp.GetComponent<Text>();
+                current_topic.text = dt.topic;
+
+                if (current_topic == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
+        //TEXT [USERNAME]
+        {
+            temp = GameObject.Find("ControlUsernameText");
+            if (temp != null)
+            {
+                username = temp.GetComponent<Text>();
+                username.text = dt.username;
+
+                if (username == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
+        //TEXT [CURRENT USERNAME]
+        {
+            temp = GameObject.Find("CurrentControlUsernameText");
+            if (temp != null)
+            {
+                current_username = temp.GetComponent<Text>();
+                current_username.text = dt.username;
+
+                if (current_username == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
+        wait_canvas.enabled = false;
+        start_canvas.enabled = false; // true
+        speaker_canvas.enabled = false;
+        rate_canvas.enabled = false;
+        menu_canvas.enabled = false;
     }
 
     private void canvasChanger()

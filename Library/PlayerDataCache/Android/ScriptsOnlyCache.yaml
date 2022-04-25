@@ -23,10 +23,9 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
-    PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
+    - Photon.Pun.PhotonHandler
     - Photon.Pun.PhotonRigidbodyView
     - Photon.Pun.PhotonTransformView
     - Photon.Pun.PhotonView
@@ -270,6 +269,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10130}
     - Class: 114
       Script: {instanceID: 10134}
+    - Class: 114
+      Script: {instanceID: 10276}
     - Class: 114
       Script: {instanceID: 10330}
     - Class: 114
@@ -1103,7 +1104,7 @@ ScriptsOnlyBuild:
     className: AsteroidsGameManager
   - hash:
       serializedVersion: 2
-      Hash: 25c3d8f28c5c2676ab62b234b5125a8a
+      Hash: c4a77cb14aafb6a3c7c28f0afa0199ea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIController
@@ -1625,7 +1626,7 @@ ScriptsOnlyBuild:
     className: LobbyMainPanel
   - hash:
       serializedVersion: 2
-      Hash: 6d68f9def54fedeb6aea4713ec3b5ffd
+      Hash: 6a900c1252cc1d3251c72a8f1d8c9c0a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -2252,4 +2253,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/UIScene.unity
   - Assets/Scenes/AvatarSelectorScene.unity
   - Assets/Scenes/RoomScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_0_16_5.apk
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_1_1.apk

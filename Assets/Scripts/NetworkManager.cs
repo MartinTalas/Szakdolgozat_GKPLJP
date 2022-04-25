@@ -45,7 +45,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
         catch(Exception ex)
         {
-            GameObject.Find("TESTTEXT").GetComponent<Text>().text += "\n"+ex;
+            
         }
     }
 

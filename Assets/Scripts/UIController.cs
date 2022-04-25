@@ -15,6 +15,7 @@ enum FIELDENUM //enum for the textfields [INPUTS]
     SIGN_UP_PASSWORD,
     SIGN_UP_PASSWORD_AGAIN,
     GAME_CODE,
+    TOPIC,
     NON
 }
 
@@ -35,6 +36,7 @@ public class UIController : MonoBehaviour
     public VRInputField sign_up_password;
     public VRInputField sign_up_again_password; 
     public VRInputField game_id_input; //GameIDInput
+    public VRInputField topic_input;
 
     public Text info_text;
     public Text internet_connection_lost_text;
@@ -260,6 +262,20 @@ public class UIController : MonoBehaviour
             {
                 game_id_input = temp.GetComponent<VRInputField>();
                 if (game_id_input == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
+        //INPUT [TOPIC]
+        {
+            temp = GameObject.Find("TopicInput");
+            if (temp != null)
+            {
+                topic_input = temp.GetComponent<VRInputField>();
+                if (topic_input == null)
                 {
                     Debug.LogError("Could not locate Canvas component on " + temp.name);
                 }
@@ -728,12 +744,24 @@ public class UIController : MonoBehaviour
             Data dt = jsonParser.toObject<Data>("userdata");
             Debug.Log(dt.game_id + " " + dt.username);
             dt.player_position = 1;
+            
+            if (topic_input.text.Length == 0)
+            {
+                dt.topic = "NO TOPIC";
+            }
+            else
+            {
+                dt.topic = topic_input.text;
+            }
+
             jsonParser.toJson<Data>(dt, "userdata");
 
             if (dt.game_id.Length > 0)
             {
                 db = dataBaseManager.getConnection();
                 await db.GetReference("games").Child(dt.game_id).Child(dt.username).SetValueAsync(1);
+
+                await db.GetReference("VR_topics").Child(dt.game_id).SetValueAsync(topic_input.text);
                 info_text.text = "";
 
                 saveJoinStatus(true); // save host status (for multiplayer)
@@ -921,6 +949,11 @@ public class UIController : MonoBehaviour
                 keyboard_input_field.text = game_id_input.text;
                 break;
 
+            case "TopicInput":
+                field_enum = FIELDENUM.TOPIC;
+                keyboard_input_field.text = topic_input.text;
+                break;
+
             default:
                 field_enum = FIELDENUM.NON;
                 keyboard_input_field.text = "";
@@ -962,6 +995,10 @@ public class UIController : MonoBehaviour
                 case FIELDENUM.GAME_CODE:
                     game_id_input.text = temp;
                     break;
+                
+                case FIELDENUM.TOPIC:
+                    topic_input.text = temp;
+                    break;
 
                 default:
                     field_enum = FIELDENUM.NON;
@@ -982,6 +1019,7 @@ public class UIController : MonoBehaviour
         sign_up_password;
         sign_up_again_password;
         game_id_input;
+        topic_input;
     */
 
     private void inputHightlight(VRInputField highlight_this)
@@ -995,6 +1033,7 @@ public class UIController : MonoBehaviour
                 sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                topic_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 break;
 
             case "PasswordInput":
@@ -1004,6 +1043,7 @@ public class UIController : MonoBehaviour
                 sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                topic_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 break;
 
             case "SignUpUsernameInput":
@@ -1013,6 +1053,7 @@ public class UIController : MonoBehaviour
                 sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                topic_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 break;
 
             case "SignUpPasswordInput":
@@ -1022,6 +1063,7 @@ public class UIController : MonoBehaviour
                 sign_up_password.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
                 sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                topic_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 break;
 
             case "SignUpPasswordAgainInput":
@@ -1031,6 +1073,7 @@ public class UIController : MonoBehaviour
                 sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 sign_up_again_password.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
                 game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                topic_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 break;
 
             case "GameIDInput":
@@ -1040,6 +1083,17 @@ public class UIController : MonoBehaviour
                 sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 game_id_input.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
+                topic_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                break;
+
+            case "TopicInput":
+                login_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                login_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_username.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                topic_input.image.color = new Color32(202, 229, 255, 255);// [HIGHLIGHTED]>-----[*]
                 break;
 
             default:
@@ -1049,6 +1103,7 @@ public class UIController : MonoBehaviour
                 sign_up_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 sign_up_again_password.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 game_id_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
+                topic_input.image.color = new Color32(255, 255, 255, 255);// [DEFAULT]
                 break;
         }
 
