@@ -1626,7 +1626,7 @@ ScriptsOnlyBuild:
     className: LobbyMainPanel
   - hash:
       serializedVersion: 2
-      Hash: 6a900c1252cc1d3251c72a8f1d8c9c0a
+      Hash: de7c768e7a964d1784fb2f5bc4801a72
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -2253,4 +2253,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/UIScene.unity
   - Assets/Scenes/AvatarSelectorScene.unity
   - Assets/Scenes/RoomScene.unity
-  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_1_1.apk
+  playerPath: C:/GitHub/Szakdolgozat_GKPLJP/Builds/test_alpha_1_2.apk

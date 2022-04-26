@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     private FirebaseDatabase db;
     private string current_speaker = "ERR";
     private int current_speaker_points = 0;
+    private int my_point = 0;
     private bool is_voted = false;
     private bool once = true;
     private List<string> player_list;
@@ -27,7 +28,8 @@ public class GameController : MonoBehaviour
     public Canvas menu_canvas;
     public Canvas speaker_canvas;
     public Canvas start_canvas;
-    public Canvas wait_canvas;
+    public Canvas wait_canvas; 
+    public Canvas finished_canvas;
 
     public Text topic;
     public Text current_topic;
@@ -40,6 +42,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         dataBaseManager = DataBaseManager.Instance;
+
     }
 
     // Start is called before the first frame update
@@ -59,6 +62,8 @@ public class GameController : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("games").Child(data.game_id).ValueChanged += playerListValueChanged;
 
         InvokeRepeating("getPlayerList", 0.5f, 1.0f); //getPlayerList();
+
+        getTopic();
     }
 
     // Update is called once per frame
@@ -152,7 +157,6 @@ public class GameController : MonoBehaviour
                                                                player_list.Add(item.Key);
                                                                temp.Add(Int32.Parse(item.Value.ToString()), item.Key);
                                                                str += " " + item.Key;
-
                                                            }
                                                        }
 
@@ -200,8 +204,28 @@ public class GameController : MonoBehaviour
             db = dataBaseManager.getConnection();
             try
             {
-                int pnts = current_speaker_points + rating.getVoteRate();
-                await db.GetReference("points").Child(current_speaker).SetValueAsync(pnts);
+                int pnts = 0;
+                await db.GetReference("points")
+                        .Child(current_speaker)
+                        .GetValueAsync()
+                        .ContinueWith(task => 
+                        {
+                            if (task.IsCompleted)
+                            {
+                                Debug.Log("task.IsCompleted: Succeeded [get playerdata]");
+                                DataSnapshot data_snapshot = task.Result;
+
+                                if (data_snapshot.Exists)
+                                {
+                                    Debug.Log("PLAYER POINT:" + data_snapshot.Value);
+                                    pnts = int.Parse(data_snapshot.Value.ToString());
+                                }
+                            }
+
+                            pnts += rating.getVoteRate();
+
+                        }).ContinueWith(async task => { await db.GetReference("points").Child(current_speaker).SetValueAsync(pnts); });
+                
             }
             catch (Exception ex)
             {
@@ -221,7 +245,14 @@ public class GameController : MonoBehaviour
         {
             if (current_speaker == player_dictionary.ElementAt(i).Value)
             {
-                next_speaker = player_dictionary.ElementAt(i + 1).Value;
+                if (i != player_dictionary.Count - 1)
+                {
+                    next_speaker = player_dictionary.ElementAt(i + 1).Value;
+                }
+                else
+                {
+                    next_speaker = "END";
+                }
                 break;
             }
             else if (next_speaker == player_dictionary.ElementAt(player_dictionary.Count - 1).Value)
@@ -257,6 +288,10 @@ public class GameController : MonoBehaviour
         GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
 
         Debug.Log("Current: " + current_speaker);
+        if(current_speaker == "END")
+        {
+            showMyPoints();
+        }
     }
 
     private async void setCurrentSpeaker(string speaker)
@@ -321,6 +356,7 @@ public class GameController : MonoBehaviour
                 speaker_canvas.enabled = true;
                 start_canvas.enabled = false;
                 wait_canvas.enabled = false;
+                finished_canvas.enabled = false;
 
             }
             else if (current_speaker == "")
@@ -332,6 +368,7 @@ public class GameController : MonoBehaviour
                 speaker_canvas.enabled = false;
                 start_canvas.enabled = false;
                 wait_canvas.enabled = false;
+                finished_canvas.enabled = false;
             }
             else if (current_speaker == "ERR")
             {
@@ -342,6 +379,19 @@ public class GameController : MonoBehaviour
                 speaker_canvas.enabled = false;
                 start_canvas.enabled = false;
                 wait_canvas.enabled = false;
+                finished_canvas.enabled = false;
+            }
+            else if (current_speaker == "END")
+            {
+                Debug.Log("change ELSE IF:" + current_speaker + ":");
+
+                rate_canvas.enabled = false;
+                menu_canvas.enabled = false;
+                speaker_canvas.enabled = false;
+                start_canvas.enabled = false;
+                wait_canvas.enabled = false;
+                finished_canvas.enabled = true;
+                showMyPoints();
             }
             else
             {
@@ -351,38 +401,30 @@ public class GameController : MonoBehaviour
                 speaker_canvas.enabled = false;
                 start_canvas.enabled = false;
                 wait_canvas.enabled = false;
+                finished_canvas.enabled = false;
             }
 
-
-            /*if (current_speaker == data.username)
+            if (username != null)
             {
-                Debug.Log("IF");
-                rate_canvas.enabled = false;
-                menu_canvas.enabled = false;
-                speaker_canvas.enabled = true;
-                start_canvas.enabled = false;
-                wait_canvas.enabled = false;
-
+                username.text = data.username;
             }
-            else if(current_speaker == "")
-            {
-                Debug.Log("ELSE IF");
 
-                rate_canvas.enabled = false;
-                menu_canvas.enabled = false;
-                speaker_canvas.enabled = false;
-                start_canvas.enabled = false;
-                wait_canvas.enabled = false;
-            }
-            else
+            if (current_username != null)
             {
-                Debug.Log("ELSE");
-                rate_canvas.enabled = true;
-                menu_canvas.enabled = false;
-                speaker_canvas.enabled = false;
-                start_canvas.enabled = false;
-                wait_canvas.enabled = false;
-            }*/
+                current_username.text = data.username;
+            }
+
+            if (topic != null)
+            {
+                topic.text = data.topic;
+                Debug.Log("JSON: " + data.topic + " DATA: " + topic.text);
+            }
+
+            if (current_topic != null)
+            {
+                current_topic.text = data.topic;
+                Debug.Log("JSON: " + data.topic + " DATA: " + current_topic.text);
+            }
         }
         catch (Exception ex)
         {
@@ -392,61 +434,36 @@ public class GameController : MonoBehaviour
         GameObject.Find("TESTTEXT").GetComponent<Text>().text += debug;
     }
 
-
-    private async void getCurrentSpeakerPoints()
-    {
-        //await;dblistener
-        //current_speaker_points = -1;
-    }
-
     private void currentSpeakerChanged(object sender, ValueChangedEventArgs args)
     {
+        JsonParser jp = JsonParser.Instance;
+        Data dt = jp.toObject<Data>("userdata");
+
+        if (username != null)
+        {
+            username.text = dt.username;
+        }
+
+        if (current_username != null)
+        {
+            current_username.text = dt.username;
+        }
+
+        if (topic != null)
+        {
+            topic.text = dt.topic;
+            Debug.Log("JSON: " + dt.topic + " DATA: " + topic.text);
+        }
+
+        if (current_topic != null)
+        {
+            current_topic.text = dt.topic;
+            Debug.Log("JSON: " + dt.topic +" DATA: " + current_topic.text);
+        }
+
         getCurrentSpeaker();
 
-        //Debug.Log("CHANGE ARGS " + args.Snapshot.Value);
-        
-        /*if (current_speaker == data.username)
-        {
-            Debug.Log("change IF:" + current_speaker + ":");
-            rate_canvas.enabled = false;
-            menu_canvas.enabled = false;
-            speaker_canvas.enabled = true;
-            start_canvas.enabled = false;
-            wait_canvas.enabled = false;
-
-        }
-        else if (current_speaker == "")
-        {
-            Debug.Log("change ELSE IF:" + current_speaker + ":");
-
-            rate_canvas.enabled = false;
-            menu_canvas.enabled = false;
-            speaker_canvas.enabled = false;
-            start_canvas.enabled = false;
-            wait_canvas.enabled = false;
-        }
-        else if (current_speaker == "ERR")
-        {
-            Debug.Log("change ELSE IF:" + current_speaker + ":");
-
-            rate_canvas.enabled = false;
-            menu_canvas.enabled = false;
-            speaker_canvas.enabled = false;
-            start_canvas.enabled = false;
-            wait_canvas.enabled = false;
-        }
-        else
-        {
-            Debug.Log("change ELSE speaker:" + current_speaker + ":" );
-            rate_canvas.enabled = true;
-            menu_canvas.enabled = false;
-            speaker_canvas.enabled = false;
-            start_canvas.enabled = false;
-            wait_canvas.enabled = false;
-        }*/
-        
-
-        is_voted = true;
+        is_voted = false;
 
         if (once)
         {
@@ -470,11 +487,15 @@ public class GameController : MonoBehaviour
 
     public void confirm()
     {
+        Debug.Log("CONFIRM");
         getPlayerList();
         if (!is_voted)
         {
+            Debug.Log("ISVOTED TRUE");
             confirmation();
-            is_voted = false;
+            is_voted = true;
+
+            Debug.Log("CONFIRMED");
         }
     }
 
@@ -586,6 +607,20 @@ public class GameController : MonoBehaviour
             temp = null;
         }
 
+        //CANVAS [FINISHED]
+        {
+            temp = GameObject.Find("GameOverCanvas");
+            if (temp != null)
+            {
+                finished_canvas = temp.GetComponent<Canvas>();
+                if (finished_canvas == null)
+                {
+                    Debug.LogError("Could not locate Canvas component on " + temp.name);
+                }
+            }
+            temp = null;
+        }
+
         JsonParser jp = JsonParser.Instance;
         Data dt = jp.toObject<Data>("userdata");
         //TEXT [TOPIC]
@@ -657,6 +692,7 @@ public class GameController : MonoBehaviour
         speaker_canvas.enabled = false;
         rate_canvas.enabled = false;
         menu_canvas.enabled = false;
+        finished_canvas.enabled = false;
     }
 
     private void canvasChanger()
@@ -668,6 +704,18 @@ public class GameController : MonoBehaviour
             speaker_canvas.enabled = true;
             start_canvas.enabled = false;
             wait_canvas.enabled = false;
+            finished_canvas.enabled = false;
+        }
+        else if (current_speaker == "ERR")
+        {
+            Debug.Log("SAVE CANVAS ELSE IF (END):" + current_speaker + ":");
+
+            rate_canvas.enabled = false;
+            menu_canvas.enabled = false;
+            speaker_canvas.enabled = false;
+            start_canvas.enabled = false;
+            wait_canvas.enabled = false;
+            finished_canvas.enabled = true;
         }
         else
         {
@@ -676,6 +724,7 @@ public class GameController : MonoBehaviour
             speaker_canvas.enabled = false;
             start_canvas.enabled = false;
             wait_canvas.enabled = false;
+            finished_canvas.enabled = false;
         }
         Debug.Log("Current speaker: " + current_speaker + "; Me: " + data.username);
     }
@@ -686,4 +735,76 @@ public class GameController : MonoBehaviour
         setCurrentSpeaker(current_speaker);
         canvasChanger();
     }
+
+
+    //multiple player points [NOT IMPLEMENTED]
+    private void setPoints()
+    {
+        /*
+        foreach (var element in player_dictionary)
+        {
+          
+        }
+        */
+    }
+
+    private async void showMyPoints()
+    {
+        int pnts = 0;
+        try
+        {
+            await db.GetReference("points")
+                           .Child(data.username)
+                           .GetValueAsync()
+                           .ContinueWith(task =>
+                           {
+                               if (task.IsCompleted)
+                               {
+                                   Debug.Log("task.IsCompleted: Succeeded [get playerdata]");
+                                   DataSnapshot data_snapshot = task.Result;
+
+                                   if (data_snapshot.Exists)
+                                   {
+                                       Debug.Log("PLAYER POINT:" + data_snapshot.Value);
+                                       pnts = int.Parse(data_snapshot.Value.ToString());
+                                   }
+                               }
+                           });
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("ERROR OCCURED IN GET POINTS -> showMyPoints(): " + ex);
+        }
+        GameObject.Find("playerDataText1").GetComponent<Text>().text = data.username;
+        GameObject.Find("playerPoints1").GetComponent<Text>().text = pnts.ToString();
+    }
+
+    private async void getTopic()
+    {
+        try
+        {
+            db = dataBaseManager.getConnection();
+            await db.GetReference("VR_topics")
+                    .Child(data.game_id)
+                    .GetValueAsync()
+                    .ContinueWith(task =>
+                    {
+                        if (task.IsCompleted)
+                        {
+                            DataSnapshot data_snapshot = task.Result;
+
+                            if (data_snapshot.Exists)
+                            {
+                                Debug.Log("PLAYER POINT:" + data_snapshot.Value);
+                                data.topic = data_snapshot.Value.ToString();
+                            }
+                        }
+                    });
+        }
+        catch(Exception ex)
+        {
+            Debug.Log("GETTOPIC ERROR: " + ex);
+        }
+    }
 }
+
